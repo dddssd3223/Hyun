@@ -89,6 +89,8 @@
   .fr, .fr > span { text-indent: 0; padding-left: 0; }
   .fr > span:first-child { border-bottom: 1px solid #000; padding: 0 2px; }
   .q.sd .sdh { font-weight: 800; margin-bottom: 1mm; }
+  .page.first .col.r { padding-top: 4mm; }
+  .end { margin-top: 85mm !important; }
   .abox { border: 1px solid #000; height: 34mm; margin-top: 2mm; }
 </style>
 </head>
@@ -97,7 +99,7 @@
 <div id="pool">
 <div class="q">
   <div class="stem"><b class="no">1.</b> 점 (<i class="mv">a</i>, <i class="mv">b</i>)가 제2사분면 위의 점일 때, 점 (<i class="mv">a</i><i class="mv">b</i>, <i class="mv">b</i>−<i class="mv">a</i>)가 속하는 사분면은? <span class="pt">(3점)</span></div>
-  <div class="opts c2"><div>① 제1사분면</div><div>② 제2사분면</div><div>③ 제3사분면</div><div>④ 제4사분면</div><div>⑤ 어느 사분면에도 속하지 않는다.</div></div>
+  <div class="opts" style="grid-template-columns:42% 42%"><div>① 제1사분면</div><div>② 제2사분면</div><div>③ 제3사분면</div><div>④ 제4사분면</div><div style="grid-column:1 / -1">⑤ 어느 사분면에도 속하지 않는다.</div></div>
 </div>
 <div class="q">
   <div class="stem"><b class="no">2.</b> 점 A(<i class="mv">a</i>+3, 2<i class="mv">a</i>−4)는 <i class="mv">x</i>축 위에 있고, 점 B(<i class="mv">b</i>−1, <i class="mv">b</i>+5)는 <i class="mv">y</i>축 위에 있다. 이때 <i class="mv">a</i><i class="mv">b</i>의 값은? <span class="pt">(3점)</span></div>
@@ -265,7 +267,7 @@ function layout() {
     const free = col.clientHeight - used;
     const rest = qs.filter(q => q.classList.contains('q')).slice(1);
     if (!rest.length) return;
-    const g = Math.max(0, Math.min(free / (rest.length + 1.2), 105));
+    const g = Math.max(0, Math.min(free * 0.5 / rest.length, 175));
     rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
   });
   document.getElementById('pool').remove();

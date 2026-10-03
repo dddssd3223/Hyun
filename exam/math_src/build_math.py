@@ -59,7 +59,7 @@ def add(stem, pts, body=''):
 
 # ---------------- 1 ----------------
 add(f'점 ({a}, {b})가 제2사분면 위의 점일 때, 점 ({a}{b}, {b}−{a})가 속하는 사분면은?', 3,
-    opts(['제1사분면', '제2사분면', '제3사분면', '제4사분면', '어느 사분면에도 속하지 않는다.'], 2))
+    '<div class="opts" style="grid-template-columns:42% 42%"><div>① 제1사분면</div><div>② 제2사분면</div><div>③ 제3사분면</div><div>④ 제4사분면</div><div style="grid-column:1 / -1">⑤ 어느 사분면에도 속하지 않는다.</div></div>')
 # ---------------- 2 ----------------
 add(f'평면 위에 어느 세 점도 한 직선 위에 있지 않은 네 점 A, B, C, D가 있다. 이 중 두 점을 이어 만들 수 있는 서로 다른 직선의 개수를 {a}, 반직선의 개수를 {b}, 선분의 개수를 {c}라 할 때, {a}+{b}+{c}의 값은?', 3,
     opts(['18', '20', '24', '26', '28']))
@@ -280,6 +280,8 @@ css = '''
   .fr, .fr > span { text-indent: 0; padding-left: 0; }
   .fr > span:first-child { border-bottom: 1px solid #000; padding: 0 2px; }
   .q.sd .sdh { font-weight: 800; margin-bottom: 1mm; }
+  .page.first .col.r { padding-top: 4mm; }
+  .end { margin-top: 85mm !important; }
   .abox { border: 1px solid #000; height: 34mm; margin-top: 2mm; }
 '''
 s = s.replace('</style>', css + '</style>', 1)
@@ -290,7 +292,7 @@ s = s.replace("document.getElementById('pool').remove();", """document.querySele
     const free = col.clientHeight - used;
     const rest = qs.filter(q => q.classList.contains('q')).slice(1);
     if (!rest.length) return;
-    const g = Math.max(0, Math.min(free / (rest.length + 1.2), 105));
+    const g = Math.max(0, Math.min(free * 0.5 / rest.length, 175));
     rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
   });
   document.getElementById('pool').remove();""")
