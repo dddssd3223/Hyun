@@ -104,6 +104,23 @@
   .cv-bottom span { float: right; font-size: 9pt; opacity: .85; margin-top: 1.5mm; }
   .profile { break-after: page; }
   .blankpage { page: blank; height: 1px; break-after: page; }
+
+  .diff { break-after: page; }
+  .df-memo { position: relative; margin: 5mm 6mm 6mm; padding: 6mm 7mm 4.5mm; background: #fff3a6; box-shadow: 1.5px 2.5px 4px rgba(0,0,0,.3); font-family: 'SeongSil', cursive; font-size: 16.5pt; line-height: 1.35; color: #1d2a6b; transform: rotate(-0.8deg); }
+  .df-memo::before { content: ""; position: absolute; top: -3mm; left: 50%; width: 28mm; height: 6mm; margin-left: -14mm; background: rgba(210,210,200,.75); transform: rotate(2deg); }
+  .df-memo u { text-decoration-color: #c0392b; }
+  .df-memo .sig { text-align: right; color: #c0392b; margin-top: 1mm; }
+  .df-tbl { margin: 0 0 6mm; }
+  .df-tbl td { text-align: center; }
+  .band { border: 1.3px solid #000; margin-bottom: 4.5mm; break-inside: avoid; }
+  .bh { display: flex; align-items: stretch; border-bottom: 1px solid #000; }
+  .sc { flex: none; width: 30mm; color: #fff; font-weight: 800; font-size: 11.5pt; text-align: center; padding: 1.6mm 0; }
+  .bt { flex: 1; padding: 1.6mm 3mm; font-weight: 800; font-size: 11pt; }
+  .b1 .sc { background: #1d2a6b; } .b1 .bh { background: #e8ecf7; }
+  .b2 .sc { background: #2f7a5c; } .b2 .bh { background: #e4f3ec; }
+  .b3 .sc { background: #d98a1c; } .b3 .bh { background: #fdf0dc; }
+  .b4 .sc { background: #c0392b; } .b4 .bh { background: #fbe5e2; }
+  .bb { padding: 2.4mm 3.5mm 2.8mm; font-family: 'SeongSil', cursive; font-size: 14.5pt; line-height: 1.33; color: #1d2a6b; }
 </style>
 </head>
 <body>
@@ -165,7 +182,27 @@
   </div>
 </div>
 
-<div class="blankpage"></div>
+<div class="diff">
+  <h2 style="margin-top:0">이석준쌤의 시험 난이도 코멘트</h2>
+  <div class="df-memo">이번 시험, 정말 수고 많았어요!<br>전체 난이도는 <u>'중'</u> 정도예요. 기본 개념만 확실하면 70점은 충분히 넘을 수 있게 냈고, 12번(문화의 속성)과 23번(근대 시민 혁명)은 교과서를 꼼꼼히 읽은 친구만 맞힐 수 있는 문제였어요. 그림 문제(11, 18, 30번)는 선물이었고요!<div class="sig">- 이석준 쌤</div></div>
+
+  <table class="df-tbl">
+    <tr><th>쉬움</th><th>보통</th><th>어려움</th><th>킬러</th></tr>
+    <tr><td>10문항</td><td>13문항</td><td>5문항</td><td>2문항 (12, 23번)</td></tr>
+  </table>
+
+  <div class="band b1"><div class="bh"><span class="sc">90~100점</span><span class="bt">이미 실력자! 이제는 '왜 맞혔는지'까지</span></div>
+    <div class="bb">정말 잘했어요! 교과서를 구석구석 읽은 노력이 그대로 점수로 나왔네요. 혹시 찍어서 맞힌 문제는 없었나요? 맞힌 문제도 '이 선지는 왜 틀렸지?'를 말로 설명해 보면 기말고사 100점이 보여요. 이번 킬러 12·23번 해설은 꼭 한 번 읽어 봐요.</div></div>
+
+  <div class="band b2"><div class="bh"><span class="sc">75~89점</span><span class="bt">한 끗 차이! 헷갈린 개념 짝꿍만 잡으면 된다</span></div>
+    <div class="bb">기본기가 탄탄해요! 틀린 문제는 대부분 비슷한 개념끼리 헷갈린 경우일 거예요. 귀속/성취 지위, 잘못된/허위 정보, 국민 자치/국민 주권처럼 '짝꿍 개념'을 5쪽 메모 노트로 비교해 보세요. 이것만 정리해도 90점대는 금방이에요.</div></div>
+
+  <div class="band b3"><div class="bh"><span class="sc">60~74점</span><span class="bt">기초는 충분! 이제 교과서와 친해질 차례</span></div>
+    <div class="bb">절반 넘게 맞혔다는 건 개념이 머릿속에 이미 자리 잡고 있다는 뜻이에요. 아쉬운 건 '대충 아는 것'이 함정에 걸렸다는 거죠. 틀린 문항 카드의 교과서 쪽을 펴서 그 부분만 소리 내어 읽어 보세요. 하루 5문제씩, 일주일이면 완전히 달라져요.</div></div>
+
+  <div class="band b4"><div class="bh"><span class="sc">59점 이하</span><span class="bt">지금이 제일 많이 오를 때! 쌤이 같이 할게요</span></div>
+    <div class="bb">점수가 낮다고 실망하지 마세요. 오히려 올라갈 점수가 가장 많이 남아 있다는 뜻이에요! 먼저 쉬운 문제(2, 7, 9, 10, 11, 18, 20, 22, 27, 30번)부터 다시 풀고, 메모지 속 예시를 내 생활에 대입해 보세요. 사회는 외우기보다 '이해'가 먼저예요. 모르는 건 언제든 쌤한테 물어봐요!</div></div>
+</div>
 
 <div class="brand">SEL입시연구소</div>
 <h1>2026학년도 2학기 중간고사 1학년 사회 문항 분석서</h1>
