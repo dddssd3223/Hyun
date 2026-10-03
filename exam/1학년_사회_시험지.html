@@ -55,6 +55,7 @@
   .bogi::before { content: "<  보  기  >"; white-space: pre; position: absolute; top: -2.6mm; left: 50%; transform: translateX(-50%); background: #fff; padding: 0 1mm; font-size: 9.4pt; line-height: 1.1; }
   .bogi p { margin: 0; padding-left: 4.3mm; text-indent: -4.3mm; }
   .opts { display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 0.4mm; padding-left: 1mm; }
+  .opts:not(.c1) > div { white-space: nowrap; }
   .opts.c2 { grid-template-columns: repeat(2, 1fr); }
   .opts.c1 { grid-template-columns: 1fr; }
   .opts.c1 > div { padding-left: 4.8mm; text-indent: -4.8mm; }
