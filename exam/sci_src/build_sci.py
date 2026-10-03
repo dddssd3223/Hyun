@@ -27,7 +27,7 @@ def spring(x, y1, y2, coils=10, wid=7):
     pts.append((x, y2))
     return P(pts, w=1.1)
 def svg(w, h, body):
-    mm = min(w*0.26, 74)
+    mm = min(w*0.245, 72)
     return f'<div class="pic"><svg viewBox="0 0 {w} {h}" style="width:{mm:.1f}mm" font-family="Gulim, sans-serif">{body}</svg></div>'
 def opts(items, cols=3):
     cls = {3: 'opts', 2: 'opts c2', 1: 'opts c1', 5: 'opts c5'}[cols]
@@ -257,6 +257,7 @@ s = s.replace('<span class="l1">(1)학년 (수학)과목</span>', '<span class="
 s = s.replace('<td>8문항x3점</td><td>24점</td></tr><tr><td>14문항x4점</td><td>56점</td>', '<td>12문항x3점</td><td>36점</td></tr><tr><td>11문항x4점</td><td>44점</td>')
 s = s.replace('<td>26문항</td><td>100점</td>', '<td>27문항</td><td>100점</td>')
 s = s.replace('</style>', '  table.dt { margin: 1.4mm 0 2mm; }\n  table.dt th, table.dt td { padding: 0.5mm 2mm; }\n</style>', 1)
-s = s.replace('const MAXQ = 2;', 'const MAXQ = 3;').replace('const FILL = 0.9;', 'const FILL = 0.97;')
+s = s.replace('const MAXQ = 2;', 'const MAXQ = 3;').replace('const FILL = 0.9;', 'const FILL = 1.0;').replace('.col > .q { margin-bottom: 14mm; }', '.col > .q { margin-bottom: 8mm; }').replace('font-size: 10.6pt; line-height: 1.72;', 'font-size: 9.8pt; line-height: 1.6;').replace('.end { margin-top: 85mm !important; }', '.end { margin-top: 30mm !important; }')
+s = s.replace('for (const b of blocks) {', "for (const b of blocks) {\n    if (b.classList.contains('end') && ci === 0) ci = 1;", 1)
 open(OUT, 'w', encoding='utf-8').write(s)
 print('written', OUT)
