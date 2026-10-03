@@ -24,6 +24,16 @@ def L(x1, y1, x2, y2, w=1.2, dash=False, col='#000'):
 def P(pts, fill='none', w=1.2, dash=False):
     d = ' stroke-dasharray="3,2"' if dash else ''
     return f'<polyline points="{" ".join(f"{p[0]:.1f},{p[1]:.1f}" for p in pts)}" fill="{fill}" stroke="#000" stroke-width="{w}"{d}/>'
+def FR(xx, yy, num, den, size=10.5, lhs='y'):
+    sz = round(size*1.22, 1); cw = sz*0.55
+    out = (f'<text x="{xx:.1f}" y="{yy:.1f}" font-size="{sz}" font-style="italic" font-family="Liberation Serif, serif">{lhs}</text>'
+           f'<text x="{xx+cw*1.1:.1f}" y="{yy:.1f}" font-size="{sz}" font-family="Liberation Serif, serif">=</text>')
+    fx = xx + cw*2.6; w = max(len(num), len(den))*cw + 2
+    def it(t): return f' font-style="italic"' if t.isalpha() else ''
+    out += (f'<text x="{fx + w/2:.1f}" y="{yy - sz*0.55:.1f}" font-size="{sz*0.9:.1f}" text-anchor="middle" font-family="Liberation Serif, serif"{it(num)}>{num}</text>'
+            f'<line x1="{fx:.1f}" y1="{yy - sz*0.33:.1f}" x2="{fx + w:.1f}" y2="{yy - sz*0.33:.1f}" stroke="#000" stroke-width="0.8"/>'
+            f'<text x="{fx + w/2:.1f}" y="{yy + sz*0.55:.1f}" font-size="{sz*0.9:.1f}" text-anchor="middle" font-family="Liberation Serif, serif"{it(den)}>{den}</text>')
+    return out
 def dot(xx, yy, r=2):
     return f'<circle cx="{xx:.1f}" cy="{yy:.1f}" r="{r}" fill="#000"/>'
 def arc(cx, cy, r, a1, a2):  # math degrees, svg y down
@@ -174,7 +184,7 @@ body += P([(ox_ - p[0]*u, oy_ + p[1]*u) for p in h1 if p[1] <= 6.5], w=1.3)
 pA = (ox_ + 3*u, oy_ - 4*u); pC = (ox_ - 3*u, oy_ + 4*u)
 body += P([pA, (pA[0], pC[1]), pC, (pC[0], pA[1]), pA], w=1.1)
 body += (dot(*pA) + dot(*pC) + T(pA[0] + 8, pA[1] - 4, 'A') + T(pA[0] + 8, pC[1] + 10, 'D') + T(pC[0] - 8, pC[1] + 10, 'C') + T(pC[0] - 8, pA[1] - 4, 'B') +
-         T(ox_ + 60, oy_ - 70, f'<tspan font-style="italic">y</tspan>=<tspan font-style="italic">a</tspan>/<tspan font-style="italic">x</tspan>', 10, 'start'))
+         FR(ox_ + 72, oy_ - 58, 'a', 'x'))
 add(f'다음 그림은 반비례 관계 {y}={fr(a, x)}의 그래프이다. 그래프 위의 두 점 A, C는 원점에 대하여 대칭이고, 직사각형 ABCD의 넓이가 48이다. 이 그래프가 점 (2, {b})를 지날 때, {a}+{b}의 값은? (단, 직사각형의 모든 변은 좌표축에 평행하다.)', 4,
     svg(230, 190, body, '68%') + opts(['16', '18', '20', '22', '24']))
 # ---------------- 18 ----------------
@@ -188,7 +198,7 @@ pP = (ox_ + 3*u, oy_ - 4*u); pQ = (ox_ + 6*u, oy_ - 2*u)
 body += (f'<polygon points="{ox_},{oy_} {pP[0]},{pP[1]} {pQ[0]},{pQ[1]}" fill="#ddd" stroke="#000" stroke-width="0.9"/>' +
          dot(*pP) + dot(*pQ) + T(pP[0] - 9, pP[1] - 3, 'P') + T(pQ[0] + 3, pQ[1] - 7, 'Q') +
          T(ox_ + 4.6*u + 2, oy_ - 4.6*4/3*u - 2, f'<tspan font-style="italic">y</tspan>=<tspan font-style="italic">ax</tspan>', 10, 'start') +
-         T(ox_ + 8.3*u - 2, oy_ - 1.45*u - 8, f'<tspan font-style="italic">y</tspan>=12/<tspan font-style="italic">x</tspan>', 10, 'end'))
+         FR(ox_ + 6.9*u, oy_ - 3.6*u, '12', 'x'))
 add(f'다음 그림과 같이 정비례 관계 {y}={a}{x}의 그래프와 반비례 관계 {y}={fr(12, x)}의 그래프가 점 P({v("k")}, 4)에서 만난다. 점 Q는 {y}={fr(12, x)}의 그래프 위의 점이고 {x}좌표가 6일 때, △OPQ의 넓이는? (단, O는 원점)', 4,
     svg(185, 150, body, '62%') + opts(['6', '8', '9', '10', '12']))
 # ---------------- 19 ----------------
@@ -208,8 +218,8 @@ add(f'한 직선을 다음과 같은 규칙으로 회전시킨다.<div class="bx
 body = (L(10, 30, 290, 30, 1.2) + '<path d="M290,30 l-6,-3 v6 z M10,30 l6,-3 v6 z"/>')
 for xx_, nm in [(40, 'A'), (75, 'C'), (150, 'M'), (205, 'D'), (260, 'B')]:
     body += dot(xx_, 30, 2.4) + T(xx_, 48, nm, 11)
-add(f'다음 그림과 같이 수직선 위에 다섯 개의 점 A, C, M, D, B가 있다. 점 M은 {ov("AB")}의 중점이고, {ov("AC")}={fr(1, 3)}{ov("AM")}, {ov("DB")}={fr(1, 4)}{ov("AB")}이다. 두 점 A, B의 좌표가 각각 {a}, {b}일 때, {ov("CD")}의 중점의 좌표를 {v("p")}{a}+{v("q")}{b}로 나타낼 수 있다. 이때 24({v("p")}−{v("q")})의 값은? (단, {v("p")}, {v("q")}는 상수)', 5,
-    svg(300, 58, body, '96%') + opts(['1', '2', '3', '4', '6']))
+add(f'다음 그림과 같이 수직선 위에 다섯 개의 점 A, C, M, D, B가 있다. 두 점 A, B의 좌표는 각각 −6, 18이고, 점 M은 {ov("AB")}의 중점이다. {ov("AC")}={fr(1, 3)}{ov("AM")}, {ov("DB")}={fr(1, 4)}{ov("AB")}일 때, {ov("CD")}의 중점의 좌표는?', 5,
+    svg(300, 58, body) + opts(['3', '4', '5', '6', '7']))
 # ---------------- 22 ----------------
 k = 13
 Bq = (0, 0); Cq = (6, 0); Aq = (0, 6); Dq = (6, 6); Gq = (10, 0); Fq = (10, 4); Eq = (6, 4); Hq = (6.92, 4.62)
@@ -219,8 +229,8 @@ body = (P([m3(Aq), m3(Bq), m3(Gq), m3(Fq), m3(Eq)]) + P([m3(Aq), m3(Dq), m3(Cq)]
         T(m3(Dq)[0], m3(Dq)[1] - 5, 'D') + T(m3(Eq)[0] - 9, m3(Eq)[1] + 4, 'E') + T(m3(Fq)[0] + 8, m3(Fq)[1], 'F') +
         T(m3(Gq)[0] + 2, m3(Gq)[1] + 12, 'G') + T(m3(Hq)[0] + 8, m3(Hq)[1] - 3, 'H') +
         arc(*m3(Gq), 14, 123.7, 180) + lab_at(*m3(Gq), 24, 152, '56°', 9.5))
-add(f'다음 그림과 같이 정사각형 ABCD와 정사각형 ECGF에서 점 E는 {ov("CD")} 위에 있고, 세 점 B, C, G는 한 직선 위에 있다. {ov("BE")}의 연장선과 {ov("DG")}의 교점을 H라 하자. ∠CGD=56°일 때, ∠EBC+∠BHD의 크기는?', 5,
-    svg(180, 125, body, '66%') + opts(['114°', '118°', '124°', '130°', '146°']))
+add(f'다음 그림과 같이 정사각형 ABCD와 정사각형 ECGF에서 점 E는 {ov("CD")} 위에 있고, 세 점 B, C, G는 한 직선 위에 있다. {ov("BE")}의 연장선과 {ov("DG")}의 교점을 H라 하자. ∠CGD=56°일 때, ∠BHD의 크기는?', 5,
+    svg(180, 125, body) + opts(['80°', '85°', '90°', '95°', '100°']))
 
 # ---------------- 서답형 ----------------
 SD = []
@@ -273,5 +283,14 @@ css = '''
   .abox { border: 1px solid #000; height: 34mm; margin-top: 2mm; }
 '''
 s = s.replace('</style>', css + '</style>', 1)
+s = s.replace("document.getElementById('pool').remove();", """document.querySelectorAll('.col').forEach(col => {
+    const qs = Array.from(col.querySelectorAll(':scope > .q, :scope > .end'));
+    if (!qs.length || !col.lastElementChild) return;
+    const used = col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+    const free = col.clientHeight - used;
+    const g = Math.max(0, Math.min(free / (qs.length + 1.5), 38));
+    qs.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
+  });
+  document.getElementById('pool').remove();""")
 open(OUT, 'w', encoding='utf-8').write(s)
 print('written', len(Q), len(SD))
