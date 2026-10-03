@@ -6,13 +6,13 @@
 <style>
   @page { size: A4; margin: 16mm 14mm 16mm;
     @top-right { content: "SEL입시연구소"; font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 9pt; }
-    @bottom-left { content: "ⓒ SEL입시연구소 · 무단 복제 및 배포 금지"; font-family: 'Gulim', sans-serif; font-size: 8pt; }
-    @bottom-right { content: counter(page) " / " counter(pages); font-family: 'Gulim', sans-serif; font-size: 8.5pt; } }
+    @bottom-left { content: "ⓒ SEL입시연구소 · 무단 복제 및 배포 금지"; font-family: 'NanumGothic', sans-serif; font-size: 8pt; }
+    @bottom-right { content: counter(page) " / " counter(pages); font-family: 'NanumGothic', sans-serif; font-size: 8.5pt; } }
   .keep { break-inside: avoid; page-break-inside: avoid; }
   tr { break-inside: avoid; page-break-inside: avoid; }
   .brand { text-align: center; font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 11pt; letter-spacing: 2px; margin-bottom: 1.5mm; }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: 'Gulim', '굴림', sans-serif; font-size: 9.6pt; line-height: 1.55; color: #000; background: #fff; }
+  body { margin: 0; font-family: 'Nanum Gothic', 'NanumGothic', sans-serif; font-size: 9.6pt; line-height: 1.55; color: #000; background: #fff; }
   .hd { font-family: 'NanumMyeongjo', serif; }
   h1 { font-family: 'NanumMyeongjo', serif; font-size: 18pt; text-align: center; margin: 0 0 1mm; font-weight: 800; }
   .sub { text-align: center; margin-bottom: 5mm; }
@@ -38,6 +38,20 @@
   .cmp td { vertical-align: top; }
   .chk td { height: 13mm; }
   .pb { page-break-before: always; }
+
+  @font-face { font-family: 'SeongSil'; src: local('나눔손글씨 성실체'), local('Nanum SeongSirCe'), url('fonts/NanumSeongSirCe.ttf') format('truetype'); }
+  .qwrap { break-inside: avoid; page-break-inside: avoid; margin-bottom: 5mm; }
+  .qwrap .q { margin-bottom: 0; }
+  .qwrap .qb { padding-bottom: 6.5mm; }
+  .memo { position: relative; margin: -4.5mm 2mm 0 26mm; padding: 3.2mm 4mm 2.6mm 4mm; background: #fff3a6; box-shadow: 1.2px 2px 3px rgba(0,0,0,.28); font-family: 'SeongSil', cursive; font-size: 15pt; line-height: 1.22; color: #1d2a6b; transform: rotate(-0.8deg); }
+  .qwrap:nth-of-type(even) .memo { background: #dff2ff; transform: rotate(0.7deg); margin-left: 18mm; margin-right: 8mm; }
+  .qwrap:nth-of-type(3n) .memo { background: #ffe0ea; }
+  .memo::before { content: ""; position: absolute; top: -2.6mm; left: 50%; width: 22mm; height: 5mm; margin-left: -11mm; background: rgba(210,210,200,.75); transform: rotate(-2deg); }
+  .memo .who { display: inline-block; font-size: 15.5pt; margin-right: 1.5mm; color: #c0392b; }
+  .memo .who::after { content: " :"; }
+  .memo::after { content: ""; position: absolute; left: -3.2mm; top: 4.5mm; border-style: solid; border-width: 2.2mm 3.2mm 2.2mm 0; border-color: transparent #fff3a6 transparent transparent; }
+  .qwrap:nth-of-type(even) .memo::after { border-right-color: #dff2ff; }
+  .qwrap:nth-of-type(3n) .memo::after { border-right-color: #ffe0ea; }
 </style>
 </head>
 <body>
@@ -85,211 +99,301 @@
 <h2 class="pb">3. 문항별 분석</h2>
 
 <!-- 1 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">1</div><div class="meta"><span class="tag">Ⅶ-01</span><span class="tag">교과서 129쪽</span><span class="tag">보통 · 3점</span><span class="tag">&lt;보기&gt; 고르기</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">사회화의 의미와 개인적·사회적 기능</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">사회화는 일생에 걸쳐 이루어지고(ㄱ), 개인은 사회화로 개성과 자아를 형성하며(ㄷ), 사회적으로는 규범과 가치를 다음 세대에 전달한다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v"><ul><li>ㄴ: 배고픔, 반가움 같은 본능은 누구나 갖는다. 사회화로 배우는 것은 그것을 <b>표현하는 방식</b>이다.</li><li>ㅁ: 어느 사회에서 자랐느냐에 따라 사람의 특성은 <b>달라질 수 있다</b>.</li></ul></div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>늑대 손에 자란 아이 이야기 알지? 사람들 사이에서 자라지 못하면 말도 규칙도 못 배워. 배고픈 건 본능, "잘 먹겠습니다!" 하고 수저 드는 건 배운 것. 이게 바로 사회화야.</div>
+</div>
 
 <!-- 2 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">2</div><div class="meta"><span class="tag">Ⅶ-01</span><span class="tag">교과서 130쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">밑줄 판단</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">생애 주기별 사회화 기관 (유아기-가정, 아동기-또래 집단, 청소년기-학교, 성인기-직장·미디어)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">청소년기에 지식, 기술, 규범을 <b>체계적으로</b> 배우는 곳은 <b>학교</b>이다. 직장은 성인기의 사회화 기관이다.</div></div>
   <div class="row"><div class="k">복습 포인트</div><div class="v">'체계적으로'라는 표현은 학교를 가리키는 단서이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>유아기엔 집에서 말 배우기, 초등학생 땐 친구랑 놀면서 규칙 익히기, 중학생은 학교에서 '체계적으로' 공부! 직장은 어른이 돼서야 등장해.</div>
+</div>
 
 <!-- 3 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">3</div><div class="meta"><span class="tag">Ⅶ-01</span><span class="tag">교과서 130쪽</span><span class="tag">보통 · 3점</span><span class="tag">사례 적용</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">미디어가 자아 정체성 형성에 미치는 긍정적·부정적 영향</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가)는 미디어 속 인물을 본보기로 삼아 진로를 세운 <b>긍정적 영향</b>, (나)는 왜곡된 미의 기준을 따른 <b>부정적 영향</b>의 사례이다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v"><ul><li>② 미디어의 영향력은 점점 <b>커지고</b> 있다.</li><li>③ 미디어도 사회화 기관이다.</li><li>④ 끊는 것이 아니라 정보를 분별하여 받아들이는 자세가 필요하다.</li><li>⑤ 자아 정체성은 끊임없이 탐색하며 형성된다.</li></ul></div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>유튜브 보고 "나도 저런 사람 될래!" → 긍정적 영향. SNS 보고 무리한 다이어트 → 부정적 영향. 미디어는 끊는 게 아니라 골라 보는 게 정답!</div>
+</div>
 
 <!-- 4 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">4</div><div class="meta"><span class="tag">Ⅶ-02</span><span class="tag">교과서 133쪽</span><span class="tag">보통 · 3점</span><span class="tag">&lt;보기&gt; 고르기</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">귀속 지위와 성취 지위, 역할과 제재</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">㉠ 아들, ㉡ 오빠는 귀속 지위(ㄱ), ㉢ 학생, ㉣ 동아리 부장은 성취 지위(ㄴ)이다. 역할을 제대로 하지 못하면 비난 같은 제재를 받는다(ㄷ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄹ: 신분을 중시한 전통 사회에서는 <b>귀속 지위</b>의 영향력이 더 컸다. ㉣은 성취 지위이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>나는 태어나자마자 '엄마 아들'(귀속). 시험 보고 들어간 학교의 '학생', 뽑혀서 된 '부장'은 성취! 양반·노비 시절엔 태어난 신분이 거의 다 정했지.</div>
+</div>
 
 <!-- 5 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">5</div><div class="meta"><span class="tag">Ⅶ-02</span><span class="tag">교과서 134~135쪽</span><span class="tag">어려움 · 4점</span><span class="tag">사례 비교</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">역할 갈등의 의미와 개인적·사회적 해결 방안</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가)는 동아리 부장과 손녀라는 두 지위의 역할 충돌(ㄱ)이며, 우선순위를 정해 해결한다(ㄴ). (나)처럼 많은 사람이 공통으로 겪는 갈등은 보육 시설 확충 같은 <b>사회적 차원</b>의 대응이 필요하다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v"><ul><li>ㄷ: 공통의 갈등은 개인 노력만으로 해결하기 어렵다.</li><li>ㅁ: 역할 갈등은 사회가 <b>복잡해질수록</b> 많아진다.</li></ul></div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>동아리 공연 vs 할머니 생신, 둘 다 중요하면 역할 갈등! 나 혼자 문제면 우선순위 정하기, 회사 사람 모두가 겪으면 회사 어린이집 같은 '제도'가 필요해.</div>
+</div>
 
 <!-- 6 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">6</div><div class="meta"><span class="tag">Ⅶ-03</span><span class="tag">교과서 137쪽</span><span class="tag">보통 · 4점</span><span class="tag">사례 적용</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">사회 집단, 내집단·외집단, 편견의 발생</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">소속감을 느끼는 A는 내집단, B는 외집단(ㄱ). 사람들은 내집단 구성원에 대해 더 상세히 알고(ㄴ), 외집단을 부족한 정보로 빠르게 판단할 때 편견이 생긴다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄷ: 내가 속하지 않아도 B는 소속감과 지속적 상호 작용이 있는 <b>사회 집단</b>이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>우리 반 단톡방 친구들 = 내집단, 처음 보는 옆 학교 학생 = 외집단. 잘 모르면서 "저 학교 애들은 다 그래"라고 하면? 그게 바로 편견!</div>
+</div>
 
 <!-- 7 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">7</div><div class="meta"><span class="tag">Ⅶ-03</span><span class="tag">교과서 137~138, 140쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">사례 분류</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">차별의 의미와 사례 (외국인 차별, 성차별, 지역 차별)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">국적(ㄱ), 성별(ㄷ), 출신 지역(ㅁ)을 이유로 한 부당한 대우는 차별이다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄴ은 정당한 기준(시험 결과)에 따른 것이고, ㄹ은 차별을 줄이려는 노력이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>기준이 '실력이나 결과'면 공정해. 그런데 '외국인이라서, 여자라서, 어디 출신이라서'면 차별! 이유가 뭔지부터 살펴봐.</div>
+</div>
 
 <!-- 8 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">8</div><div class="meta"><span class="tag">Ⅶ-03</span><span class="tag">교과서 139쪽</span><span class="tag">보통 · 3점</span><span class="tag">개념 적용</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">범용 디자인(유니버설 디자인): 성별·연령·국적·장애와 상관없이 <b>누구나</b> 쓸 수 있는 디자인</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">어린이와 휠체어 사용자 모두가 쓰는 낮은 공용 세면대가 '누구나'의 조건에 맞는다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">①② '전용'은 특정 집단만 쓰도록 나눈 것이고, ④⑤는 특정 사람에게만 맞춘 것이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>핵심 단어는 '누구나'! 문턱 없는 입구, 낮은 세면대처럼 아이도 어른도 휠체어 탄 사람도 같이 쓰면 범용 디자인. '○○ 전용'은 아니야.</div>
+</div>
 
 <!-- 9 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">9</div><div class="meta"><span class="tag">Ⅷ-01</span><span class="tag">교과서 147쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">의미 구별</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">좁은 의미의 문화(교양, 예술) / 넓은 의미의 문화(공유된 생활양식)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">④ 세배는 구성원이 공유하는 생활양식으로 <b>넓은 의미</b>이다. ①②③⑤는 예술이나 세련됨을 뜻하는 <b>좁은 의미</b>이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>"문화생활 즐겼어"의 문화 = 공연·예술(좁은 의미). "세배는 우리 문화야"의 문화 = 함께 사는 방식(넓은 의미). 사회 시간엔 넓은 의미가 주인공!</div>
+</div>
 
 <!-- 10 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">10</div><div class="meta"><span class="tag">Ⅷ-01</span><span class="tag">교과서 147쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">&lt;보기&gt; 고르기</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">문화가 아닌 것: 개인의 버릇·습관, 유전이나 본능에 따른 행동</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">복날 삼계탕(ㄴ), 추석 송편(ㄹ)은 사회 구성원이 공유하는 생활양식이다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄱ 긴장으로 손 떨림, ㅁ 하품은 본능적 반응이고, ㄷ은 개인의 버릇이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>하품, 깜짝 놀라기 = 본능이라 ×. 내가 손톱 깨무는 버릇 = 나만의 습관이라 ×. 추석 송편처럼 '우리 모두' 함께하는 것만 문화 ○!</div>
+</div>
 
 <!-- 11 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">11</div><div class="meta"><span class="tag">Ⅷ-01</span><span class="tag">교과서 148쪽 그림 ①-1~3</span><span class="tag">쉬움 · 3점</span><span class="tag">그림 자료</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">문화의 보편성과 특수성</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">강강술래, 티니클링, 플라멩코처럼 대부분의 사회에는 민속춤이 있지만(보편성), 표현은 제각각 다르다(특수성).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">② 춤은 학습되고 공유되는 문화이다. ③ 문화는 변한다(변동성). ④⑤는 특수성과 보편성을 거꾸로 말한 것이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>어느 나라에나 춤이 있다 = 보편성. 그런데 춤추는 모습은 다 다르다 = 특수성. '다 있다'와 '다 다르다'를 한 세트로 기억해!</div>
+</div>
 
 <!-- 12 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">12</div><div class="meta"><span class="tag k">킬러</span><span class="tag">Ⅷ-01</span><span class="tag">교과서 149~150쪽 (김치 활동)</span><span class="tag">4점</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">문화의 속성 5가지 구별 (특히 변동성과 전체성)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">㉠ 학습성, ㉡ 공유성, ㉢ 축적성, ㉣ <b>전체성</b>(주거 형태 변화가 김치 보관 방식에 영향), ㉤ <b>변동성</b>(김장 문화가 시간에 따라 변화).</div></div>
   <div class="row"><div class="k">함정</div><div class="v">㉣도 '바뀌었다'는 내용이라 변동성으로 고르기 쉽다. 하지만 핵심은 <b>한 부분(주거)의 변화가 다른 부분(음식 보관)을 바꾼 것</b>이므로 전체성이다. 149쪽 '인터넷 발달 → 새 인사말' 예시와 같은 구조이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>도미노를 떠올려 봐! 아파트(집)가 바뀌니까 → 김치 보관법도 바뀜 = 전체성. 그냥 세월이 흘러 김장 대신 사 먹게 된 건 변동성. '무엇 때문에' 바뀌었는지가 포인트!</div>
+</div>
 
 <!-- 13 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">13</div><div class="meta"><span class="tag">Ⅷ-02</span><span class="tag">교과서 152쪽</span><span class="tag">보통 · 4점</span><span class="tag">표 해석</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">미디어의 종류(인쇄·음성·영상 매체, 인터넷·스마트폰)와 정보 통신 기술 발달에 따른 변화</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">인쇄 매체는 신문 하나뿐이다(ㄱ). 누구나 영상을 만들어 올리면서 생산자와 소비자의 경계가 무너지고 있다(ㄷ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄴ: 텔레비전은 <b>일방향</b>으로 전달하는 영상 매체이다. 쌍방향 소통은 인터넷·스마트폰이 가능하게 했다. ㄹ: 직접 만나지 않고 교류하는 수단이 바로 미디어이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>신문·책 = 인쇄, 라디오 = 음성, TV = 영상. 옛날 미디어는 '보내기만' 했는데, 스마트폰 시대엔 우리도 영상을 올리는 '만드는 사람'이 됐어!</div>
+</div>
 
 <!-- 14 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">14</div><div class="meta"><span class="tag">Ⅷ-02</span><span class="tag">교과서 153쪽</span><span class="tag">보통 · 3점</span><span class="tag">학생 대화</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">미디어 속 문화와 정보의 특징 (상품성, 광고의 두 요소, 다양성 확대, 정보 범람, 편향)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">갑(상품의 성격), 을(광고 = 정보 + 설득), 정(문화 다양성 확대)이 옳다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">병: 맞춤형 서비스는 제한된 정보만 보여 줘 <b>편향된 관점</b>을 만들 수 있다. 무: 정보가 너무 많으면 오히려 필요한 정보를 찾기 어렵다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>유튜버 영상에 '유료 광고 포함'이 붙어 있다면? 정보에 설득이 섞여 있다는 뜻! 그리고 알고리즘이 비슷한 영상만 보여 주면 생각이 한쪽으로 쏠릴 수 있어.</div>
+</div>
 
 <!-- 15 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">15</div><div class="meta"><span class="tag">Ⅷ-02</span><span class="tag">교과서 154쪽 날개 자료</span><span class="tag">보통 · 3점</span><span class="tag">개념 구별</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">잘못된 정보와 허위 정보, 미디어 리터러시, 정보 확인 방법</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가)는 사실이라 믿고 공유한 <b>잘못된 정보</b>이다. 일부러 속이려 만든 허위 정보가 아니므로 ①이 틀렸다.</div></div>
   <div class="row"><div class="k">복습 포인트</div><div class="v">'믿고 공유'는 잘못된 정보, '이익·속이려고 만듦'은 허위 정보이다. ③④⑤는 154쪽 본문과 '미디어 속 정보 이렇게 확인하자'의 내용이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>할머니가 진짜인 줄 알고 단톡방에 퍼 나른 글 = 잘못된 정보. 돈 벌려고 일부러 지어낸 가짜 광고 = 허위 정보. '모르고' 했나, '일부러' 했나!</div>
+</div>
 
 <!-- 16 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">16</div><div class="meta"><span class="tag">Ⅷ-03</span><span class="tag">교과서 157쪽 그래프 ③-1</span><span class="tag">어려움 · 4점</span><span class="tag">그래프 해석</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">외국인 인구 증가와 문화의 다양성</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">외국인 인구수는 114 → 171 → 216 → 226만 명으로 계속 늘었다(ㄱ). 다양한 문화적 배경의 구성원이 늘고 있다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄴ: 114 × 2 = 228이므로 226은 2배 <b>미만</b>이다. ㄷ: 비율 증가 폭은 2010~2015년이 1.1%p로 가장 크고, 2015~2020년은 0.8%p이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>그래프 문제는 계산이 생명! 114 × 2 = 228인데 226이니까 2배가 안 돼. 막대(인구수)와 꺾은선(비율)도 헷갈리지 말자.</div>
+</div>
 
 <!-- 17 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">17</div><div class="meta"><span class="tag">Ⅷ-03</span><span class="tag">교과서 157쪽</span><span class="tag">보통 · 3점</span><span class="tag">자료 분석</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">문화가 다양한 이유: 환경과 상황에 적응한 결과</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">인도의 소고기 금기에는 소가 생계에 필수인 환경이 반영되어 있고(ㄱ), 인간은 환경에 적응하며 독특한 생활 방식을 만든다(ㄷ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄴ: 이슬람교 발생 지역은 <b>건조한</b> 기후이다. ㄹ: 특정 문화의 금기를 다른 문화권이 따라야 하는 것은 아니다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>물이 부족한 사막에서 물을 많이 마시는 돼지를 키운다고? 사람이 마실 물이 모자라지! 문화에는 다 그 동네 환경 사정이 숨어 있어.</div>
+</div>
 
 <!-- 18 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">18</div><div class="meta"><span class="tag">Ⅷ-03</span><span class="tag">교과서 156쪽 만화, 158쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">그림 자료</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">문화 상대주의: 그 사회의 환경과 맥락 속에서 문화를 이해하는 태도</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">각자의 종교·가치관에 따른 음식 문화를 이해하고 먹을 수 있는 음식을 추천하는 것이 바람직하다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">②③ 자문화 중심주의, ④ 문화 사대주의이다. ⑤ 이사벨라는 "달걀이나 우유는 괜찮다"고 했으므로 틀린 판단이다(대사를 끝까지 읽기).</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>친구 집에 놀러 가면 그 집 방식을 존중하지? 음식도 똑같아. 그리고 이사벨라는 달걀은 괜찮대. 말풍선은 끝까지 읽기!</div>
+</div>
 
 <!-- 19 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">19</div><div class="meta"><span class="tag">Ⅷ-03</span><span class="tag">교과서 158~159쪽</span><span class="tag">어려움 · 4점</span><span class="tag">사례 판단</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">자문화 중심주의의 문제점, 문화 상대주의의 한계(보편적 가치)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가) 자국 종교만 옳다는 태도는 다른 문화권과 갈등을 빚는다(ㄴ). (나) 조혼은 생명과 존엄성을 해치므로 문화 상대주의로도 인정하기 어렵다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄱ: 고유문화 소멸·주체성 상실은 <b>문화 사대주의</b>의 문제점이다. ㄷ: 보편적 가치를 해치는 문화는 존중 대상이 아니다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>"우리 것만 최고!" = 자문화 중심주의 → 다툼. "남의 것만 최고!" = 문화 사대주의 → 우리 것이 사라짐. 아무리 존중해도 사람을 해치는 풍습은 ×!</div>
+</div>
 
 <!-- 20 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">20</div><div class="meta"><span class="tag">Ⅸ-01</span><span class="tag">교과서 164~165쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">사례 분류</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">좁은 의미의 정치(정치권력 획득·행사: 국회, 정부) / 넓은 의미의 정치(대립과 갈등을 조정해 합의하는 과정)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">가족회의(ㄴ), 학급 회의(ㄹ)는 넓은 의미의 정치에만 해당한다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄱ, ㄷ은 좁은 의미의 정치에도 해당한다. ㅁ은 혼자 하는 일이라 정치가 아니다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>학급 회의로 반티 색 정하기도 정치야! 생각이 다른 사람들이 합의하면 넓은 의미의 정치. 국회·정부가 하는 일은 좁은 의미에도 들어가.</div>
+</div>
 
 <!-- 21 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">21</div><div class="meta"><span class="tag">Ⅸ-01</span><span class="tag">교과서 166~167쪽</span><span class="tag">보통 · 3점</span><span class="tag">대화 분석</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">민주적 문제 해결 자세: 관용, 비판, 타협, 다수결과 소수 의견 존중</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">㉠은 관용 부족, ㉤은 소수 의견 무시로 바람직하지 않다.</div></div>
   <div class="row"><div class="k">복습 포인트</div><div class="v">㉡ 비판, ㉢ 타협, ㉣ 소수 의견 존중은 바람직한 태도이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>"내 말이 무조건 맞아!"(관용 ×), "다수결로 이겼으니 끝!"(소수 존중 ×). 반대로 "이런 단점도 있어"(비판), "조금씩 양보하자"(타협)는 최고의 자세!</div>
+</div>
 
 <!-- 22 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">22</div><div class="meta"><span class="tag">Ⅸ-01</span><span class="tag">교과서 166쪽</span><span class="tag">쉬움 · 3점</span><span class="tag">옳지 않은 것</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">민주주의의 의미와 필요성</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">권력이 소수에게 집중되면 <b>다수의 권리가 침해될 수 있다</b>. 그래서 민주주의가 필요하다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>반장 혼자 반 일을 다 정하면 빠르긴 하겠지만… 나머지 친구들 의견은? 권력이 한쪽에 몰리면 다수가 손해 봐. 그래서 민주주의가 필요해!</div>
+</div>
 
 <!-- 23 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">23</div><div class="meta"><span class="tag k">킬러</span><span class="tag">Ⅸ-02</span><span class="tag">교과서 169~170쪽 (본문·사진 설명)</span><span class="tag">4점</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">고대 아테네 민주주의, 근대 시민 혁명, 보통 선거의 확립</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">③ 근대 시민 혁명은 상공업으로 부를 쌓은 시민 계급이 주도하였다.</div></div>
   <div class="row"><div class="k">함정</div><div class="v"><ul><li>① 아테네는 시민이 민회에서 <b>직접</b> 결정(대표 선출 ×)</li><li>② '소수 특권 계층에 대항'은 <b>프랑스 혁명</b>. 명예혁명은 국왕의 전제 정치에 반대</li><li>④ 차티스트 운동은 <b>성인 남성</b>의 선거권 요구(사진 설명)</li><li>⑤ 보통 선거는 <b>20세기 중반</b>에 확립</li></ul></div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>킬러 공략법: 비슷한 사건끼리 짝지어 외우자! 명예혁명 = 왕 vs 의회, 프랑스 혁명 = 시민 vs 특권 계층, 차티스트 = 노동자가 '성인 남성' 선거권 요구!</div>
+</div>
 
 <!-- 24 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">24</div><div class="meta"><span class="tag">Ⅸ-02</span><span class="tag">교과서 171쪽</span><span class="tag">보통 · 3점</span><span class="tag">연표 자료</span></div><div class="ans">정답 ②</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">4·19 혁명(1960) → 5·18 민주화 운동(1980) → 6월 민주 항쟁(1987)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">5·18 민주화 운동은 민주주의 발전의 밑거름이 되었고 아시아 여러 나라의 민주화 운동에 영향을 주었다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">① (가)는 1960년. ③ 6월 민주 항쟁으로 대통령 <b>직선제</b>가 되었다. ④ 순서는 (가) → (나) → (다). ⑤ 4·19 혁명은 <b>이승만 정부</b>에 항의한 것이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>연도 순서로 외우기: 4·19(1960) → 5·18(1980) → 6월 항쟁(1987). 6월 항쟁 덕분에 우리가 대통령을 '직접' 뽑게 됐어!</div>
+</div>
 
 <!-- 25 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">25</div><div class="meta"><span class="tag">Ⅸ-02</span><span class="tag">교과서 172쪽</span><span class="tag">보통 · 4점</span><span class="tag">제도 분석</span></div><div class="ans">정답 ③</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">민주주의의 이념(인간의 존엄성)과 실현 조건(자유, 평등)</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">두 제도 모두 인간의 존엄성 실현과 관련 있고(ㄱ), 장애인 의무 고용은 실질적 평등을 위한 제도이다(ㄷ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄴ: 기회 균등만으로는 부족해서 만든 제도이다. ㄹ: 진술 거부권 고지는 국가 권력으로부터 개인을 보호하는 <b>자유</b>와 관련된다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>달리기 출발선이 같아도 다리를 다친 친구는 불리하지? 그래서 장애인 의무 고용 같은 제도로 '진짜 평등'을 만드는 거야. 경찰 앞 진술 거부권은 '자유' 지키기!</div>
+</div>
 
 <!-- 26 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">26</div><div class="meta"><span class="tag">Ⅸ-02</span><span class="tag">교과서 173쪽</span><span class="tag">보통 · 3점</span><span class="tag">연결형</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">민주주의의 기본 원리 4가지</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가) 주민 소환 = 국민 자치, (나) 헌법에 따른 통치·헌법 소원 = 입헌주의, (다) 국회·정부·법원의 견제 = 권력 분립</div></div>
   <div class="row"><div class="k">복습 포인트</div><div class="v">'국민이 스스로 다스림'은 국민 자치, '주권이 국민에게 있음'은 국민 주권이다. 주민 소환은 교과서에서 국민 자치의 사례로 나온다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>주민이 직접 시장을 바꿈 = 스스로 다스림(국민 자치). 헌법대로 = 입헌주의. 국회·정부·법원이 서로 감시 = 권력 분립. 키워드로 연결해!</div>
+</div>
 
 <!-- 27 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">27</div><div class="meta"><span class="tag">Ⅸ-03</span><span class="tag">교과서 176쪽 날개 용어</span><span class="tag">쉬움 · 3점</span><span class="tag">연결형</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">국민 발안, 국민 소환, 국민 투표, 청원</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">(가) 법안 제안 = 국민 발안, (나) 임기 전 해임 = 국민 소환, (다) 직접 투표로 결정 = 국민 투표, (라) 문서로 요구 = 청원</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>발안 = 법을 '제안', 소환 = '불러내서' 그만두게, 투표 = 직접 '결정', 청원 = 문서로 '부탁'. 단어 뜻을 떠올리면 쉬워!</div>
+</div>
 
 <!-- 28 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">28</div><div class="meta"><span class="tag">Ⅸ-03</span><span class="tag">교과서 175~176, 179쪽</span><span class="tag">어려움 · 4점</span><span class="tag">그래프 해석</span></div><div class="ans">정답 ④</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">현대 민주주의의 특징과 과제(정치적 무관심), 발전 방안</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">연령대가 높을수록 투표율이 높고(ㄱ), 낮은 투표율은 정치적 무관심의 모습이며(ㄴ), 공정한 선거 제도와 시민 참여가 필요하다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄷ: 복지 요구가 늘면서 역할이 커진 곳은 <b>행정부</b>이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>할머니는 꼭 투표하시는데 형·누나는 "바빠서…"? 그게 바로 그래프 속 모습이야. 복지 일이 늘어 바빠진 곳은 법원이 아니라 행정부(정부)!</div>
+</div>
 
 <!-- 29 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">29</div><div class="meta"><span class="tag">Ⅸ-03</span><span class="tag">교과서 175~176쪽</span><span class="tag">어려움 · 4점</span><span class="tag">사례 분석</span></div><div class="ans">정답 ⑤</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">전자 민주주의, 국민 동의 청원, 시민의 역할</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">직접 만나지 않고도 입법 과정에 영향을 주고(ㄱ), 전자 민주주의의 모습이며(ㄴ), SNS로 알린 것은 여론의 형성 및 전달이다(ㄹ).</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">ㄷ: 동의를 얻은 청원은 국회 <b>담당 위원회에서 처리</b>된다. 국민 투표로 곧바로 법률이 되지 않는다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>스마트폰으로 국회에 청원하기 = 전자 민주주의! 단, 동의가 많이 모이면 국회 위원회가 '처리'하는 거지, 바로 법이 되는 건 아니야.</div>
+</div>
 
 <!-- 30 -->
+<div class="qwrap">
 <div class="q"><div class="qh"><div class="no">30</div><div class="meta"><span class="tag">Ⅸ-03</span><span class="tag">교과서 175쪽 사진·읽어 보자</span><span class="tag">쉬움 · 3점</span><span class="tag">사진 자료</span></div><div class="ans">정답 ①</div></div><div class="qb">
   <div class="row"><div class="k">핵심 개념</div><div class="v">직접 민주주의와 대의 민주주의</div></div>
   <div class="row"><div class="k">정답 근거</div><div class="v">스위스 주민 총회는 주민이 직접 모여 토론하고 결정하는 <b>직접 민주주의</b> 방식이다.</div></div>
   <div class="row"><div class="k">오답 피하기</div><div class="v">②③ 대표를 뽑는 방식은 대의 민주주의로, 오늘날 대부분의 국가가 실시한다. ④ 16세 이상 주민이 참여하므로 성별 제한이 없다. ⑤ 전자 민주주의는 정보 통신 기술을 활용하는 방식이다.</div></div>
 </div></div>
+<div class="memo"><span class="who">쌤의 한마디</span>사진 속 사람들이 든 초록 종이 = 투표용지! 대표 없이 주민이 직접 손 들어 정하니까 직접 민주주의. 우리나라는 대표를 뽑는 대의 민주주의야.</div>
+</div>
 
 <div class="keep">
 <h2>4. 나의 오답 점검표</h2>
