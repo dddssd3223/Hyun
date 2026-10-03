@@ -82,7 +82,7 @@ ox_, oy_ = 60, 112
 A_ = (ox_, oy_ - s); B_ = (ox_ + s, oy_ - s); C_ = (ox_ + s + dx, oy_ - s + dy); D_ = (ox_ + dx, oy_ - s + dy)
 E_ = (ox_, oy_); F_ = (ox_ + s, oy_); G_ = (ox_ + s + dx, oy_ + dy); H_ = (ox_ + dx, oy_ + dy)
 body = (P([A_, B_, C_, D_, A_]) + P([A_, E_, F_, B_]) + P([F_, G_, C_]) + L(*E_, *H_, dash=True) + L(*H_, *G_, dash=True) + L(*H_, *D_, dash=True) +
-        T(A_[0] - 8, A_[1] - 2, 'A') + T(B_[0] - 2, B_[1] + 13, 'B') + T(C_[0] + 8, C_[1], 'C') + T(D_[0] - 8, D_[1] - 2, 'D') +
+        T(A_[0] - 8, A_[1] - 2, 'A') + T(B_[0] + 9, B_[1] + 15, 'B') + T(C_[0] + 8, C_[1], 'C') + T(D_[0] - 2, D_[1] - 6, 'D') +
         T(E_[0] - 8, E_[1] + 10, 'E') + T(F_[0], F_[1] + 13, 'F') + T(G_[0] + 9, G_[1] + 4, 'G') + T(H_[0] - 9, H_[1] + 2, 'H'))
 add(f'다음 그림의 정육면체에서 모서리 AB와 꼬인 위치에 있는 모서리의 개수는?', 3, svg(200, 135, body) + opts(['0', '1', '2', '3', '4']))
 # ---------------- 5 ----------------
@@ -101,7 +101,7 @@ px, py = ox_ - 4*u, oy_ - 6*u
 body += dot(px, py) + L(px, py, px, oy_, dash=True) + L(px, py, ox_, py, dash=True) + T(px, oy_ + 12, '−4', 10) + T(ox_ + 10, py + 4, '6', 10)
 qx, qy = ox_ + 6*u, oy_ + 9*u * 0.92
 body += dot(ox_ + 6*u, oy_ - f7(6)*u) + L(ox_ + 6*u, oy_ - f7(6)*u, ox_ + 6*u, oy_, dash=True) + L(ox_ + 6*u, oy_ - f7(6)*u, ox_, oy_ - f7(6)*u, dash=True) + T(ox_ + 6*u, oy_ - 5, 'b', 10, it=True) + T(ox_ - 4, oy_ - f7(6)*u + 4, '−9', 10, 'end')
-body += T(ox_ - 5.5*u - 4, oy_ - 8.25*u + 12, f'<tspan font-style="italic">y</tspan>=<tspan font-style="italic">ax</tspan>', 10)
+body += T(ox_ + 6.9*u + 4, oy_ + 7.4*u, f'<tspan font-style="italic">y</tspan>=<tspan font-style="italic">ax</tspan>', 10, 'start')
 add(f'정비례 관계 {y}={a}{x}의 그래프가 다음 그림과 같을 때, {a}{b}의 값은? (단, {a}는 상수)', 4,
     svg(230, 170, body, '68%') + opts(['−9', '−6', '−3', '6', '9']))
 # ---------------- 8 ----------------
@@ -247,7 +247,7 @@ def m4(p): return (40 + p[0]*k, 130 - p[1]*k)
 Ar = (0, 7); Br = (0, 0); Cr = (7, 0); Dr = (7, 7); Er = (3.5, 6.06)
 body = (P([m4(Ar), m4(Br), m4(Cr), m4(Dr), m4(Ar)]) + P([m4(Br), m4(Er), m4(Cr)]) + P([m4(Ar), m4(Er), m4(Dr)], w=1) +
         T(m4(Ar)[0] - 8, m4(Ar)[1] - 2, 'A') + T(m4(Br)[0] - 8, m4(Br)[1] + 10, 'B') + T(m4(Cr)[0] + 8, m4(Cr)[1] + 10, 'C') +
-        T(m4(Dr)[0] + 8, m4(Dr)[1] - 2, 'D') + T(m4(Er)[0], m4(Er)[1] + 16, 'E'))
+        T(m4(Dr)[0] + 8, m4(Dr)[1] - 2, 'D') + T(m4(Er)[0] - 12, m4(Er)[1] + 13, 'E'))
 SD.append((f'다음 그림과 같이 정사각형 ABCD의 내부에 △EBC가 정삼각형이 되도록 점 E를 잡았을 때, ∠AED의 크기는?', 4, svg(190, 150, body) + opts(['120°', '135°', '140°', '150°', '160°'])))
 
 # ---------------- assemble ----------------
