@@ -11,10 +11,12 @@ def fr(a, b):
     return f'<span class="fr"><span>{a}</span><span>{b}</span></span>'
 x, y, a, b, c = v('x'), v('y'), v('a'), v('b'), v('c')
 
-def svg(w, h, body, width='62%'):
-    return f'<div class="pic"><svg viewBox="0 0 {w} {h}" style="width:{width}">{body}</svg></div>'
+def svg(w, h, body, width=None):
+    mm = min(w*0.30, 78)
+    return f'<div class="pic"><svg viewBox="0 0 {w} {h}" style="width:{mm:.1f}mm" font-family="Gulim, sans-serif">{body}</svg></div>'
 def T(xx, yy, s, size=11, anchor='middle', it=False, extra=''):
-    st = ' font-style="italic" font-family="Liberation Serif, serif"' if it else ''
+    st = ' font-style="italic" font-family="Liberation Serif, serif" font-size-adjust="0.5"' if it else ''
+    size = round(size*1.22, 1)
     return f'<text x="{xx:.1f}" y="{yy:.1f}" font-size="{size}" text-anchor="{anchor}"{st}{extra}>{s}</text>'
 def L(x1, y1, x2, y2, w=1.2, dash=False, col='#000'):
     d = ' stroke-dasharray="3,2"' if dash else ''
@@ -46,7 +48,7 @@ def add(stem, pts, body=''):
     Q.append((stem, pts, body))
 
 # ---------------- 1 ----------------
-add(f'점 ({a}, {b})가 제2사분면 위의 점일 때, 점 ({a}{b}, {b}−{a})는 어느 사분면 위의 점인가?', 3,
+add(f'점 ({a}, {b})가 제2사분면 위의 점일 때, 점 ({a}{b}, {b}−{a})가 속하는 사분면은?', 3,
     opts(['제1사분면', '제2사분면', '제3사분면', '제4사분면', '어느 사분면에도 속하지 않는다.'], 2))
 # ---------------- 2 ----------------
 add(f'평면 위에 어느 세 점도 한 직선 위에 있지 않은 네 점 A, B, C, D가 있다. 이 중 두 점을 이어 만들 수 있는 서로 다른 직선의 개수를 {a}, 반직선의 개수를 {b}, 선분의 개수를 {c}라 할 때, {a}+{b}+{c}의 값은?', 3,
@@ -66,13 +68,13 @@ body = (L(cx - 110, cy, cx + 110, cy) +
 add(f'다음 그림과 같이 세 직선이 한 점 O에서 만날 때, {x}의 값은?', 3, svg(300, 150, body, '85%') + opts(['40', '45', '50', '55', '60']))
 # ---------------- 4 ----------------
 s, dx, dy = 70, 30, -22
-ox_, oy_ = 60, 100
+ox_, oy_ = 60, 112
 A_ = (ox_, oy_ - s); B_ = (ox_ + s, oy_ - s); C_ = (ox_ + s + dx, oy_ - s + dy); D_ = (ox_ + dx, oy_ - s + dy)
 E_ = (ox_, oy_); F_ = (ox_ + s, oy_); G_ = (ox_ + s + dx, oy_ + dy); H_ = (ox_ + dx, oy_ + dy)
 body = (P([A_, B_, C_, D_, A_]) + P([A_, E_, F_, B_]) + P([F_, G_, C_]) + L(*E_, *H_, dash=True) + L(*H_, *G_, dash=True) + L(*H_, *D_, dash=True) +
         T(A_[0] - 8, A_[1] - 2, 'A') + T(B_[0] - 2, B_[1] + 13, 'B') + T(C_[0] + 8, C_[1], 'C') + T(D_[0] - 8, D_[1] - 2, 'D') +
         T(E_[0] - 8, E_[1] + 10, 'E') + T(F_[0], F_[1] + 13, 'F') + T(G_[0] + 9, G_[1] + 4, 'G') + T(H_[0] - 9, H_[1] + 2, 'H'))
-add(f'다음 그림의 정육면체에서 모서리 AB와 꼬인 위치에 있는 모서리의 개수는?', 3, svg(200, 125, body, '62%') + opts(['0', '1', '2', '3', '4']))
+add(f'다음 그림의 정육면체에서 모서리 AB와 꼬인 위치에 있는 모서리의 개수는?', 3, svg(200, 135, body) + opts(['0', '1', '2', '3', '4']))
 # ---------------- 5 ----------------
 add(f'점 A({a}+3, 2{a}−4)는 {x}축 위에 있고, 점 B({b}−1, {b}+5)는 {y}축 위에 있다. 이때 {a}{b}의 값은?', 4,
     opts(['1', '2', '3', '4', '5']))
@@ -114,7 +116,7 @@ for xv in (4, 10, 12, 15, 16, 18, 20):
     body += T(ox_ + xv*ux + (4 if xv in (16,) else (-4 if xv == 15 else 0)), oy_ + 12, str(xv), 9)
 for yv in (30, 40, 60):
     body += T(ox_ - 4, oy_ - yv*uy + 3, str(yv), 9, 'end') + L(ox_, oy_ - yv*uy, ox_ + (4 if yv == 60 else (12 if yv == 40 else 20))*ux, oy_ - yv*uy, dash=True)
-add(f'다음 그래프는 지호네 가족이 자동차를 타고 출발한 지 {x}분 후의 자동차의 속력을 시속 {y} km라 할 때, {x}와 {y} 사이의 관계를 나타낸 것이다. 출발 후 20분 동안 자동차가 <b>멈추지 않고 일정한 속력</b>으로 달린 시간은 모두 몇 분인가?', 4,
+add(f'다음 그래프는 지호네 가족이 자동차를 타고 출발한 지 {x}분 후의 자동차의 속력을 시속 {y} km라 할 때, {x}와 {y} 사이의 관계를 나타낸 것이다. 출발 후 20분 동안 자동차가 <b>멈추지 않고 일정한 속력</b>으로 달린 시간의 합은?', 4,
     svg(285, 140, body, '96%') + opts(['9분', '10분', '11분', '12분', '13분']))
 # ---------------- 11 ----------------
 k = 1.7
@@ -137,7 +139,7 @@ add(f'다음 중 △ABC가 하나로 정해지지 <span class="u"><b>않는</b><
           f'{ov("AB")}=7 cm, {ov("BC")}=8 cm, ∠C=60°',
           f'{ov("AB")}=7 cm, ∠A=50°, ∠B=60°'], 1))
 # ---------------- 13 ----------------
-add(f'세 변의 길이가 4 cm, 9 cm, {x} cm인 삼각형을 만들 수 있도록 하는 자연수 {x}의 값을 모두 더하면?', 4,
+add(f'세 변의 길이가 4 cm, 9 cm, {x} cm인 삼각형을 만들 수 있도록 하는 자연수 {x}의 값의 합은?', 4,
     opts(['63', '66', '70', '72', '75']))
 # ---------------- 14 ----------------
 add(f'작도에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은?', 4,
@@ -222,28 +224,31 @@ add(f'다음 그림과 같이 정사각형 ABCD와 정사각형 ECGF에서 점 E
 
 # ---------------- 서답형 ----------------
 SD = []
-SD.append((f'톱니의 수가 30개인 톱니바퀴 A와 톱니의 수가 {x}개인 톱니바퀴 B가 서로 맞물려 돌고 있다. A가 4바퀴 회전하는 동안 B는 {y}바퀴 회전한다고 할 때, {x}와 {y} 사이의 관계식을 구하고, B의 톱니의 수가 24개일 때 B는 몇 바퀴 회전하는지 구하시오. [풀이 과정과 답을 쓰시오.]', 3, ''))
-SD.append((f'좌표평면 위의 세 점 A(−2, 4), B(−2, −2), C({a}, −2)를 꼭짓점으로 하는 삼각형 ABC의 넓이가 18일 때, {a}의 값을 구하시오. (단, {a}&gt;0) [풀이 과정과 답을 쓰시오.]', 3, ''))
+SD.append((f'톱니의 수가 30개인 톱니바퀴 A와 톱니의 수가 {x}개인 톱니바퀴 B가 서로 맞물려 돌고 있다. A가 4바퀴 회전하는 동안 B는 {y}바퀴 회전할 때, B의 톱니의 수가 24개이면 B가 회전하는 바퀴 수는?', 3, opts(['1바퀴', '2바퀴', '3바퀴', '4바퀴', '5바퀴'])))
+SD.append((f'좌표평면 위의 세 점 A(−2, 4), B(−2, −2), C({a}, −2)를 꼭짓점으로 하는 삼각형 ABC의 넓이가 18일 때, {a}의 값은? (단, {a}&gt;0)', 4, opts(['2', '3', '4', '5', '6'])))
 cx, cy = 150, 108
 body = L(cx - 120, cy, cx + 120, cy, 1.3)
 for ang, nm in [(140, 'C'), (80, 'D'), (40, 'E')]:
     body += L(cx, cy, cx + 85*math.cos(math.radians(ang)), cy - 85*math.sin(math.radians(ang)), 1.2) + T(cx + 95*math.cos(math.radians(ang)), cy - 95*math.sin(math.radians(ang)) + 4, nm, 11)
 body += T(cx - 124, cy + 4, 'A', 11, 'end') + T(cx + 124, cy + 4, 'B', 11, 'start') + T(cx, cy + 14, 'O', 10)
-SD.append((f'다음 그림에서 세 점 A, O, B는 한 직선 위에 있고, ∠AOC : ∠COD : ∠DOB = 2 : 3 : 4이다. 반직선 OE가 ∠DOB를 이등분할 때, ∠COE의 크기를 구하시오. [풀이 과정과 답을 쓰시오.]', 3, svg(300, 125, body, '85%')))
+SD.append((f'다음 그림에서 세 점 A, O, B는 한 직선 위에 있고, ∠AOC : ∠COD : ∠DOB = 2 : 3 : 4이다. 반직선 OE가 ∠DOB를 이등분할 때, ∠COE의 크기는?', 3, svg(300, 125, body) + opts(['100°', '105°', '110°', '115°', '120°'])))
 k = 16
 def m4(p): return (40 + p[0]*k, 130 - p[1]*k)
 Ar = (0, 7); Br = (0, 0); Cr = (7, 0); Dr = (7, 7); Er = (3.5, 6.06)
 body = (P([m4(Ar), m4(Br), m4(Cr), m4(Dr), m4(Ar)]) + P([m4(Br), m4(Er), m4(Cr)]) + P([m4(Ar), m4(Er), m4(Dr)], w=1) +
         T(m4(Ar)[0] - 8, m4(Ar)[1] - 2, 'A') + T(m4(Br)[0] - 8, m4(Br)[1] + 10, 'B') + T(m4(Cr)[0] + 8, m4(Cr)[1] + 10, 'C') +
         T(m4(Dr)[0] + 8, m4(Dr)[1] - 2, 'D') + T(m4(Er)[0], m4(Er)[1] + 16, 'E'))
-SD.append((f'다음 그림과 같이 정사각형 ABCD의 내부에 △EBC가 정삼각형이 되도록 점 E를 잡았다. 이때 ∠AED의 크기를 구하시오. [풀이 과정과 답을 쓰시오.]', 3, svg(190, 150, body, '58%')))
+SD.append((f'다음 그림과 같이 정사각형 ABCD의 내부에 △EBC가 정삼각형이 되도록 점 E를 잡았을 때, ∠AED의 크기는?', 4, svg(190, 150, body) + opts(['120°', '135°', '140°', '150°', '160°'])))
 
 # ---------------- assemble ----------------
+ORDER = ['Q1','Q5','Q7','S1','Q2','Q3','S3','Q4','Q6','S2','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','S4','Q17','Q18','Q19','Q20','Q21','Q22']
+PTS = [3]*8 + [4]*14 + [5]*4
+items = {f'Q{i}': q for i, q in enumerate(Q, 1)}
+items.update({f'S{i}': q for i, q in enumerate(SD, 1)})
 html = []
-for i, (stem, pts, body) in enumerate(Q, 1):
-    html.append(f'<div class="q">\n  <div class="stem"><b class="no">{i}.</b> {stem} <span class="pt">({pts}점)</span></div>\n  {body}\n</div>\n')
-for i, (stem, pts, body) in enumerate(SD, 1):
-    html.append(f'<div class="q sd">\n  <div class="sdh">&lt;서답형 {i}&gt;</div>\n  <div class="stem" style="padding-left:0;text-indent:0">{stem} <span class="pt">({pts}점)</span></div>\n  {body}\n  <div class="abox"></div>\n</div>\n')
+for i, key in enumerate(ORDER, 1):
+    stem, _, body = items[key]
+    html.append(f'<div class="q">\n  <div class="stem"><b class="no">{i}.</b> {stem} <span class="pt">({PTS[i-1]}점)</span></div>\n  {body}\n</div>\n')
 
 src = open(BASE, encoding='utf-8').read()
 a0 = src.index('<div id="pool">') + len('<div id="pool">'); b0 = src.index('<div class="end" id="endblock">')
@@ -251,13 +256,13 @@ s = src[:a0] + '\n' + ''.join(html) + '\n' + src[b0:]
 s = s.replace('<title>1학년 사회 파이널 모의고사 1회</title>', '<title>1학년 수학 지필평가</title>')
 s = s.replace('<div class="title">사회과<br><span class="t2">파이널 모의고사 1회</span></div>', '<div class="title">수학과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>')
 s = s.replace('3일(토)&nbsp;&nbsp;&nbsp;1교시', '3일(토)&nbsp;&nbsp;&nbsp;2교시')
-s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 4;')
+s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 2;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
 s = s.replace('<span class="l1">(1)학년 (사회)과목</span>', '<span class="l1">(1)학년 (수학)과목</span>')
 old_tbl = re.search(r'<table class="score">.*?</table>', s, re.S).group(0)
 s = s.replace(old_tbl, '<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr>'
-    '<tr><td rowspan="3">선택형</td><td>4문항x3점</td><td>12점</td></tr><tr><td>14문항x4점</td><td>56점</td></tr><tr><td>4문항x5점</td><td>20점</td></tr>'
-    '<tr><td>서답형</td><td>4문항</td><td>12점</td></tr><tr><td>계</td><td>26문항</td><td>100점</td></tr></table>')
-s = s.replace('※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.', '※&nbsp; 선택형은 OMR카드에, 서답형은 답안지에 풀이 과정과 답을 정확히 쓰시오.')
+    '<tr><td rowspan="3">선택형</td><td>8문항x3점</td><td>24점</td></tr><tr><td>14문항x4점</td><td>56점</td></tr><tr><td>4문항x5점</td><td>20점</td></tr>'
+    '<tr><td>계</td><td>26문항</td><td>100점</td></tr></table>')
+s = s.replace('※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.', '※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.')
 css = '''
   i.mv { font-family: 'Liberation Serif', 'Times New Roman', serif; font-size: 1.12em; }
   .ov { text-decoration: overline; text-decoration-thickness: 1px; }
