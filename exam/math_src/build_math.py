@@ -288,8 +288,10 @@ s = s.replace("document.getElementById('pool').remove();", """document.querySele
     if (!qs.length || !col.lastElementChild) return;
     const used = col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
     const free = col.clientHeight - used;
-    const g = Math.max(0, Math.min(free / (qs.length + 1.5), 38));
-    qs.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
+    const rest = qs.filter(q => q.classList.contains('q')).slice(1);
+    if (!rest.length) return;
+    const g = Math.max(0, Math.min(free / (rest.length + 1.2), 105));
+    rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
   });
   document.getElementById('pool').remove();""")
 open(OUT, 'w', encoding='utf-8').write(s)
