@@ -275,7 +275,7 @@ SD.append((f'다음 그림과 같이 정사각형 ABCD의 내부에 △EBC가 �
 
 # ---------------- assemble ----------------
 ORDER = ['Q1','Q5','Q7','S1','Q2','Q3','S3','Q4','Q6','S2','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','S4','Q23','Q17','Q18','Q24','Q19','Q20','Q21','Q22','Q25']
-PTS = [3]*12 + [3.5]*10 + [4]*6 + [5]
+PTS = [3]*17 + [4]*11 + [5]
 assert len(ORDER) == 29 and sum(PTS) == 100
 items = {f'Q{i}': q for i, q in enumerate(Q, 1)}
 items.update({f'S{i}': q for i, q in enumerate(SD, 1)})
@@ -289,12 +289,12 @@ a0 = src.index('<div id="pool">') + len('<div id="pool">'); b0 = src.index('<div
 s = src[:a0] + '\n' + ''.join(html) + '\n' + src[b0:]
 s = s.replace('<title>1학년 사회 파이널 모의고사 1회</title>', '<title>1학년 수학 지필평가</title>')
 s = s.replace('<div class="title">사회과<br><span class="t2">파이널 모의고사 1회</span></div>', '<div class="title">수학과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>')
-s = s.replace('3일(토)&nbsp;&nbsp;&nbsp;1교시', '3일(토)&nbsp;&nbsp;&nbsp;2교시')
+s = s.replace('3일(토)&nbsp;&nbsp;&nbsp;1교시', '4일(일)&nbsp;&nbsp;&nbsp;1교시')
 s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 2;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
 s = s.replace('<span class="l1">(1)학년 (사회)과목</span>', '<span class="l1">(1)학년 (수학)과목</span>')
 old_tbl = re.search(r'<table class="score">.*?</table>', s, re.S).group(0)
 s = s.replace(old_tbl, '<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr>'
-    '<tr><td rowspan="4">선택형</td><td>12문항x3점</td><td>36점</td></tr><tr><td>10문항x3.5점</td><td>35점</td></tr><tr><td>6문항x4점</td><td>24점</td></tr><tr><td>1문항x5점</td><td>5점</td></tr>'
+    '<tr><td rowspan="3">선택형</td><td>17문항x3점</td><td>51점</td></tr><tr><td>11문항x4점</td><td>44점</td></tr><tr><td>1문항x5점</td><td>5점</td></tr>'
     '<tr><td>계</td><td>29문항</td><td>100점</td></tr></table>')
 s = s.replace('※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.', '※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.')
 css = '''
