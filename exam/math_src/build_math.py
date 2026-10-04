@@ -290,7 +290,7 @@ s = src[:a0] + '\n' + ''.join(html) + '\n' + src[b0:]
 s = s.replace('<title>1학년 사회 파이널 모의고사 1회</title>', '<title>1학년 수학 지필평가</title>')
 s = s.replace('<div class="title">사회과<br><span class="t2">파이널 모의고사 1회</span></div>', '<div class="title">수학과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>')
 s = s.replace('3일(토)&nbsp;&nbsp;&nbsp;1교시', '3일(토)&nbsp;&nbsp;&nbsp;2교시')
-s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 3;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
+s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 2;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
 s = s.replace('<span class="l1">(1)학년 (사회)과목</span>', '<span class="l1">(1)학년 (수학)과목</span>')
 old_tbl = re.search(r'<table class="score">.*?</table>', s, re.S).group(0)
 s = s.replace(old_tbl, '<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr>'
