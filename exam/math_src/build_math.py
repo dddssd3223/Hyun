@@ -218,8 +218,8 @@ add(f'한 직선을 다음과 같은 규칙으로 회전시킨다.<div class="bx
 body = (L(10, 30, 290, 30, 1.2) + '<path d="M290,30 l-6,-3 v6 z M10,30 l6,-3 v6 z"/>')
 for xx_, nm in [(40, 'A'), (75, 'C'), (150, 'M'), (205, 'D'), (260, 'B')]:
     body += dot(xx_, 30, 2.4) + T(xx_, 48, nm, 11)
-add(f'다음 그림과 같이 수직선 위에 다섯 개의 점 A, C, M, D, B가 있다. 두 점 A, B의 좌표는 각각 −6, 18이고, 점 M은 {ov("AB")}의 중점이다. {ov("AC")}={fr(1, 3)}{ov("AM")}, {ov("DB")}={fr(1, 4)}{ov("AB")}일 때, {ov("CD")}의 중점의 좌표는?', 5,
-    svg(300, 58, body) + opts(['3', '4', '5', '6', '7']))
+add(f'다음 그림과 같이 수직선 위에 다섯 개의 점 A, C, M, D, B가 있다. 점 M은 {ov("AB")}의 중점이고, {ov("AC")}={fr(1, 3)}{ov("AM")}, {ov("DB")}={fr(1, 4)}{ov("AB")}이다. 두 점 A, B의 좌표가 각각 {a}, {b}일 때, {ov("CD")}의 중점의 좌표를 {v("p")}{a}+{v("q")}{b}로 나타낼 수 있다. 이때 24({v("p")}−{v("q")})의 값은? (단, {v("p")}, {v("q")}는 상수)', 5,
+    svg(300, 58, body) + opts(['1', '2', '3', '4', '6']))
 # ---------------- 22 ----------------
 k = 13
 Bq = (0, 0); Cq = (6, 0); Aq = (0, 6); Dq = (6, 6); Gq = (10, 0); Fq = (10, 4); Eq = (6, 4); Hq = (6.92, 4.62)
@@ -229,8 +229,31 @@ body = (P([m3(Aq), m3(Bq), m3(Gq), m3(Fq), m3(Eq)]) + P([m3(Aq), m3(Dq), m3(Cq)]
         T(m3(Dq)[0], m3(Dq)[1] - 5, 'D') + T(m3(Eq)[0] - 9, m3(Eq)[1] + 4, 'E') + T(m3(Fq)[0] + 8, m3(Fq)[1], 'F') +
         T(m3(Gq)[0] + 2, m3(Gq)[1] + 12, 'G') + T(m3(Hq)[0] + 8, m3(Hq)[1] - 3, 'H') +
         arc(*m3(Gq), 14, 123.7, 180) + lab_at(*m3(Gq), 24, 152, '56°', 9.5))
-add(f'다음 그림과 같이 정사각형 ABCD와 정사각형 ECGF에서 점 E는 {ov("CD")} 위에 있고, 세 점 B, C, G는 한 직선 위에 있다. {ov("BE")}의 연장선과 {ov("DG")}의 교점을 H라 하자. ∠CGD=56°일 때, ∠BHD의 크기는?', 5,
-    svg(180, 125, body) + opts(['80°', '85°', '90°', '95°', '100°']))
+add(f'다음 그림과 같이 정사각형 ABCD와 정사각형 ECGF에서 점 E는 {ov("CD")} 위에 있고, 세 점 B, C, G는 한 직선 위에 있다. {ov("BE")}의 연장선과 {ov("DG")}의 교점을 H라 하자. ∠CGD=56°일 때, ∠EBC+∠BHD의 크기는?', 5,
+    svg(180, 125, body) + opts(['114°', '118°', '124°', '130°', '146°']))
+# ---------------- N1 ----------------
+add(f'반비례 관계 {y}={fr(12, x)}의 그래프 위의 점 중에서 {x}좌표와 {y}좌표가 모두 정수인 점의 개수는?', 4,
+    opts(['4', '6', '8', '10', '12']))
+# ---------------- N2 ----------------
+u = 20; ox_, oy_ = 30, 120
+body = axes(ox_, oy_, 15, 185, 15, 132)
+body += P([(ox_, oy_), (ox_ + 6*u, oy_), (ox_ + 6*u, oy_ - 4*u), (ox_, oy_ - 4*u), (ox_, oy_)], w=1.3)
+body += L(ox_, oy_, ox_ + 6.9*u, oy_ - 6.9*u*4/9, 1.3)
+body += (T(ox_ + 6*u + 2, oy_ + 13, 'A(6, 0)', 9.5) + T(ox_ + 6*u + 8, oy_ - 4*u - 4, 'B(6, 4)', 9.5, 'start') + T(ox_ + 8, oy_ - 4*u - 5, 'C(0, 4)', 9.5, 'start') +
+         T(ox_ + 6.9*u + 3, oy_ - 6.9*u*4/9 - 3, f'<tspan font-style="italic">y</tspan>=<tspan font-style="italic">ax</tspan>', 10, 'start'))
+add(f'다음 그림과 같이 좌표평면 위에 네 점 O(0, 0), A(6, 0), B(6, 4), C(0, 4)를 꼭짓점으로 하는 직사각형 OABC가 있다. 정비례 관계 {y}={a}{x}의 그래프가 직사각형 OABC의 넓이를 아래쪽 부분과 위쪽 부분이 1 : 2가 되도록 나눌 때, 상수 {a}의 값은?', 4,
+    svg(215, 140, body) + opts([fr(2, 9), fr(1, 3), fr(4, 9), fr(1, 2), fr(2, 3)]))
+# ---------------- N3 ----------------
+k = 12
+Bn = (0, 0); Cn = (10, 0); Dn = (10, 10); An = (0, 10); t = 6.82; Pn = (t, t); Qn = (2*t - 10, 0)
+def m5(p): return (25 + p[0]*k, 140 - p[1]*k)
+body = (P([m5(An), m5(Bn), m5(Cn), m5(Dn), m5(An)], w=1.3) + L(*m5(Bn), *m5(Dn), 1) + L(*m5(An), *m5(Pn)) + L(*m5(Pn), *m5(Qn)) +
+        T(m5(An)[0] - 9, m5(An)[1] + 2, 'A') + T(m5(Bn)[0] - 9, m5(Bn)[1] + 10, 'B') + T(m5(Cn)[0] + 9, m5(Cn)[1] + 10, 'C') + T(m5(Dn)[0] + 9, m5(Dn)[1] + 2, 'D') +
+        T(m5(Pn)[0] + 10, m5(Pn)[1] + 4, 'P') + T(m5(Qn)[0], m5(Qn)[1] + 14, 'Q') +
+        arc(*m5(An), 26, -25, 0) + lab_at(*m5(An), 40, -11, '25°', 9.5))
+add(f'다음 그림과 같이 정사각형 ABCD의 대각선 BD 위에 점 P를 잡고, {ov("BC")} 위에 {ov("PA")}={ov("PQ")}가 되도록 점 Q를 잡았다. ∠DAP=25°일 때, ∠QPC의 크기는?', 5,
+    svg(165, 160, body) + opts(['50°', '55°', '60°', '65°', '70°']))
+
 
 # ---------------- 서답형 ----------------
 SD = []
@@ -251,8 +274,9 @@ body = (P([m4(Ar), m4(Br), m4(Cr), m4(Dr), m4(Ar)]) + P([m4(Br), m4(Er), m4(Cr)]
 SD.append((f'다음 그림과 같이 정사각형 ABCD의 내부에 △EBC가 정삼각형이 되도록 점 E를 잡았을 때, ∠AED의 크기는?', 4, svg(190, 150, body) + opts(['120°', '135°', '140°', '150°', '160°'])))
 
 # ---------------- assemble ----------------
-ORDER = ['Q1','Q5','Q7','S1','Q2','Q3','S3','Q4','Q6','S2','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','S4','Q17','Q18','Q19','Q20','Q21','Q22']
-PTS = [3]*8 + [4]*14 + [5]*4
+ORDER = ['Q1','Q5','Q7','S1','Q2','Q3','S3','Q4','Q6','S2','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','S4','Q23','Q17','Q18','Q24','Q19','Q20','Q21','Q22','Q25']
+PTS = [3]*12 + [3.5]*10 + [4]*6 + [5]
+assert len(ORDER) == 29 and sum(PTS) == 100
 items = {f'Q{i}': q for i, q in enumerate(Q, 1)}
 items.update({f'S{i}': q for i, q in enumerate(SD, 1)})
 html = []
@@ -266,12 +290,12 @@ s = src[:a0] + '\n' + ''.join(html) + '\n' + src[b0:]
 s = s.replace('<title>1학년 사회 파이널 모의고사 1회</title>', '<title>1학년 수학 지필평가</title>')
 s = s.replace('<div class="title">사회과<br><span class="t2">파이널 모의고사 1회</span></div>', '<div class="title">수학과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>')
 s = s.replace('3일(토)&nbsp;&nbsp;&nbsp;1교시', '3일(토)&nbsp;&nbsp;&nbsp;2교시')
-s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 2;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
+s = s.replace('과목코드(03)', '과목코드(04)').replace('const MAXQ = 3;', 'const MAXQ = 3;').replace('const FILL = 1.0;', 'const FILL = 0.9;').replace('.col > .q { margin-bottom: 7mm; }', '.col > .q { margin-bottom: 14mm; }').replace("font-size: 10pt; line-height: 1.62;", "font-size: 10.6pt; line-height: 1.72;")
 s = s.replace('<span class="l1">(1)학년 (사회)과목</span>', '<span class="l1">(1)학년 (수학)과목</span>')
 old_tbl = re.search(r'<table class="score">.*?</table>', s, re.S).group(0)
 s = s.replace(old_tbl, '<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr>'
-    '<tr><td rowspan="3">선택형</td><td>8문항x3점</td><td>24점</td></tr><tr><td>14문항x4점</td><td>56점</td></tr><tr><td>4문항x5점</td><td>20점</td></tr>'
-    '<tr><td>계</td><td>26문항</td><td>100점</td></tr></table>')
+    '<tr><td rowspan="4">선택형</td><td>12문항x3점</td><td>36점</td></tr><tr><td>10문항x3.5점</td><td>35점</td></tr><tr><td>6문항x4점</td><td>24점</td></tr><tr><td>1문항x5점</td><td>5점</td></tr>'
+    '<tr><td>계</td><td>29문항</td><td>100점</td></tr></table>')
 s = s.replace('※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.', '※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.')
 css = '''
   i.mv { font-family: 'Liberation Serif', 'Times New Roman', serif; font-size: 1.12em; }
@@ -296,5 +320,6 @@ s = s.replace("document.getElementById('pool').remove();", """document.querySele
     rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
   });
   document.getElementById('pool').remove();""")
+s = s.replace('for (const b of blocks) {', "for (const b of blocks) {\n    if (b.classList.contains('end') && ci === 0) ci = 1;", 1)
 open(OUT, 'w', encoding='utf-8').write(s)
 print('written', len(Q), len(SD))
