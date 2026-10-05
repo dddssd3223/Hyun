@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" width="600" height="330"><clipPath id="c5"><rect x="0" y="0" width="600" height="330"/></clipPath><g clip-path="url(#c5)"><rect x="0" y="0" width="600" height="330" fill="#e5eef2"/><path d="M55.839999999999996,242.6 Q50.31999999999999,128.51999999999998 100,130.35999999999999 Q149.68,128.51999999999998 144.16000000000003,242.6 Z" fill="#5a3d2b"/>
+<path d="M46.64,330 L46.64,254.56 Q46.64,221.44 77.92,218.68 L122.08,218.68 Q153.36,221.44 153.36,254.56 L153.36,330 Z" fill="#c9b496" stroke="#333" stroke-width="1.4720000000000002"/>
+<path d="M81.6,330 L81.6,221.44 L118.4,221.44 L118.4,330 Z" fill="#f5f0e6" stroke="#333" stroke-width="1.104"/>
+<rect x="90.8" y="207.64" width="18.400000000000002" height="20.240000000000002" fill="#f8dcc4"/>
+
+<path d="M55.839999999999996,233.39999999999998 L28.239999999999995,284.0" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M55.839999999999996,233.39999999999998 L28.239999999999995,284.0" stroke="#c9b496" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="28.239999999999995" cy="284.0" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<path d="M144.16,233.39999999999998 L120.24000000000001,226.04" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M144.16,233.39999999999998 L120.24000000000001,226.04" stroke="#c9b496" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="120.24000000000001" cy="226.04" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<rect x="116.56" y="205.79999999999998" width="7.36" height="22.080000000000002" fill="#222"/><circle cx="120.24000000000001" cy="203.95999999999998" r="7.36" fill="#333"/>
+<circle cx="100" cy="178.2" r="36.800000000000004" fill="#f8dcc4" stroke="#333" stroke-width="1.288"/>
+<path d="M60.44,181.88 Q58.599999999999994,130.35999999999999 100,133.11999999999998 Q141.4,130.35999999999999 139.56,181.88 Q131.28,163.48 111.04,159.79999999999998 Q90.8,167.16 65.03999999999999,172.67999999999998 Z" fill="#5a3d2b"/>
+<ellipse cx="87.12" cy="181.88" rx="3.496" ry="5.0600000000000005" fill="#222"/><circle cx="88.316" cy="180.04" r="1.288" fill="#fff"/>
+<ellipse cx="112.88" cy="181.88" rx="3.496" ry="5.0600000000000005" fill="#222"/><circle cx="114.076" cy="180.04" r="1.288" fill="#fff"/>
+<circle cx="87.12" cy="181.88" r="9.200000000000001" fill="none" stroke="#555" stroke-width="1.6560000000000001"/><circle cx="112.88" cy="181.88" r="9.200000000000001" fill="none" stroke="#555" stroke-width="1.6560000000000001"/><path d="M96.32,181.88 L103.68,181.88" stroke="#555" stroke-width="1.6560000000000001"/>
+<ellipse cx="100" cy="200.28" rx="5.5200000000000005" ry="4.6000000000000005" fill="#b33"/>
+<ellipse cx="77.92" cy="192.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><ellipse cx="122.08" cy="192.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><rect x="214" y="16" width="372" height="212.16000000000003" fill="#fffdf2" stroke="#222" stroke-width="2"/><text x="400.0" y="43.599999999999994" font-size="24" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="400.0" dy="0">왜 이런 결과가 나왔을까요?</tspan><tspan x="400.0" dy="31.68">메달이 확정된 뒤 은메달을</tspan><tspan x="400.0" dy="31.68">딴 선수와 동메달을 딴</tspan><tspan x="400.0" dy="31.68">선수가 자신에게 일어난</tspan><tspan x="400.0" dy="31.68">일을 대하는 태도에</tspan><tspan x="400.0" dy="31.68">차이가 있었기 때문입니다.</tspan></text></g><rect x="0" y="0" width="600" height="330" fill="none" stroke="#111" stroke-width="3"/></svg>

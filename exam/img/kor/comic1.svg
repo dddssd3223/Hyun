@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" width="600" height="480"><clipPath id="c1"><rect x="0" y="0" width="296" height="480"/></clipPath><g clip-path="url(#c1)"><rect x="0" y="0" width="296" height="480" fill="#dff0f7"/><rect x="150" y="70" width="120" height="410" fill="#cfe6ee" stroke="#9bb" stroke-width="2"/><rect x="18" y="14" width="112" height="44" rx="6" fill="#333"/><text x="74" y="47" font-size="30" text-anchor="middle" font-weight="bold" fill="#ff4b4b" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="74" dy="0">4:20</tspan></text><path d="M31.599999999999994,480 L31.599999999999994,414.4 Q31.599999999999994,385.6 58.8,383.2 L97.2,383.2 Q124.4,385.6 124.4,414.4 L124.4,480 Z" fill="#f4a6b6" stroke="#333" stroke-width="1.2800000000000002"/>
+<path d="M62.0,480 L62.0,385.6 L94.0,385.6 L94.0,480 Z" fill="#fbe3e8" stroke="#333" stroke-width="0.96"/>
+<rect x="70.0" y="373.6" width="16.0" height="17.6" fill="#f8dcc4"/>
+
+<rect x="36.4" y="417.6" width="83.2" height="20.8" rx="10.4" fill="#f4a6b6" stroke="#333" stroke-width="1.2800000000000002"/>
+<circle cx="46.0" cy="428.0" r="7.2" fill="#f8dcc4" stroke="#333" stroke-width="1"/><circle cx="110.0" cy="428.0" r="7.2" fill="#f8dcc4" stroke="#333" stroke-width="1"/>
+<circle cx="78" cy="348.0" r="32.0" fill="#f8dcc4" stroke="#333" stroke-width="1.1199999999999999"/>
+<path d="M43.6,351.2 Q42.0,306.4 78,308.8 Q114.0,306.4 112.4,351.2 Q105.2,335.2 87.6,332.0 Q70.0,338.4 47.6,343.2 Z" fill="#222"/>
+<ellipse cx="66.8" cy="352.0" rx="2.8800000000000003" ry="3.6" fill="#222"/>
+<ellipse cx="89.2" cy="352.0" rx="2.8800000000000003" ry="3.6" fill="#222"/>
+<path d="M61.2,341.59999999999997 L71.6,344.8 M94.8,341.59999999999997 L84.4,344.8" stroke="#222" stroke-width="1.92"/>
+<path d="M71.6,367.20000000000005 L84.4,367.20000000000005" stroke="#a33" stroke-width="1.7600000000000002"/>
+<ellipse cx="58.8" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><ellipse cx="97.2" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><path d="M182.8,376.8 Q180.4,304.8 222,306.4 Q263.6,304.8 261.2,376.8 Z" fill="#6b4226"/>
+<path d="M175.6,480 L175.6,414.4 Q175.6,385.6 202.8,383.2 L241.2,383.2 Q268.4,385.6 268.4,414.4 L268.4,480 Z" fill="#f6d76b" stroke="#333" stroke-width="1.2800000000000002"/>
+<path d="M206.0,480 L206.0,385.6 L238.0,385.6 L238.0,480 Z" fill="#ffffff" stroke="#333" stroke-width="0.96"/>
+<rect x="214.0" y="373.6" width="16.0" height="17.6" fill="#f8dcc4"/>
+
+<path d="M260.4,396.0 L274.8,464.0" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M260.4,396.0 L274.8,464.0" stroke="#f6d76b" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="274.8" cy="464.0" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<path d="M183.6,396.0 L156.39999999999998,372.0" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M183.6,396.0 L156.39999999999998,372.0" stroke="#f6d76b" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="156.39999999999998" cy="372.0" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<circle cx="222" cy="348.0" r="32.0" fill="#f8dcc4" stroke="#333" stroke-width="1.1199999999999999"/>
+<path d="M187.6,351.2 Q186.0,306.4 222,308.8 Q258.0,306.4 256.4,351.2 Q249.2,335.2 231.6,332.0 Q214.0,338.4 191.6,343.2 Z" fill="#6b4226"/>
+<ellipse cx="210.8" cy="351.2" rx="3.04" ry="4.4" fill="#222"/><circle cx="211.84" cy="349.59999999999997" r="1.1199999999999999" fill="#fff"/>
+<ellipse cx="233.2" cy="351.2" rx="3.04" ry="4.4" fill="#222"/><circle cx="234.23999999999998" cy="349.59999999999997" r="1.1199999999999999" fill="#fff"/>
+<ellipse cx="222" cy="367.20000000000005" rx="4.800000000000001" ry="4.0" fill="#b33"/>
+<ellipse cx="202.8" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><ellipse cx="241.2" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><path d="M61,158.5 L75,280 L89,158.5 Z" fill="#fff" stroke="#222" stroke-width="2.2"/><rect x="6" y="70" width="190" height="88.5" rx="30" fill="#fff" stroke="#222" stroke-width="2.2"/><path d="M63,158.5 L87,158.5" stroke="#fff" stroke-width="4"/><text x="101.0" y="100.0" font-size="25" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="101.0" dy="0">야, 최은주!</tspan><tspan x="101.0" dy="33.0">지금 몇 시야?</tspan></text><path d="M208,276.5 L222,296 L236,276.5 Z" fill="#fff" stroke="#222" stroke-width="2.2"/><rect x="152" y="188" width="138" height="88.5" rx="30" fill="#fff" stroke="#222" stroke-width="2.2"/><path d="M210,276.5 L234,276.5" stroke="#fff" stroke-width="4"/><text x="221.0" y="218.0" font-size="25" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="221.0" dy="0">지금?</tspan><tspan x="221.0" dy="33.0">4시 20분.</tspan></text></g><rect x="0" y="0" width="296" height="480" fill="none" stroke="#111" stroke-width="3"/><clipPath id="c2"><rect x="304" y="0" width="296" height="480"/></clipPath><g clip-path="url(#c2)"><rect x="304" y="0" width="296" height="480" fill="#fbeee0"/><path d="M345.6,480 L345.6,414.4 Q345.6,385.6 372.8,383.2 L411.2,383.2 Q438.4,385.6 438.4,414.4 L438.4,480 Z" fill="#f4a6b6" stroke="#333" stroke-width="1.2800000000000002"/>
+<path d="M376.0,480 L376.0,385.6 L408.0,385.6 L408.0,480 Z" fill="#fbe3e8" stroke="#333" stroke-width="0.96"/>
+<rect x="384.0" y="373.6" width="16.0" height="17.6" fill="#f8dcc4"/>
+
+<path d="M353.6,396.0 L339.2,464.0" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M353.6,396.0 L339.2,464.0" stroke="#f4a6b6" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="339.2" cy="464.0" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<path d="M430.4,396.0 L444.8,464.0" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M430.4,396.0 L444.8,464.0" stroke="#f4a6b6" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="444.8" cy="464.0" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<circle cx="392" cy="348.0" r="32.0" fill="#f8dcc4" stroke="#333" stroke-width="1.1199999999999999"/>
+<path d="M357.6,351.2 Q356.0,306.4 392,308.8 Q428.0,306.4 426.4,351.2 Q419.2,335.2 401.6,332.0 Q384.0,338.4 361.6,343.2 Z" fill="#222"/>
+<ellipse cx="380.8" cy="352.0" rx="2.8800000000000003" ry="3.6" fill="#222"/>
+<ellipse cx="403.2" cy="352.0" rx="2.8800000000000003" ry="3.6" fill="#222"/>
+<path d="M375.2,341.59999999999997 L385.6,344.8 M408.8,341.59999999999997 L398.4,344.8" stroke="#222" stroke-width="1.92"/>
+<path d="M384.8,369.6 Q392,363.20000000000005 399.2,369.6" stroke="#a33" stroke-width="1.7600000000000002" fill="none"/>
+<ellipse cx="372.8" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><ellipse cx="411.2" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><path d="M492.8,376.8 Q490.4,304.8 532,306.4 Q573.6,304.8 571.2,376.8 Z" fill="#6b4226"/>
+<path d="M485.6,480 L485.6,414.4 Q485.6,385.6 512.8,383.2 L551.2,383.2 Q578.4,385.6 578.4,414.4 L578.4,480 Z" fill="#f6d76b" stroke="#333" stroke-width="1.2800000000000002"/>
+<path d="M516.0,480 L516.0,385.6 L548.0,385.6 L548.0,480 Z" fill="#ffffff" stroke="#333" stroke-width="0.96"/>
+<rect x="524.0" y="373.6" width="16.0" height="17.6" fill="#f8dcc4"/>
+
+<path d="M493.6,396.0 L479.2,464.0" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M493.6,396.0 L479.2,464.0" stroke="#f6d76b" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="479.2" cy="464.0" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<path d="M570.4,396.0 L568.8,341.6" stroke="#333" stroke-width="19.200000000000003" stroke-linecap="round"/>
+<path d="M570.4,396.0 L568.8,341.6" stroke="#f6d76b" stroke-width="16.8" stroke-linecap="round"/>
+<circle cx="568.8" cy="341.6" r="8.0" fill="#f8dcc4" stroke="#333" stroke-width="0.96"/>
+<circle cx="532" cy="348.0" r="32.0" fill="#f8dcc4" stroke="#333" stroke-width="1.1199999999999999"/>
+<path d="M497.6,351.2 Q496.0,306.4 532,308.8 Q568.0,306.4 566.4,351.2 Q559.2,335.2 541.6,332.0 Q524.0,338.4 501.6,343.2 Z" fill="#6b4226"/>
+<path d="M516.8,352.8 Q520.8,347.2 524.8,352.8" stroke="#222" stroke-width="1.7600000000000002" fill="none"/>
+<path d="M539.2,352.8 Q543.2,347.2 547.2,352.8" stroke="#222" stroke-width="1.7600000000000002" fill="none"/>
+<path d="M523.2,364.0 Q532,376.8 540.8,364.0 Z" fill="#c44" stroke="#822" stroke-width="0.96"/>
+<ellipse cx="512.8" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><ellipse cx="551.2" cy="360.8" rx="4.800000000000001" ry="2.8000000000000003" fill="#f4a6a6" opacity="0.7"/><path d="M371,193.5 L385,296 L399,193.5 Z" fill="#fff" stroke="#222" stroke-width="2.2"/><rect x="308" y="6" width="260" height="187.5" rx="30" fill="#fff" stroke="#222" stroke-width="2.2"/><path d="M373,193.5 L397,193.5" stroke="#fff" stroke-width="4"/><text x="438.0" y="36.0" font-size="25" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="438.0" dy="0">내가 지금 몇 시인지</tspan><tspan x="438.0" dy="33.0">궁금해서 물어본 게</tspan><tspan x="438.0" dy="33.0">아니잖아. 우리</tspan><tspan x="438.0" dy="33.0">4시에 만나기로</tspan><tspan x="438.0" dy="33.0">했잖아.</tspan></text><path d="M491,300.5 L505,300 L519,300.5 Z" fill="#fff" stroke="#222" stroke-width="2.2"/><rect x="412" y="212" width="182" height="88.5" rx="30" fill="#fff" stroke="#222" stroke-width="2.2"/><path d="M493,300.5 L517,300.5" stroke="#fff" stroke-width="4"/><text x="503.0" y="242.0" font-size="25" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="503.0" dy="0">아, 미안해.</tspan><tspan x="503.0" dy="33.0">빨리 들어가자.</tspan></text></g><rect x="304" y="0" width="296" height="480" fill="none" stroke="#111" stroke-width="3"/></svg>

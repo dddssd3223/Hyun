@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520"><clipPath id="c6"><rect x="0" y="0" width="600" height="520"/></clipPath><g clip-path="url(#c6)"><rect x="0" y="0" width="600" height="520" fill="#f6e9f0"/><path d="M106.64,520 L106.64,444.56 Q106.64,411.44 137.92,408.68 L182.08,408.68 Q213.36,411.44 213.36,444.56 L213.36,520 Z" fill="#eef3f8" stroke="#333" stroke-width="1.4720000000000002"/>
+<path d="M141.6,520 L141.6,411.44 L178.4,411.44 L178.4,520 Z" fill="#3a6fb0" stroke="#333" stroke-width="1.104"/>
+<rect x="150.8" y="397.64" width="18.400000000000002" height="20.240000000000002" fill="#f8dcc4"/>
+<path d="M146,388 L160,430 L174,388" stroke="#3a6fb0" stroke-width="7" fill="none"/><circle cx="160" cy="438" r="14" fill="#c8c8c8" stroke="#555" stroke-width="2"/>
+<path d="M115.84,423.4 L99.28,501.6" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M115.84,423.4 L99.28,501.6" stroke="#eef3f8" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="99.28" cy="501.6" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<path d="M204.16,423.4 L220.72,501.6" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M204.16,423.4 L220.72,501.6" stroke="#eef3f8" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="220.72" cy="501.6" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<circle cx="160" cy="368.2" r="36.800000000000004" fill="#f8dcc4" stroke="#333" stroke-width="1.288"/>
+<path d="M120.43999999999998,371.88 Q118.6,320.35999999999996 160,323.12 Q201.4,320.35999999999996 199.56,371.88 Q191.28,353.47999999999996 171.04,349.8 Q150.8,357.15999999999997 125.03999999999999,362.68 Z" fill="#222"/>
+<path d="M140.68,364.52 L152.64,360.84 M179.32,364.52 L167.36,360.84" stroke="#222" stroke-width="2.0240000000000005"/>
+<path d="M151.72,393.04 Q160,385.68 168.28,393.04" stroke="#a33" stroke-width="2.0240000000000005" fill="none"/>
+<ellipse cx="137.92" cy="382.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><ellipse cx="182.08" cy="382.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><path d="M386.64,520 L386.64,444.56 Q386.64,411.44 417.92,408.68 L462.08,408.68 Q493.36,411.44 493.36,444.56 L493.36,520 Z" fill="#eef3f8" stroke="#333" stroke-width="1.4720000000000002"/>
+<path d="M421.6,520 L421.6,411.44 L458.4,411.44 L458.4,520 Z" fill="#3a6fb0" stroke="#333" stroke-width="1.104"/>
+<rect x="430.8" y="397.64" width="18.400000000000002" height="20.240000000000002" fill="#f8dcc4"/>
+<path d="M426,388 L440,430 L454,388" stroke="#3a6fb0" stroke-width="7" fill="none"/><circle cx="440" cy="438" r="14" fill="#c98a45" stroke="#555" stroke-width="2"/>
+<path d="M395.84,423.4 L379.28,501.6" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M395.84,423.4 L379.28,501.6" stroke="#eef3f8" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="379.28" cy="501.6" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<path d="M484.16,423.4 L490.6,299.2" stroke="#333" stroke-width="22.080000000000002" stroke-linecap="round"/>
+<path d="M484.16,423.4 L490.6,299.2" stroke="#eef3f8" stroke-width="19.32" stroke-linecap="round"/>
+<circle cx="490.6" cy="299.2" r="9.200000000000001" fill="#f8dcc4" stroke="#333" stroke-width="1.104"/>
+<circle cx="440" cy="368.2" r="36.800000000000004" fill="#f8dcc4" stroke="#333" stroke-width="1.288"/>
+<path d="M400.44,371.88 Q398.59999999999997,320.35999999999996 440,323.12 Q481.40000000000003,320.35999999999996 479.56,371.88 Q471.28000000000003,353.47999999999996 451.04,349.8 Q430.8,357.15999999999997 405.03999999999996,362.68 Z" fill="#3a2a1a"/>
+<path d="M422.52,373.71999999999997 Q427.12,367.28 431.72,373.71999999999997" stroke="#222" stroke-width="2.0240000000000005" fill="none"/>
+<path d="M448.28,373.71999999999997 Q452.88,367.28 457.48,373.71999999999997" stroke="#222" stroke-width="2.0240000000000005" fill="none"/>
+<path d="M429.88,386.6 Q440,401.32 450.12,386.6 Z" fill="#c44" stroke="#822" stroke-width="1.104"/>
+<ellipse cx="417.92" cy="382.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><ellipse cx="462.08" cy="382.92" rx="5.5200000000000005" ry="3.22" fill="#f4a6a6" opacity="0.7"/><text x="50" y="370" font-size="22" text-anchor="middle" font-weight="bold" fill="#555" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="50" dy="0">은메달</tspan></text><text x="552" y="370" font-size="22" text-anchor="middle" font-weight="bold" fill="#8a5a2b" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="552" dy="0">동메달</tspan></text><rect x="12" y="10" width="576" height="147.84000000000003" fill="#fffdf2" stroke="#222" stroke-width="2"/><text x="300.0" y="37.599999999999994" font-size="24" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="300.0" dy="0">은메달을 딴 선수는 '내가 실수만 하지</tspan><tspan x="300.0" dy="31.68">않았더라면 금메달을 딸 수 있었을 텐데.'</tspan><tspan x="300.0" dy="31.68">라고 생각하여 은메달을 딴 것에 실망하는</tspan><tspan x="300.0" dy="31.68">경우가 많았습니다.</tspan></text><rect x="12" y="168" width="576" height="147.84000000000003" fill="#fffdf2" stroke="#222" stroke-width="2"/><text x="300.0" y="195.6" font-size="24" text-anchor="middle" font-weight="normal" fill="#111" font-family="NanumGothic, 'Nanum Gothic', Gulim, sans-serif"><tspan x="300.0" dy="0">한편 동메달을 딴 선수는 '내가 실수를</tspan><tspan x="300.0" dy="31.68">했더라면 메달을 못 딸 뻔했다.'라고 생각하여</tspan><tspan x="300.0" dy="31.68">동메달을 딴 것에 대단히 만족하는</tspan><tspan x="300.0" dy="31.68">경우가 많았답니다.</tspan></text></g><rect x="0" y="0" width="600" height="520" fill="none" stroke="#111" stroke-width="3"/></svg>
