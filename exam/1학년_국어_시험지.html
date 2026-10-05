@@ -347,9 +347,11 @@ function layout() {
     while (lo <= hi) { const mid = (lo + hi) >> 1; p.innerHTML = build(mid)[0]; if (fits(col)) { best = mid; lo = mid + 1; } else hi = mid - 1; }
     while (best > 0 && /^\s+$|^<br>$/.test(toks[best - 1]) === false && !/^\s+$/.test(toks[best] || ' ')) best--;
     const isPoem = html.includes('class="poem"'); if (isPoem) best = 0;
+    const hasBr = html.includes('<br>'); if (hasBr && !isPoem) { while (best > 0 && toks[best - 1] !== '<br>') best--; }
+    if (best >= 4) { p.innerHTML = build(best)[0]; const lh = parseFloat(getComputedStyle(p).lineHeight) || 20; if (p.getBoundingClientRect().height < lh * 2.8) best = 0; }
     if (best < 4) { p.innerHTML = html; return null; }
     const [a, bpart] = build(best);
-    p.innerHTML = a; p.style.textAlignLast = isPoem ? '' : 'justify';
+    p.innerHTML = a; p.style.textAlignLast = (isPoem || hasBr) ? '' : 'justify';
     const b2 = b.cloneNode(true);
     const t2 = b2.querySelector('.ptitle'); if (t2) t2.remove();
     const ps2 = b2.querySelector('.psg'); ps2.classList.remove('first');
