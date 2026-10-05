@@ -236,7 +236,7 @@ Q('다음 그림 속 문장의 밑줄 친 \'보다\'의 품사를 바르게 짝�
   otbl(['(가)', '(나)', '(다)'], [['조사', '동사', '부사'], ['부사', '동사', '조사'], ['조사', '부사', '동사'],
                                 ['동사', '조사', '부사'], ['조사', '형용사', '부사']]), 1)
 P('[27~28] 다음 시를 읽고 물음에 답하시오.',
-  '<span class="poem">세상에 ⓐ<span class="u">그대</span>를 만난 건<br>내게 ⓑ<span class="u">얼마나</span> 행운이었나!<br>그대 생각 내게 머묾으로<br>나의 세상은 빛나는 세상이 됩니다<br>ⓒ<span class="u">많고</span> 많은 세상 사람 중에 그대<br>이제는 내 가슴에 별이 된 사람<br>그대 생각 내게 머묾으로<br>나의 세상은 따뜻한 세상이 됩니다<br><br>어제ⓓ<span class="u">도</span> 들길을 걸으며<br>당신을 생각했습니다.<br>오늘도 들길을 걸으며<br>당신을 생각합니다.<br>어제 내 발에 밟힌 풀잎이<br>오늘 ⓔ<span class="u">새롭게</span> 일어나<br>바람에 떨고 있는 걸<br>나는 봅니다.<br>나도 당신 발에 밟히면서<br>새로워지는 풀잎이면 합니다<br>당신 앞에 여리게 떠는<br>풀잎이면 합니다.</span>',
+  '<span class="poem">세상에 ⓐ<span class="u">그대</span>를 만난 건<br>내게 ⓑ<span class="u">얼마나</span> 행운이었나!<br>그대 생각 내게 머뭄으로<br>나의 세상은 빛나는 세상이 됩니다<br>ⓒ<span class="u">많고</span> 많은 세상 사람 중에 그대 한 사람<br>이제는 내 가슴에 별이 된 사람<br>그대 생각 내게 머뭄으로<br>나의 세상은 따뜻한 세상이 됩니다<br><br>어제ⓓ<span class="u">도</span> 들길을 걸으며<br>당신을 생각했습니다.<br>오늘도 들길을 걸으며<br>당신을 생각합니다.<br>어제 내 발에 밟힌 풀잎이<br>오늘 ⓔ<span class="u">새롭게</span> 일어나<br>바람에 떨고 있는 걸<br>나는 봅니다.<br>나도 당신 발에 밟히면서<br>새로워지는 풀잎이면 합니다<br>당신 앞에 여리게 떠는<br>풀잎이면 합니다.</span>',
   src='- 나태주, 「들길을 걸으며」')
 Q('윗글에 대한 이해와 감상으로 적절하지 ' + NOT + ' 것은?', 4, opts([
   '말하는 이는 \'그대\'를 만난 것을 삶의 큰 행운으로 여기고 있다.',
@@ -381,7 +381,7 @@ SPLITJS = '''
     let lo = 0, hi = toks.length - 1, best = 0;
     while (lo <= hi) { const mid = (lo + hi) >> 1; p.innerHTML = build(mid)[0]; if (fits(col)) { best = mid; lo = mid + 1; } else hi = mid - 1; }
     while (best > 0 && /^\\s+$|^<br>$/.test(toks[best - 1]) === false && !/^\\s+$/.test(toks[best] || ' ')) best--;
-    const isPoem = html.includes('class="poem"'); if (isPoem) { while (best > 0 && toks[best - 1] !== '<br>') best--; }
+    const isPoem = html.includes('class="poem"'); if (isPoem) best = 0;
     if (best < 4) { p.innerHTML = html; return null; }
     const [a, bpart] = build(best);
     p.innerHTML = a; p.style.textAlignLast = isPoem ? '' : 'justify';

@@ -7,85 +7,110 @@ W = 600
 
 def person(cx, by, s=1.0, hair='#2b2b2b', hstyle='short', shirt='#f4a6b6', inner=None, mouth='smile',
            eyes='open', glasses=False, back=False, arm='down', extra=''):
-    r = 40 * s
-    hy = by - 165 * s
+    """교과서 삽화풍 상반신 인물 (흑백 변환 전제)"""
+    L = '#2a2a2a'
+    sw = 1.5 * s
+    hy = by - 172 * s          # 얼굴 중심
+    rx, ry = 29 * s, 35 * s
     o = []
+    P = lambda x, y: f'{cx + x * s:.1f},{by + y * s:.1f}' if False else f'{x:.1f},{y:.1f}'
     # 뒷머리
-    if not back and hstyle == 'bob':
-        o.append(f'<path d="M{cx-r-9*s},{hy+r*0.9} Q{cx-r-12*s},{hy-r-14*s} {cx},{hy-r-12*s} Q{cx+r+12*s},{hy-r-14*s} {cx+r+9*s},{hy+r*0.9} Z" fill="{hair}"/>')
-    if not back and hstyle == 'long':
-        o.append(f'<path d="M{cx-r-8*s},{by-95*s} Q{cx-r-14*s},{hy-r-14*s} {cx},{hy-r-12*s} Q{cx+r+14*s},{hy-r-14*s} {cx+r+8*s},{by-95*s} Z" fill="{hair}"/>')
+    if hstyle == 'bob':
+        o.append(f'<path d="M{cx-40*s},{hy+34*s} Q{cx-44*s},{hy-50*s} {cx},{hy-46*s} Q{cx+44*s},{hy-50*s} {cx+40*s},{hy+34*s} Q{cx+30*s},{hy+40*s} {cx+22*s},{hy+32*s} L{cx-22*s},{hy+32*s} Q{cx-30*s},{hy+40*s} {cx-40*s},{hy+34*s} Z" fill="{hair}" stroke="{L}" stroke-width="{sw}"/>')
+    if hstyle == 'long':
+        o.append(f'<path d="M{cx-40*s},{by-92*s} Q{cx-46*s},{hy-50*s} {cx},{hy-46*s} Q{cx+46*s},{hy-50*s} {cx+40*s},{by-92*s} Q{cx},{by-80*s} {cx-40*s},{by-92*s} Z" fill="{hair}" stroke="{L}" stroke-width="{sw}"/>')
     # 몸통
-    o.append(f'<path d="M{cx-58*s},{by} L{cx-58*s},{by-82*s} Q{cx-58*s},{by-118*s} {cx-24*s},{by-121*s} L{cx+24*s},{by-121*s} Q{cx+58*s},{by-118*s} {cx+58*s},{by-82*s} L{cx+58*s},{by} Z" fill="{shirt}" stroke="#333" stroke-width="{1.6*s}"/>')
-    if inner and not back:
-        o.append(f'<path d="M{cx-20*s},{by} L{cx-20*s},{by-118*s} L{cx+20*s},{by-118*s} L{cx+20*s},{by} Z" fill="{inner}" stroke="#333" stroke-width="{1.2*s}"/>')
-    o.append(f'<rect x="{cx-10*s}" y="{hy+r-8*s}" width="{20*s}" height="{22*s}" fill="{SKIN}"/>')
+    torso = f'M{cx-56*s},{by+2} L{cx-55*s},{by-92*s} Q{cx-53*s},{by-124*s} {cx-20*s},{by-130*s} L{cx+20*s},{by-130*s} Q{cx+53*s},{by-124*s} {cx+55*s},{by-92*s} L{cx+56*s},{by+2} Z'
+    o.append(f'<path d="{torso}" fill="{shirt}" stroke="{L}" stroke-width="{sw}"/>')
+    if not back:
+        if inner:
+            o.append(f'<path d="M{cx-14*s},{by-130*s} L{cx-22*s},{by+2} L{cx+22*s},{by+2} L{cx+14*s},{by-130*s} Z" fill="{inner}" stroke="{L}" stroke-width="{sw}"/>')
+            o.append(f'<path d="M{cx-14*s},{by-130*s} L{cx-26*s},{by-96*s} L{cx-18*s},{by-90*s} M{cx+14*s},{by-130*s} L{cx+26*s},{by-96*s} L{cx+18*s},{by-90*s}" fill="none" stroke="{L}" stroke-width="{sw}"/>')
+        o.append(f'<path d="M{cx-10*s},{by-131*s} Q{cx},{by-116*s} {cx+10*s},{by-131*s}" fill="none" stroke="{L}" stroke-width="{sw}"/>')
+    o.append(f'<path d="M{cx+30*s},{by-125*s} Q{cx+52*s},{by-110*s} {cx+55*s},{by-60*s} L{cx+56*s},{by+2} L{cx+36*s},{by+2} Q{cx+40*s},{by-70*s} {cx+30*s},{by-125*s} Z" fill="#000" opacity="0.10"/>')
+    o.append(f'<path d="M{cx-38*s},{by-40*s} Q{cx-30*s},{by-30*s} {cx-34*s},{by-12*s} M{cx+36*s},{by-50*s} Q{cx+28*s},{by-38*s} {cx+33*s},{by-20*s}" fill="none" stroke="{L}" stroke-width="{1*s}" opacity="0.6"/>')
+    # 목
+    o.append(f'<path d="M{cx-9*s},{hy+26*s} L{cx-10*s},{by-128*s} Q{cx},{by-120*s} {cx+10*s},{by-128*s} L{cx+9*s},{hy+26*s} Z" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/>')
+    o.append(f'<path d="M{cx-9*s},{hy+30*s} Q{cx},{hy+40*s} {cx+9*s},{hy+30*s} L{cx+9*s},{hy+38*s} Q{cx},{hy+46*s} {cx-9*s},{hy+38*s} Z" fill="#000" opacity="0.12"/>')
     o.append(extra)
-    # 팔
-    sh_l, sh_r = (cx - 48 * s, by - 105 * s), (cx + 48 * s, by - 105 * s)
-    arms = {
-        'down': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 66 * s, by - 20 * s))],
-        'point': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 82 * s, hy + 30 * s))],
-        'pointl': [(sh_r, (cx + 66 * s, by - 20 * s)), (sh_l, (cx - 82 * s, hy + 30 * s))],
-        'mic': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 22 * s, hy + 52 * s))],
-        'micg': [(sh_l, (cx - 78 * s, by - 50 * s)), (sh_r, (cx + 22 * s, hy + 52 * s))],
-        'raise': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 55 * s, hy - 75 * s))],
-        'chin': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 6 * s, hy + r + 4 * s))],
-        'head': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + r + 6 * s, hy - 8 * s))],
-        'yawn': [(sh_l, (cx - 66 * s, by - 20 * s)), (sh_r, (cx + 4 * s, hy + 22 * s))],
-        'desk': [(sh_l, (cx - 30 * s, by - 30 * s)), (sh_r, (cx + 30 * s, by - 30 * s))],
-        'cross': [],
+    # 팔 (어깨-팔꿈치-손)
+    shL, shR = (cx - 46 * s, by - 116 * s), (cx + 46 * s, by - 116 * s)
+    d = lambda x, y: (cx + x * s, by + y * s)
+    h_ = lambda x, y: (cx + x * s, hy + y * s)
+    poses = {
+        'down': [(shL, d(-62, -70), d(-62, -14)), (shR, d(62, -70), d(62, -14))],
+        'point': [(shL, d(-62, -70), d(-62, -14)), (shR, d(72, -92), h_(86, 26))],
+        'pointl': [(shR, d(62, -70), d(62, -14)), (shL, d(-72, -92), h_(-86, 26))],
+        'micg': [(shL, d(-74, -72), d(-98, -98)), (shR, d(48, -66), h_(16, 48))],
+        'raise': [(shL, d(-62, -70), d(-62, -14)), (shR, h_(64, -6), h_(56, -78))],
+        'chin': [(shL, d(-62, -70), d(-62, -14)), (shR, d(34, -62), h_(8, 40))],
+        'head': [(shL, d(-62, -70), d(-62, -14)), (shR, h_(72, 22), h_(30, -24))],
+        'yawn': [(shL, d(-62, -70), d(-62, -14)), (shR, d(36, -62), h_(6, 24))],
+        'desk': [(shL, d(-58, -52), d(-26, -34)), (shR, d(58, -52), d(26, -34))],
+        'cross': [(shL, d(-56, -66), d(30, -76)), (shR, d(56, -66), d(-30, -70))],
     }[arm]
-    for (a, b) in arms:
-        o.append(f'<path d="M{a[0]},{a[1]} L{b[0]},{b[1]}" stroke="#333" stroke-width="{24*s}" stroke-linecap="round"/>')
-        o.append(f'<path d="M{a[0]},{a[1]} L{b[0]},{b[1]}" stroke="{shirt}" stroke-width="{21*s}" stroke-linecap="round"/>')
-        o.append(f'<circle cx="{b[0]}" cy="{b[1]}" r="{10*s}" fill="{SKIN}" stroke="#333" stroke-width="{1.2*s}"/>')
-    if arm == 'cross':
-        o.append(f'<rect x="{cx-52*s}" y="{by-78*s}" width="{104*s}" height="{26*s}" rx="{13*s}" fill="{shirt}" stroke="#333" stroke-width="{1.6*s}"/>')
-        o.append(f'<circle cx="{cx-40*s}" cy="{by-65*s}" r="{9*s}" fill="{SKIN}" stroke="#333" stroke-width="1"/><circle cx="{cx+40*s}" cy="{by-65*s}" r="{9*s}" fill="{SKIN}" stroke="#333" stroke-width="1"/>')
-    if arm in ('mic', 'micg'):
-        o.append(f'<rect x="{cx+18*s}" y="{hy+30*s}" width="{8*s}" height="{24*s}" fill="#222"/><circle cx="{cx+22*s}" cy="{hy+28*s}" r="{8*s}" fill="#333"/>')
+    if back:
+        poses = [(shL, d(-62, -70), d(-62, -14)), (shR, d(62, -70), d(62, -14))]
+    for (a, e, h) in poses:
+        pth = f'M{a[0]:.1f},{a[1]:.1f} L{e[0]:.1f},{e[1]:.1f} L{h[0]:.1f},{h[1]:.1f}'
+        o.append(f'<path d="{pth}" fill="none" stroke="{L}" stroke-width="{21*s}" stroke-linecap="round" stroke-linejoin="round"/>')
+        o.append(f'<path d="{pth}" fill="none" stroke="{shirt}" stroke-width="{18*s}" stroke-linecap="round" stroke-linejoin="round"/>')
+        o.append(f'<path d="M{e[0]:.1f},{e[1]:.1f} L{(e[0]+h[0])/2:.1f},{(e[1]+h[1])/2:.1f}" stroke="#000" opacity="0.08" stroke-width="{8*s}" stroke-linecap="round"/>')
+        o.append(f'<ellipse cx="{h[0]:.1f}" cy="{h[1]:.1f}" rx="{8*s}" ry="{9.5*s}" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/>')
+    if arm == 'micg':
+        o.append(f'<path d="M{cx+16*s},{hy+40*s} L{cx+13*s},{hy+62*s}" stroke="#222" stroke-width="{6*s}" stroke-linecap="round"/><ellipse cx="{cx+17*s}" cy="{hy+34*s}" rx="{6*s}" ry="{7*s}" fill="#444" stroke="#111" stroke-width="1"/>')
     # 머리
     if back:
-        o.append(f'<circle cx="{cx}" cy="{hy}" r="{r}" fill="{hair}" stroke="#222" stroke-width="{1.2*s}"/>')
+        o.append(f'<ellipse cx="{cx}" cy="{hy-4*s}" rx="{rx+6*s}" ry="{ry+8*s}" fill="{hair}" stroke="{L}" stroke-width="{sw}"/>')
         if hstyle == 'bob':
-            o.append(f'<path d="M{cx-r-6*s},{hy} L{cx-r-6*s},{hy+r+4*s} L{cx+r+6*s},{hy+r+4*s} L{cx+r+6*s},{hy} Z" fill="{hair}"/>')
+            o.append(f'<path d="M{cx-37*s},{hy} L{cx-38*s},{hy+36*s} Q{cx},{hy+44*s} {cx+38*s},{hy+36*s} L{cx+37*s},{hy} Z" fill="{hair}" stroke="{L}" stroke-width="{sw}"/>')
+        for k in (-16, -4, 8, 20):
+            o.append(f'<path d="M{cx+k*s},{hy-38*s} Q{cx+(k+4)*s},{hy} {cx+(k-2)*s},{hy+30*s}" stroke="#fff" opacity="0.25" stroke-width="{1.4*s}" fill="none"/>')
         return '\n'.join(o)
-    o.append(f'<circle cx="{cx}" cy="{hy}" r="{r}" fill="{SKIN}" stroke="#333" stroke-width="{1.4*s}"/>')
-    o.append(f'<path d="M{cx-r-3*s},{hy+4*s} Q{cx-r-5*s},{hy-r-12*s} {cx},{hy-r-9*s} Q{cx+r+5*s},{hy-r-12*s} {cx+r+3*s},{hy+4*s} Q{cx+r-6*s},{hy-16*s} {cx+12*s},{hy-20*s} Q{cx-10*s},{hy-12*s} {cx-r+2*s},{hy-6*s} Z" fill="{hair}"/>')
+    o.append(f'<ellipse cx="{cx-29*s}" cy="{hy+6*s}" rx="{5*s}" ry="{8*s}" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/><ellipse cx="{cx+29*s}" cy="{hy+6*s}" rx="{5*s}" ry="{8*s}" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/>')
+    o.append(f'<path d="M{cx-rx},{hy-6*s} Q{cx-rx},{hy+24*s} {cx-12*s},{hy+33*s} Q{cx},{hy+38*s} {cx+12*s},{hy+33*s} Q{cx+rx},{hy+24*s} {cx+rx},{hy-6*s} Q{cx+rx},{hy-ry} {cx},{hy-ry} Q{cx-rx},{hy-ry} {cx-rx},{hy-6*s} Z" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/>')
+    # 앞머리
+    if hstyle == 'short':
+        o.append(f'<path d="M{cx-31*s},{hy+4*s} Q{cx-36*s},{hy-46*s} {cx},{hy-45*s} Q{cx+36*s},{hy-46*s} {cx+31*s},{hy+4*s} L{cx+27*s},{hy-12*s} L{cx+17*s},{hy-20*s} L{cx+9*s},{hy-12*s} L{cx-2*s},{hy-22*s} L{cx-12*s},{hy-13*s} L{cx-22*s},{hy-20*s} L{cx-28*s},{hy-8*s} Z" fill="{hair}" stroke="{L}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    else:
+        o.append(f'<path d="M{cx-33*s},{hy+12*s} Q{cx-38*s},{hy-48*s} {cx},{hy-46*s} Q{cx+38*s},{hy-48*s} {cx+33*s},{hy+12*s} Q{cx+26*s},{hy-14*s} {cx+4*s},{hy-18*s} Q{cx-16*s},{hy-14*s} {cx-24*s},{hy-4*s} Q{cx-28*s},{hy+4*s} {cx-33*s},{hy+12*s} Z" fill="{hair}" stroke="{L}" stroke-width="{sw}"/>')
+    o.append(f'<path d="M{cx-14*s},{hy-38*s} Q{cx},{hy-42*s} {cx+14*s},{hy-37*s}" stroke="#fff" opacity="0.35" stroke-width="{3*s}" fill="none" stroke-linecap="round"/>')
     # 얼굴
     ey = hy + 4 * s
-    for dx in (-14, 14):
-        if eyes == 'open':
-            o.append(f'<ellipse cx="{cx+dx*s}" cy="{ey}" rx="{3.8*s}" ry="{5.5*s}" fill="#222"/><circle cx="{cx+dx*s+1.3*s}" cy="{ey-2*s}" r="{1.4*s}" fill="#fff"/>')
+    for dx in (-12, 12):
+        ex = cx + dx * s
+        if eyes in ('open', 'angry', 'sad'):
+            o.append(f'<ellipse cx="{ex}" cy="{ey}" rx="{5.2*s}" ry="{5.6*s}" fill="#fff" stroke="{L}" stroke-width="{0.8*s}"/>'
+                     f'<circle cx="{ex}" cy="{ey+0.6*s}" r="{3.9*s}" fill="#333"/><circle cx="{ex+1.3*s}" cy="{ey-1.2*s}" r="{1.3*s}" fill="#fff"/>'
+                     f'<path d="M{ex-6*s},{ey-3*s} Q{ex},{ey-8.5*s} {ex+6*s},{ey-3*s}" stroke="#111" stroke-width="{2*s}" fill="none"/>')
         elif eyes == 'closed':
-            o.append(f'<path d="M{cx+dx*s-5*s},{ey} Q{cx+dx*s},{ey+4*s} {cx+dx*s+5*s},{ey}" stroke="#222" stroke-width="{2*s}" fill="none"/>')
+            o.append(f'<path d="M{ex-6*s},{ey} Q{ex},{ey+4*s} {ex+6*s},{ey}" stroke="#222" stroke-width="{1.8*s}" fill="none"/>')
         elif eyes == 'happy':
-            o.append(f'<path d="M{cx+dx*s-5*s},{ey+2*s} Q{cx+dx*s},{ey-5*s} {cx+dx*s+5*s},{ey+2*s}" stroke="#222" stroke-width="{2.2*s}" fill="none"/>')
+            o.append(f'<path d="M{ex-6*s},{ey+2*s} Q{ex},{ey-5*s} {ex+6*s},{ey+2*s}" stroke="#222" stroke-width="{2*s}" fill="none"/>')
         elif eyes == 'down':
-            o.append(f'<path d="M{cx+dx*s-5*s},{ey+1*s} L{cx+dx*s+5*s},{ey+1*s}" stroke="#222" stroke-width="{2.2*s}"/>')
+            o.append(f'<path d="M{ex-6*s},{ey} Q{ex},{ey+3*s} {ex+6*s},{ey}" stroke="#222" stroke-width="{2*s}" fill="none"/><path d="M{ex-6*s},{ey-1*s} L{ex+6*s},{ey-1*s}" stroke="#222" stroke-width="{1*s}"/>')
     if eyes == 'angry':
-        for dx in (-14, 14):
-            o.append(f'<ellipse cx="{cx+dx*s}" cy="{ey+1*s}" rx="{3.6*s}" ry="{4.5*s}" fill="#222"/>')
-        o.append(f'<path d="M{cx-21*s},{ey-12*s} L{cx-8*s},{ey-8*s} M{cx+21*s},{ey-12*s} L{cx+8*s},{ey-8*s}" stroke="#222" stroke-width="{2.4*s}"/>')
+        o.append(f'<path d="M{cx-20*s},{ey-13*s} L{cx-6*s},{ey-9*s} M{cx+20*s},{ey-13*s} L{cx+6*s},{ey-9*s}" stroke="#222" stroke-width="{2.2*s}"/>')
     elif eyes == 'sad':
-        o.append(f'<path d="M{cx-21*s},{ey-8*s} L{cx-8*s},{ey-12*s} M{cx+21*s},{ey-8*s} L{cx+8*s},{ey-12*s}" stroke="#222" stroke-width="{2.2*s}"/>')
+        o.append(f'<path d="M{cx-19*s},{ey-9*s} L{cx-6*s},{ey-14*s} M{cx+19*s},{ey-9*s} L{cx+6*s},{ey-14*s}" stroke="#222" stroke-width="{2*s}"/>')
+    else:
+        o.append(f'<path d="M{cx-18*s},{ey-12*s} Q{cx-12*s},{ey-15*s} {cx-6*s},{ey-12*s} M{cx+18*s},{ey-12*s} Q{cx+12*s},{ey-15*s} {cx+6*s},{ey-12*s}" stroke="#333" stroke-width="{1.6*s}" fill="none"/>')
+    o.append(f'<path d="M{cx+1*s},{hy+10*s} L{cx-2*s},{hy+17*s} L{cx+2*s},{hy+18*s}" stroke="#555" stroke-width="{1.2*s}" fill="none"/>')
     if glasses:
-        o.append(f'<circle cx="{cx-14*s}" cy="{ey}" r="{10*s}" fill="none" stroke="#555" stroke-width="{1.8*s}"/><circle cx="{cx+14*s}" cy="{ey}" r="{10*s}" fill="none" stroke="#555" stroke-width="{1.8*s}"/><path d="M{cx-4*s},{ey} L{cx+4*s},{ey}" stroke="#555" stroke-width="{1.8*s}"/>')
-    my = hy + 22 * s
+        o.append(f'<rect x="{cx-21*s}" y="{ey-6*s}" width="{16*s}" height="{12*s}" rx="{4*s}" fill="none" stroke="#333" stroke-width="{1.5*s}"/><rect x="{cx+5*s}" y="{ey-6*s}" width="{16*s}" height="{12*s}" rx="{4*s}" fill="none" stroke="#333" stroke-width="{1.5*s}"/><path d="M{cx-5*s},{ey-1*s} L{cx+5*s},{ey-1*s}" stroke="#333" stroke-width="{1.5*s}"/>')
+    my = hy + 25 * s
     m = {
-        'smile': f'<path d="M{cx-9*s},{my} Q{cx},{my+9*s} {cx+9*s},{my}" stroke="#a33" stroke-width="{2.2*s}" fill="none"/>',
-        'grin': f'<path d="M{cx-11*s},{my-2*s} Q{cx},{my+14*s} {cx+11*s},{my-2*s} Z" fill="#c44" stroke="#822" stroke-width="{1.2*s}"/>',
-        'open': f'<ellipse cx="{cx}" cy="{my+2*s}" rx="{6*s}" ry="{5*s}" fill="#b33"/>',
-        'flat': f'<path d="M{cx-8*s},{my+2*s} L{cx+8*s},{my+2*s}" stroke="#a33" stroke-width="{2.2*s}"/>',
-        'frown': f'<path d="M{cx-9*s},{my+5*s} Q{cx},{my-3*s} {cx+9*s},{my+5*s}" stroke="#a33" stroke-width="{2.2*s}" fill="none"/>',
-        'yawn': f'<ellipse cx="{cx}" cy="{my+3*s}" rx="{8*s}" ry="{10*s}" fill="#b33"/>',
-        'o': f'<ellipse cx="{cx}" cy="{my+2*s}" rx="{4*s}" ry="{5*s}" fill="#b33"/>',
+        'smile': f'<path d="M{cx-7*s},{my} Q{cx},{my+6*s} {cx+7*s},{my}" stroke="#333" stroke-width="{1.6*s}" fill="none"/>',
+        'grin': f'<path d="M{cx-9*s},{my-2*s} Q{cx},{my+11*s} {cx+9*s},{my-2*s} Z" fill="#555" stroke="#222" stroke-width="{1.2*s}"/><path d="M{cx-7*s},{my-1*s} L{cx+7*s},{my-1*s}" stroke="#fff" stroke-width="{2*s}"/>',
+        'open': f'<ellipse cx="{cx}" cy="{my+1*s}" rx="{5*s}" ry="{4*s}" fill="#555" stroke="#222" stroke-width="{1*s}"/>',
+        'flat': f'<path d="M{cx-6*s},{my+1*s} L{cx+6*s},{my+1*s}" stroke="#333" stroke-width="{1.8*s}"/>',
+        'frown': f'<path d="M{cx-7*s},{my+4*s} Q{cx},{my-2*s} {cx+7*s},{my+4*s}" stroke="#333" stroke-width="{1.8*s}" fill="none"/>',
+        'yawn': f'<ellipse cx="{cx}" cy="{my+2*s}" rx="{6*s}" ry="{8*s}" fill="#555" stroke="#222" stroke-width="{1*s}"/>',
+        'o': f'<ellipse cx="{cx}" cy="{my+1*s}" rx="{3.5*s}" ry="{4*s}" fill="#555"/>',
     }[mouth]
     o.append(m)
-    o.append(f'<ellipse cx="{cx-24*s}" cy="{hy+16*s}" rx="{6*s}" ry="{3.5*s}" fill="#f4a6a6" opacity="0.7"/><ellipse cx="{cx+24*s}" cy="{hy+16*s}" rx="{6*s}" ry="{3.5*s}" fill="#f4a6a6" opacity="0.7"/>')
     if arm == 'yawn':
-        o.append(f'<circle cx="{cx+4*s}" cy="{hy+22*s}" r="{10*s}" fill="{SKIN}" stroke="#333" stroke-width="{1.2*s}"/>')
+        o.append(f'<ellipse cx="{cx+6*s}" cy="{hy+24*s}" rx="{8*s}" ry="{9.5*s}" fill="{SKIN}" stroke="{L}" stroke-width="{sw}"/>')
     return '\n'.join(o)
 
 
@@ -110,7 +135,7 @@ def bubble(x, y, w, lines, tail, fs=21):
 
 def narr(x, y, w, lines, fs=20):
     h = len(lines) * fs * 1.34 + fs * 0.8
-    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#fffdf2" stroke="#222" stroke-width="2"/>' + text(x + w / 2, y + fs * 1.15, lines, fs)
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#ffffff" stroke="#222" stroke-width="2"/>' + text(x + w / 2, y + fs * 1.15, lines, fs)
 
 
 def panel(x, y, w, h, bg, body, pid):
@@ -120,7 +145,9 @@ def panel(x, y, w, h, bg, body, pid):
 
 
 def svg(h, body, name):
-    s = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}">{body}</svg>'
+    s = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}">'
+         '<defs><filter id="gs"><feColorMatrix type="saturate" values="0"/></filter></defs>'
+         f'<g filter="url(#gs)">{body}</g></svg>')
     open(OUT + name + '.svg', 'w', encoding='utf-8').write(s)
 
 
@@ -170,11 +197,11 @@ svg(H, panel(0, 0, 600, H, '#e5eef2', p5, 'c5'), 'comic3')
 
 # ---- 4. 두 선수 ----
 H = 520
-medal = lambda x, y, c: f'<path d="M{x-14},{y-50} L{x},{y-8} L{x+14},{y-50}" stroke="#3a6fb0" stroke-width="7" fill="none"/><circle cx="{x}" cy="{y}" r="14" fill="{c}" stroke="#555" stroke-width="2"/>'
-p6 = (person(160, H, 0.92, arm='down', mouth='frown', eyes='sad', hair='#222', hstyle='short', shirt='#eef3f8', inner='#3a6fb0',
-             extra=medal(160, H - 82, '#c8c8c8')) +
-      person(440, H, 0.92, arm='raise', mouth='grin', eyes='happy', hair='#3a2a1a', hstyle='short', shirt='#eef3f8', inner='#3a6fb0',
-             extra=medal(440, H - 82, '#c98a45')) +
+medal = lambda x, y, c: f'<path d="M{x-14},{y-50} L{x},{y-8} L{x+14},{y-50}" stroke="#222" stroke-width="6" fill="none"/><circle cx="{x}" cy="{y}" r="16" fill="{c}" stroke="#222" stroke-width="2"/><circle cx="{x}" cy="{y}" r="10" fill="none" stroke="#222" stroke-width="1"/>'
+p6 = (person(160, H, 0.92, arm='down', mouth='frown', eyes='sad', hair='#222', hstyle='short', shirt='#eef3f8', inner='#b8c4d0',
+             extra=medal(160, H - 82, '#eeeeee')) +
+      person(440, H, 0.92, arm='raise', mouth='grin', eyes='happy', hair='#3a2a1a', hstyle='short', shirt='#eef3f8', inner='#b8c4d0',
+             extra=medal(440, H - 82, '#8a6a4a')) +
       text(50, H - 150, ['은메달'], 22, weight='bold', fill='#555') + text(552, H - 150, ['동메달'], 22, weight='bold', fill='#8a5a2b') +
       narr(12, 10, 576, ['은메달을 딴 선수는 \'내가 실수만 하지', '않았더라면 금메달을 딸 수 있었을 텐데.\'', '라고 생각하여 은메달을 딴 것에 실망하는', '경우가 많았습니다.'], N) +
       narr(12, 168, 576, ['한편 동메달을 딴 선수는 \'내가 실수를', '했더라면 메달을 못 딸 뻔했다.\'라고 생각하여', '동메달을 딴 것에 대단히 만족하는', '경우가 많았답니다.'], N))
