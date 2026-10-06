@@ -1,0 +1,91 @@
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+:root { --navy: #1d2a6b; --navy2: #2f3f95; --gold: #f2c94c; --red: #d6453d; --ink: #1b1d2a; --soft: #f4f5fb; --line: #d9dcea;
+        --same: #d6453d; --type: #2f6fd6; --conc: #9aa3b8; }
+body { margin: 0; font-family: 'NanumGothic', 'Nanum Gothic', sans-serif; color: var(--ink); background: #fff; }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; padding: 13mm 13mm 16mm; page-break-after: always; background: #fff; }
+.pf { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; display: flex; justify-content: space-between; font-size: 8pt; color: #8a8fa8; border-top: 1px solid var(--line); padding-top: 2mm; }
+h1, h2, h3 { margin: 0; }
+.hd { margin-bottom: 4mm; }
+.hd .kk { font-size: 8.5pt; letter-spacing: 3px; font-weight: 800; color: var(--red); }
+.hd h2 { font-family: 'NanumGothicExtraBold', 'NanumGothic', sans-serif; font-size: 21pt; color: var(--navy); margin-top: 1mm; }
+.hd .sub { font-size: 10pt; color: #555b75; margin-top: 1.5mm; }
+
+/* 표지 */
+.cover { padding: 0; }
+.cv-top { height: 205mm; background: linear-gradient(160deg, #1d2a6b 0%, #2a3a8f 60%, #3b52c4 100%); color: #fff; position: relative; padding: 18mm 16mm; overflow: hidden; }
+.cv-top:after { content: ''; position: absolute; right: -40mm; top: -40mm; width: 140mm; height: 140mm; border-radius: 50%; background: rgba(242,201,76,.12); }
+.brand { font-family: 'NanumMyeongjoExtraBold', serif; letter-spacing: 6px; font-size: 13pt; color: var(--gold); }
+.cv-k { margin-top: 14mm; font-size: 13pt; opacity: .9; }
+.cover h1 { font-family: 'NanumGothicExtraBold', sans-serif; font-size: 76pt; line-height: 1.05; margin-top: 4mm; color: #fff; text-shadow: 0 3px 0 rgba(0,0,0,.25); }
+.cv-s { font-size: 17pt; margin-top: 4mm; }
+.cv-s b { color: var(--gold); }
+.cv-q { margin-top: 8mm; display: inline-block; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 13pt; padding: 3mm 5mm; border-radius: 3mm; }
+.cv-t { position: absolute; right: 8mm; bottom: 0; width: 98mm; z-index: 1; }
+.cv-name { position: absolute; right: 14mm; bottom: 8mm; z-index: 2; background: #fff; color: var(--navy); font-weight: 800; font-size: 11pt; padding: 1.5mm 4mm; border-radius: 10mm; }
+.cv-bot { height: 92mm; display: flex; align-items: center; gap: 7mm; padding: 0 16mm; }
+.medal { width: 44mm; height: 44mm; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff3c4, #f2c94c 55%, #c99a1d); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2mm 4mm rgba(0,0,0,.18); border: 2mm solid #fff; outline: 0.6mm solid #c99a1d; }
+.medal .mk { font-size: 12pt; font-weight: 800; color: var(--navy); }
+.medal .mv { font-family: 'NanumGothicExtraBold', sans-serif; font-size: 36pt; color: var(--navy); line-height: 1; }
+.medal .mv small { font-size: 13pt; }
+.cv-txt { flex: 1; font-size: 11pt; line-height: 1.6; color: #333; }
+.cv-hit { margin-top: 3mm; padding: 3mm 4mm; border-left: 1.5mm solid var(--red); background: var(--soft); font-size: 11.5pt; }
+.cv-hit b { color: var(--red); font-size: 14pt; }
+
+/* 2쪽 */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin-bottom: 7mm; }
+.kpi { background: var(--soft); border-radius: 3mm; padding: 4mm; border-top: 1.2mm solid var(--navy); }
+.kpi .kl { font-size: 9pt; color: #555b75; font-weight: 700; }
+.kpi .kv { font-family: 'NanumGothicExtraBold', sans-serif; font-size: 30pt; color: var(--navy); line-height: 1.15; }
+.kpi .kv small { font-size: 12pt; margin-left: 1mm; }
+.kpi .kn { font-size: 8.5pt; color: #6b7090; }
+h3 { font-size: 12.5pt; color: var(--navy); margin: 0 0 3mm; }
+.brow { display: flex; align-items: center; gap: 3mm; margin-bottom: 3mm; }
+.brow .bl { width: 26mm; font-weight: 800; font-size: 10pt; }
+.sbar { flex: 1; display: flex; height: 9mm; border-radius: 2mm; overflow: hidden; background: #eef0f6; }
+.sg { display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 9pt; font-weight: 800; white-space: nowrap; }
+.sg.same { background: var(--same); } .sg.type { background: var(--type); } .sg.conc { background: var(--conc); }
+.none { font-size: 8.5pt; color: #888; }
+.legend { font-size: 9pt; color: #555; margin: 2mm 0 7mm; }
+.legend .sg { padding: 0.6mm 2.5mm; border-radius: 1mm; margin: 0 1.5mm 0 3mm; }
+.two { display: grid; grid-template-columns: 1fr 1.25fr; gap: 5mm; }
+.card { border: 1px solid var(--line); border-radius: 3mm; padding: 5mm; }
+.sc { display: flex; align-items: baseline; gap: 3mm; padding: 2.5mm 0; border-bottom: 1px dashed var(--line); }
+.sc span { font-weight: 800; width: 12mm; } .sc b { font-family: 'NanumGothicExtraBold', sans-serif; font-size: 22pt; color: var(--red); } .sc em { font-style: normal; font-size: 9pt; color: #666; }
+.note { font-size: 9pt; color: #777; margin-top: 2mm; }
+.card ul { margin: 0; padding-left: 4.5mm; font-size: 10pt; line-height: 1.75; }
+.tq { display: flex; align-items: flex-end; gap: 4mm; margin-top: 8mm; }
+.tq img { width: 52mm; }
+.bub { flex: 1; position: relative; background: var(--navy); color: #fff; border-radius: 4mm; padding: 6mm 7mm; font-size: 12pt; line-height: 1.6; margin-bottom: 14mm; }
+.bub:before { content: ''; position: absolute; left: -6mm; bottom: 8mm; border: 4mm solid transparent; border-right: 6mm solid var(--navy); }
+.bub b { color: var(--gold); } .bub span { display: block; text-align: right; color: var(--gold); font-size: 10pt; margin-top: 2mm; }
+
+/* 적중 쌍 */
+.pair { border: 1px solid var(--line); border-radius: 3mm; margin-bottom: 3.5mm; overflow: hidden; break-inside: avoid; }
+.phd { display: flex; align-items: center; gap: 2.5mm; background: var(--soft); padding: 2mm 3mm; font-size: 10pt; }
+.phd .eq { color: var(--red); font-weight: 800; font-size: 13pt; }
+.bd { color: #fff; font-weight: 800; font-size: 8.5pt; padding: 0.8mm 2.2mm; border-radius: 1mm; }
+.bd.same { background: var(--same); } .bd.type { background: var(--type); }
+.pbd { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+figure { margin: 0; padding: 2mm 3mm 2mm; display: flex; flex-direction: column; align-items: center; }
+figure.act { border-right: 1px dashed var(--line); }
+figcaption { align-self: flex-start; font-size: 7.8pt; font-weight: 800; margin-bottom: 1.2mm; padding: 0.3mm 2mm; border-radius: 1mm; }
+.act figcaption { background: #fde3e0; color: var(--red); } .sel figcaption { background: #e2ebfb; color: var(--type); }
+.pair img { max-width: 100%; max-height: 50mm; object-fit: contain; }
+.ppt { font-size: 9.2pt; padding: 1.8mm 3.5mm; border-top: 1px solid var(--line); color: #333; }
+.ppt b { color: var(--red); }
+
+/* 10쪽 */
+.tables { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+table.all { border-collapse: collapse; width: 100%; font-size: 7.4pt; }
+table.all th { background: var(--navy); color: #fff; padding: 1mm; font-weight: 700; }
+table.all td { border-bottom: 1px solid #e6e8f0; padding: 0.75mm 1mm; text-align: center; }
+table.all td.l { text-align: left; }
+.tg { display: inline-block; min-width: 9mm; color: #fff; font-weight: 800; border-radius: 1mm; padding: 0.2mm 1mm; }
+.tg.same { background: var(--same); } .tg.type { background: var(--type); } .tg.conc { background: var(--conc); } .tg.no { background: #ccc; }
+.end { display: flex; align-items: flex-end; gap: 3mm; margin-top: 5mm; }
+.end img { width: 40mm; }
+.end .msg { flex: 1; background: var(--soft); border-radius: 3mm; padding: 4mm 5mm; font-size: 10pt; line-height: 1.6; margin-bottom: 3mm; }
+.end .msg b { color: var(--red); font-size: 13pt; } .end .msg span { display: block; text-align: right; color: var(--navy); font-weight: 800; margin-top: 1mm; }
+.cta { width: 38mm; background: var(--red); color: #fff; text-align: center; border-radius: 3mm; padding: 5mm 2mm; font-size: 10pt; line-height: 1.5; margin-bottom: 3mm; }
+.cta b { font-size: 14pt; }
