@@ -6,7 +6,7 @@ os.makedirs(OUT + '/img', exist_ok=True)
 for sub in ('act', 'cap'):
     for f in os.listdir(f'{D}/{sub}'):
         shutil.copy(f'{D}/{sub}/{f}', f'{OUT}/img/{f}')
-for f in ('t1.svg', 't2.svg'):
+for f in ('t1.svg', 't2.svg', 'teacher.png'):
     shutil.copy(f'{D}/{f}', f'{OUT}/img/{f}')
 
 STU = '우○준'
@@ -99,8 +99,8 @@ pages.append(page(1, f'''
   <h1>해냈다!</h1>
   <div class="cv-s">목일중학교 1학년 <b>사회 · 수학</b></div>
   <div class="cv-q">"예상문제가 그대로 시험지에 나왔습니다."</div>
-  <img class="cv-t" src="img/t1.svg">
-  <div class="cv-name">이석준 쌤</div>
+  <img class="cv-t" src="img/teacher.png">
+  <div class="cv-name">SEL입시연구소 <b>이석준</b> 쌤</div>
 </div>
 <div class="cv-bot">
   <div class="medal"><div class="mk">사회</div><div class="mv">96<small>점</small></div></div>
@@ -133,7 +133,7 @@ pages.append(page(2, head('RESULT', '숫자로 보는 2학기 중간고사', '�
     <ul><li><b>사회</b> 예상 시험지 30문항 · 파이널 모의고사 2회 60문항</li><li><b>사회</b> 교과서 문제집 (빈칸·OX 100문항 + 교과서 자료 69문항)</li>
     <li><b>수학</b> 예상 시험지 29문항 + 학생별 정오표</li><li><b>공통</b> 개인 성적표와 맞춤 처방</li></ul></div>
 </div>
-<div class="tq"><img src="img/t2.svg"><div class="bub">교과서 자료 한 장, 선지 한 줄까지 <b>실제 시험 기준</b>으로 만들었습니다.<br>그 결과가 바로 이 리포트입니다!<span>- 이석준 쌤</span></div></div>
+<div class="tq"><img src="img/teacher.png"><div class="bub">교과서 자료 한 장, 선지 한 줄까지 <b>실제 시험 기준</b>으로 만들었습니다.<br>그 결과가 바로 이 리포트입니다!<span>- 이석준 쌤</span></div></div>
 '''))
 
 # 3~6. 사회 동일 적중
@@ -152,7 +152,7 @@ def table(L, subj):
     return f'<table class="all"><tr><th>번호</th><th>배점</th><th>{subj} 문항 내용</th><th>SEL 매칭 자료</th><th>적중</th></tr>{rows}</table>'
 pages.append(page(10, head('ALL', '전체 문항 적중표', '사회 27문항 · 수학 24문항 전체') + f'''
 <div class="tables">{table(SOC, '사회')}{table(MATH, '수학')}</div>
-<div class="end"><img src="img/t1.svg"><div class="msg"><b>해냈다!</b> 사회 96점, 수학 95점.<br>시험지 위에서 다시 만난 SEL의 문제들이 그 증거입니다.
+<div class="end"><img src="img/teacher.png"><div class="msg"><b>해냈다!</b> 사회 96점, 수학 95점.<br>시험지 위에서 다시 만난 SEL의 문제들이 그 증거입니다.
 기말고사도 같은 방식으로, 교과서 한 장 한 장 끝까지 함께하겠습니다.<span>- SEL입시연구소 이석준</span></div>
 <div class="cta">2학기 기말고사 대비<br><b>상담 접수 중</b></div></div>'''))
 
