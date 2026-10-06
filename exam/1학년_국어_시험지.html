@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>1학년 국어 지필평가</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body { font-family: 'Gulim', '굴림', sans-serif; font-size: 10.2pt; line-height: 1.64; }
+
+  .page { width: 210mm; height: 297mm; padding: 24.8mm 20mm 5mm; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .frame { flex: 1; display: flex; flex-direction: column; border: 1.6px solid #000; border-right-width: 2.2px; min-height: 0; }
+  .page.first .frame { border-top: none; }
+  .page:not(.first) .frame { margin-top: -10mm; }
+  .body { flex: 1; display: flex; position: relative; min-height: 0; padding-top: 4mm; }
+  .page.first .body { padding-top: 0; }
+  .body::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 2mm; border-left: 1px solid #000; }
+  .col { width: 50%; height: 100%; overflow: hidden; }
+  .col.l { padding: 0 3.2mm 0 1.6mm; }
+  .col.r { padding: 0 3.2mm 0 3.2mm; }
+  .cont { text-align: right; font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.5pt; letter-spacing: 0.5px; padding: 0 2.4mm 1mm 0; height: 7mm; }
+  .foot { height: 12mm; position: relative; font-size: 10.5pt; font-family: 'NanumMyeongjo', serif; }
+  .foot .l1 { position: absolute; left: 0; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l1r { position: absolute; right: 2mm; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l2 { position: absolute; left: 0; right: 0; top: 5.6mm; text-align: center; font-size: 10.5pt; }
+
+  /* 머리글 */
+  .head { display: flex; border-top: 2.2px solid #000; border-bottom: 1.6px solid #000; height: 16mm; font-family: 'NanumMyeongjo', serif; }
+  .head .grade { width: 24.5mm; border-right: 1.4px solid #000; display: flex; align-items: center; justify-content: center; font-size: 22pt; padding-top: 0.6mm; }
+  .head .title { width: 70.5mm; border-right: 1.4px solid #000; text-align: center; font-size: 17.5pt; line-height: 1.12; padding-top: 0.6mm; }
+  .head .title .t2 { font-size: 19pt; }
+  .head .date { width: 44mm; border-right: 1.4px solid #000; text-align: center; font-weight: 700; font-size: 12pt; line-height: 1.5; padding-top: 1.6mm; }
+  .head .code { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 11.5pt; letter-spacing: 0.3px; }
+  table.score { border-collapse: collapse; width: 98%; margin: 1.2mm 0 0 0; font-size: 9.8pt; text-align: center; line-height: 1.2; font-family: 'Gulim', '굴림', sans-serif; }
+  table.score td { border: 1px solid #000; padding: 0 1mm; font-weight: 400; }
+  table.score tr:first-child td { background: #e8e8e8; letter-spacing: 2.5px; }
+  .notice { font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.6pt; margin: 6.5mm 0 8mm; padding-left: 5.2mm; text-indent: -5.2mm; line-height: 1.75; text-align: justify; letter-spacing: 0.6px; }
+
+  /* 문항 */
+  .col > .q { margin-bottom: 7mm; }
+  .stem { padding-left: 4.6mm; text-indent: -4.6mm; margin-bottom: 1.8mm; text-align: justify; }
+  .bx p, .bogi p, .opts.c1 > div, .tl > div { text-align: justify; }
+  .stem b.no { font-weight: 700; }
+  .pt { white-space: nowrap; }
+  .u { text-decoration: underline; text-underline-offset: 2px; }
+  .bx { border: 1px solid #000; padding: 1.4mm 2mm; margin: 1.6mm 0 2mm; }
+  .bx p { margin: 0; }
+  .bx p + p { margin-top: 0.6mm; }
+  .hang { padding-left: 6mm; text-indent: -6mm; }
+  .hang2 { padding-left: 4mm; text-indent: -4mm; }
+  .bogi { border: 1px solid #000; padding: 3.2mm 2.2mm 1.4mm; margin: 3.4mm 0 2mm; position: relative; }
+  .bogi::before { content: "<  보  기  >"; white-space: pre; position: absolute; top: -2.6mm; left: 50%; transform: translateX(-50%); background: #fff; padding: 0 1mm; font-size: 9.4pt; line-height: 1.1; }
+  .bogi p { margin: 0; padding-left: 4.3mm; text-indent: -4.3mm; }
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 0.4mm; padding-left: 1mm; }
+  .opts:not(.c1) > div { white-space: nowrap; }
+  .opts.c2 { grid-template-columns: repeat(2, 1fr); }
+  .opts.c1 { grid-template-columns: 1fr; }
+  .opts.c1 > div { padding-left: 4.8mm; text-indent: -4.8mm; }
+  .opts.c5 { grid-template-columns: repeat(5, 1fr); }
+  table.ot { border-collapse: collapse; width: 100%; }
+  table.ot td, table.ot th { padding: 0.1mm 0.6mm; text-align: center; font-weight: 400; }
+  table.ot th { text-decoration: underline; text-underline-offset: 2px; }
+  table.ot td:first-child { text-align: left; width: 6mm; }
+  table.dt { border-collapse: collapse; width: 100%; font-size: 9.2pt; margin: 1.4mm 0 2mm; }
+  table.dt th, table.dt td { border: 1px solid #000; padding: 0.6mm 1mm; text-align: center; line-height: 1.35; font-weight: 400; }
+  table.dt td.l { text-align: left; }
+  .say { display: flex; gap: 1.4mm; margin: 0.4mm 0; }
+  .say .who { flex: none; min-width: 6mm; white-space: nowrap; }
+  .say .what { flex: 1; }
+  .src { text-align: right; font-size: 8.6pt; margin-top: 0.4mm; }
+  .cap { text-align: center; font-size: 9.2pt; font-weight: 700; margin-bottom: 0.6mm; }
+  .tl { display: flex; gap: 1.4mm; margin: 1.4mm 0 2mm; }
+  .tl > div { flex: 1; border: 1px solid #000; padding: 1.2mm 1.5mm; font-size: 9.4pt; line-height: 1.45; }
+  .tl b { display: block; text-align: center; margin-bottom: 0.6mm; }
+  .end { text-align: center; font-weight: 700; margin-top: 12mm; line-height: 1.7; }
+  .end .msg { font-size: 9.6pt; }
+  .end .bye { margin-top: 10mm; font-size: 11.5pt; }
+  .pic { text-align: center; margin: 1.4mm 0 2mm; }
+  .pic img { width: 100%; max-height: 50mm; object-fit: contain; display: inline-block; }
+  svg text { font-family: 'Gulim', '굴림', sans-serif; }
+  #pool { position: absolute; left: -9999px; top: 0; width: 80mm; }
+
+  i.mv { font-family: 'Liberation Serif', 'Times New Roman', serif; font-size: 1.12em; }
+  .ov { text-decoration: overline; text-decoration-thickness: 1px; }
+  .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: 0.85em; line-height: 1.1; margin: 0 1px; }
+  .fr, .fr > span { text-indent: 0; padding-left: 0; }
+  .fr > span:first-child { border-bottom: 1px solid #000; padding: 0 2px; }
+  .q.sd .sdh { font-weight: 800; margin-bottom: 1mm; }
+  .page.first .col.r { padding-top: 4mm; }
+  .end { margin-top: 8mm !important; }
+  .abox { border: 1px solid #000; height: 34mm; margin-top: 2mm; }
+  .q.pass .ptitle { font-weight: 700; margin-bottom: 1.2mm; }
+  .q.pass .psg { border-left: 1px solid #000; border-right: 1px solid #000; padding: 0.6mm 2.6mm; text-align: justify; }
+  .q.pass .psg.first { border-top: 1px solid #000; padding-top: 2mm; }
+  .q.pass .psg.last { border-bottom: 1px solid #000; padding-bottom: 2mm; }
+  .col > .q.pass { margin-bottom: 0 !important; }
+  .q.pass .psg { padding-top: 0; padding-bottom: 0; }
+  .q.pass .psg p { margin: 0 !important; }
+  .q.pass .psg p:has(.poem) { text-indent: 0 !important; }
+  .q.pass .psg p:has(.poem) { line-height: 1.42 !important; }
+  .bogi p.pr { padding-left: 0 !important; text-indent: 0 !important; }
+  .srcin { display: block; text-align: right; font-size: 9pt; margin-bottom: 2mm; }
+  .q.pass .psg p:not(.pcont) { padding-top: 0.9mm; }
+  .col > .q.pass:has(.last) { margin-bottom: 4mm !important; }
+  .q.pass .psg p { margin: 0; text-indent: 3mm; }
+  .q.pass .psg p + p { margin-top: 1mm; }
+  .col > .q.pass { margin-bottom: 3mm; }
+  .q.pass .src { text-align: right; font-size: 8.8pt; margin-top: 0.8mm; }
+  .bx.ad p + p { text-align: center; }
+  table.ot td:not(:first-child) { font-size: 9.2pt; }
+  .pic img { max-height: none !important; }
+  .q.pass .psg .pic { margin: 1.5mm 0 0.5mm; }
+  .q.pass .psg p.nb, .q.pass .psg p.pcont { text-indent: 0; }
+</style>
+</head>
+<body>
+
+<div id="pool">
+<div class="q pass"><div class="ptitle">[1~7] 다음 글을 읽고 물음에 답하시오.</div><div class="psg first"><p class="">(가) [앞부분 줄거리] 문기는 숙모의 심부름으로 고기를 사러 갔다가 고깃간 주인의 실수로 거스름돈을 더 받는다. 친구 수만이의 꾐에 넘어가 그 돈으로 공, 쌍안경, 만화책 등을 사고 남은 돈으로 환등 기계를 사기로 약속한다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">삼촌 앞에 나가 무릎을 꿇고 앉지 않을 수 없었다. 삼촌은 잠잠히 식사를 계속한다. 그 상 밑에, 안반 뒤에 숨겨 두었던 공이 와 있다. 상을 물릴 임시에 삼촌은 입을 열었다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"너 요새 학교에 매일 갔었니?"<br>"네."<br>삼촌은 상 밑에 있는 그 공을 굴려 내며,<br>"이거 웬 공이냐?"<br>"수만이가 준 공이에요."<br>"이것두?"<br>하고 삼촌은 무릎 밑에서 쌍안경을 꺼내 들었다.<br>"네."</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"수만이란 얼마나 돈을 잘 쓰는 아인지 몰라두 이 공은 오십 전은 줬겠구나. 이건 못 줘두 일 원은 넘겨 줬겠구."<br>그리고 삼촌은, "수만이란 뭣 하는 집 아이냐?"</p></div></div>
+<div class="q pass"><div class="psg"><p class="">문기는 고개를 숙이고 앉아 말이 없다. 삼촌은 숭늉을 마시고 상을 물렸다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">㉠<span class="u">"네 입으로 수만이가 줬다니 네 말이 옳겠지. 설마 네가 날 속이기야 하겠니. 하지만 남이 준다고 아무것이고 넙적넙적 받는다는 것두 좀 생각해 볼 일이거든."</span></p></div></div>
+<div class="q pass"><div class="psg"><p class="">삼촌은 다시 말을 계속한다. "말 들으니 너 요샌 저녁두 가끔 나가 먹는다더구나. 그것두 수만이에게 얻어먹는 거냐?"</p></div></div>
+<div class="q pass"><div class="psg"><p class="">문기는 벌겋게 얼굴이 달아 수그리고 앉았다. 삼촌은 잠시 묵묵히 건너다만 보고 있더니 음성을 고쳐 엄한 어조로,</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"어머님은 어려서 돌아가시구 아버지는 저 모양이시구, 앞으로 집안을 일으킬 사람은 너 하나야. 성실치 못한 아이들하고 열려 다니다 혹 나쁜 데 빠지거나 하면 첫째 네 꼴은 뭐구, 내 모양은 뭐냐? 난 너 하나는 어디까지든지 공부도 시키구 사람을 만들어 주려구 애쓰는데 너두 그 뜻을 받아 주어야 사람이 아니냐."</p></div></div>
+<div class="q pass"><div class="psg"><p class="">그리고 삼촌은 어떻게 뒤툭 맘 한번 잘못 가졌다가 영 신세를 망치고 마는 예를 이것저것 들어 말씀하고는 이후론 절대 이런 것 받아들이지 말라는 단단한 다짐을 받은 후 문기를 내보냈다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">문기는 아랫방에 내려와 혼자 되자 삼촌 앞에서보다 갑절 얼굴이 달아올랐다. 지금까지 될 수 있는 대로 생각지 않으려고 힘을 써 오던 그 편에 정면으로 제 몸을 세워 놓고 보지 않을 수 없었다. 그러자 자기라는 몸은 벌써 삼촌의 이른바 나쁜 데 빠지고 만 것이었다. 그야 자기는 ㉡<span class="u">수만이가 시켜서 한 일이니까 잘못이 없다는 것</span>이지만 당초에 그것은 제 허물을 남에게 밀려는 얄미운 구실이 아니고 뭐냐. 그리고 문기는 이미 삼촌을 속였다. 또 써서는 아니 될 돈을 쓰고 말았다. 아아, 일찍이 어머니를 여의고, 아버지란 사람은 일상 천 냥 만 냥 하고 허한 소리만 하면서 남루한 주제에 거처가 없이 시골, 서울로 돌아다니는 사람이고, 어려서부터 문기를 길러 낸 사람이 삼촌이었다. 그리고 조카의 장래를 자기의 그것보다 더 중히 알고 염려하며 잘되어 주기를 바라는 삼촌이었다. ㉢<span class="u">그 삼촌의 기대에 어그러지지 않는 인물이 되어 보이겠다고 엊그제도 주먹을 쥐고 결심하던 문기가 아니냐.</span> 생각할수록 낯이 뜨거워지는 일이다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">(나) [중간 부분 줄거리] 문기는 공과 쌍안경을 버리고 남은 돈을 고깃간 안마당에 던진다. 그러나 돈을 내놓으라는 수만이의 협박을 이기지 못해 숙모의 돈을 훔치고, 그 일로 숙모 집 심부름꾼 점순이가 누명을 쓰고 쫓겨난다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">학교엔 갔다. 첫 시간은 수신 시간. 그리고 공교로이 제목이 '정직'이다. 선생님은 뒷짐을 지고 교단 위를 왔다 갔다 하며 거짓이라는 것이 얼마나 약한 것이고 정직이 얼마나 귀하고 중한 것인가를 누누이 말씀한다. 그리고 안경 쓴 선생님의 그 눈이 번쩍하고 문기 얼굴에 머물렀다 가고 가고 한다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">그럴 때마다 문기는 가슴이 뜨끔뜨끔해진다. 문기는 자기 한 사람에게 들리기 위한 정직이요 수신 시간인 듯싶었다. 운동장에서도 문기는 풀이 없다. 사람 없는 교실 뒤 버드나무 옆 그런 데만 찾아다니며 고개를 숙이고 깊은 생각에 잠기거나 팔짱을 끼고 왔다 갔다 하기도 한다. 그러다 누가 등을 치면 소스라치게 깜짝깜짝 놀란다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">언제나 다름없이 하늘은 맑고 푸르건만 문기는 어쩐지 그 하늘조차 쳐다보기가 두려웠다. 자기는 감히 떳떳한 얼굴로 그 하늘을 쳐다볼 만한 사람이 못 된다 싶었다. 언제나 다름없이 여러 아이들은 넓은 운동장에서 마음대로 뛰고 마음대로 지껄이고 마음대로 즐기건만 문기 한 사람만은 어둠과 같이 컴컴하고 무거운 마음에 잠겨 고개를 들지 못한다. 무엇보다도 문기는 전날처럼 맑은 하늘 아래서 아무 거리낌 없이 즐길 수 있는 마음이 갖고 싶다. 떳떳이 하늘을 쳐다볼 수 있는, 떳떳이 남을 대할 수 있는 마음이 갖고 싶었다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">……(중략)……</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"저는 마땅히 받아야 할 벌을 받은 거예요."<br>하고 문기는 눈을 감으며 한 마디 한 마디 그러나 똑똑하게 처음서부터 끝까지 먼저 고깃간 주인이 일 원을 십 원으로 알고 거슬러 준 것, 그 돈을 써 버린 것, 그리고 또 불장 안의 돈을 자기가 훔쳐 낸 것, 이렇게 하나하나 숨김없이 자백을 하자 이때까지 겹겹으로 몸을 싸고 있던 허물이 한 꺼풀 한 꺼풀 벗어지면서 따라 마음속의 어둠도 차차 사라지며 밝아지는 것을 문기는 확실히 깨달을 수 있었다. 마음이 맑아지며 따라 몸도 가뜬해진다.</p></div></div>
+<div class="q pass"><div class="psg last"><p class="">내일도 해는 뜨고 하늘은 밝아지리라. 그리고 문기는 그 하늘을 떳떳이 마음껏 쳐다볼 수 있을 것이다.</p><div class="src">- 현덕, 「하늘은 맑건만」</div></div></div>
+<div class="q">
+  <div class="stem"><b class="no">1.</b> 윗글의 내용과 일치하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 삼촌은 공과 쌍안경의 대략적인 값을 짐작하고 있다.</div><div>② 문기는 공과 쌍안경을 수만이가 준 것이라고 둘러대었다.</div><div>③ 문기는 어려서 어머니를 여의고 삼촌의 손에서 자랐다.</div><div>④ 삼촌은 문기가 거스름돈을 더 받아 쓴 사실을 알고 꾸짖었다.</div><div>⑤ 삼촌은 문기에게 앞으로 남에게 물건을 받지 말라는 다짐을 받았다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">2.</b> ㉠에 드러난 삼촌의 태도로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 문기의 거짓말을 확신하고 크게 화를 내고 있다.</div><div>② 문기를 믿어 주면서도 남에게 함부로 물건을 받는 태도를 경계하고 있다.</div><div>③ 수만이의 집안 형편을 부러워하고 있다.</div><div>④ 문기의 잘못을 모른 척하며 대화를 피하고 있다.</div><div>⑤ 문기가 사실대로 말하지 않으면 벌을 주겠다고 위협하고 있다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">3.</b> ㉡, ㉢에 대한 이해로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. ㉡은 문기가 자신의 잘못을 정당화하려던 생각이다.</p><p>ㄴ. 문기는 결국 ㉡을 제 허물을 남에게 밀려는 구실이라고 스스로 판단한다.</p><p>ㄷ. ㉢을 통해 문기가 삼촌의 기대를 부담스럽게 여겨 피하려 했음을 알 수 있다.</p><p>ㄹ. ㉢은 문기의 부끄러움과 마음속 갈등을 더욱 깊게 만든다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄷ</div><div>④ ㄱ, ㄴ, ㄹ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">4.</b> 다음은 학생이 (가)의 갈등을 정리한 것이다. ⓐ~ⓔ 중 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="bx "><p>윗글에서 문기는 ⓐ <span class="u">삼촌에게 사실대로 말해야 한다는 마음과 꾸중이 두려운 마음 사이에서</span> 갈등한다. 이는 ⓑ <span class="u">한 인물의 마음속에서 두 가지 이상의 욕구가 동시에 일어나서 생기는 내적 갈등</span>이다. 문기는 결국 ⓒ <span class="u">거짓말을 하는 쪽을 선택</span>하였고, 혼자 남은 뒤 ⓓ <span class="u">자신이 이미 나쁜 데 빠졌다는 사실을 깨닫는다</span>. 따라서 이 장면에서 ⓔ <span class="u">문기의 마음속 갈등은 완전히 해소된다</span>.</p></div><div class="opts c5"><div>① ⓐ</div><div>② ⓑ</div><div>③ ⓒ</div><div>④ ⓓ</div><div>⑤ ⓔ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">5.</b> 윗글에서 ‘하늘’이 상징하는 바로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 떳떳하고 깨끗한 양심</div><div>② 문기를 끝까지 감싸 주는 삼촌의 사랑</div><div>③ 문기가 앞으로 이루고 싶은 꿈과 희망</div><div>④ 문기가 벗어나고 싶은 답답한 학교생활</div><div>⑤ 문기에게 벌을 내리는 엄격한 사회 질서</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">6.</b> (나)에서 문기의 심리 변화를 바르게 정리한 것은? <span class="pt">(4점)</span></div>
+  <div class="opts c1"><div>① 불안과 죄책감 → 고백 → 홀가분함</div><div>② 즐거움 → 분노 → 슬픔</div><div>③ 자신감 → 두려움 → 체념</div><div>④ 미안함 → 원망 → 복수심</div><div>⑤ 설렘 → 실망 → 무관심</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">7.</b> 다음 그림은 (나)의 [중간 부분 줄거리]에 해당하는 장면이다. 이와 관련하여 윗글을 감상한 내용으로 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="pic"><img src="img/kor/sky_wall.jpg" style="width:62%"></div><div class="bx "><p>수만이는 ‘김문기는 ○○○했다.’라는 낙서를 써 놓으며 문기를 협박하였다.</p></div><div class="opts c1"><div>① 수만이와 문기 사이의 외적 갈등이 드러난 장면이다.</div><div>② 문기가 수만이의 협박 때문에 숙모의 돈을 훔치는 계기가 된다.</div><div>③ 이 장면 이후 문기의 내적 갈등은 더욱 깊어진다.</div><div>④ 수신 시간에 ‘정직’을 배우는 장면은 문기의 죄책감을 더욱 키운다.</div><div>⑤ 문기는 낙서를 본 즉시 선생님께 모든 사실을 고백한다.</div></div>
+</div>
+<div class="q pass"><div class="ptitle">[8~9] 다음 글을 읽고 물음에 답하시오.</div><div class="psg first"><p class="">[앞부분 줄거리] 코뿔소 노든은 어려서 가족을 잃고 코끼리 고아원에서 코끼리들과 함께 자랐다. 코끼리 고아원에서는 바깥세상으로 나갈 코끼리를 고르는 테스트가 있다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">노든에게도 선택의 날이 다가오고 있었다. 노든은 늘 선택의 날이 오면 고아원에 남는 쪽을 택하리라고 생각해 왔다. 여생을 이곳에서 보낸다면 평화롭게 살 수 있을 것이라고, 새로 들어오는 어린 코끼리들을 도와주면서 의미 있게 살 수 있을 것이라고. 그런데 자꾸만 머뭇거리게 되었다. 그 이유를 스스로도 알 수가 없었다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">노든은 생각이 많아졌다. 그에게는 긴 코 대신 뿔이 있었고, 왜 자신에게 뿔이 있는지가 궁금했다. 전에 까마귀에게 들었던 이야기가 떠올랐다. 어쩌면 고아원 밖으로 나가 다른 코뿔소들을 만나면 알 수 있을지도 모른다는 생각이 들었다. 노든은 고작 그런 이유 때문에 고아원에 남는 것을 주저하는 스스로가 한심했다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">그는 코끼리답게, 지혜롭고 현명하게 생각하려고 했다. 무모한 선택을 해서는 안 된다. 더 멀리 보고 더 많은 것을 고려해야 한다. 그렇게 되뇌었다. 마음을 다잡은 노든은 할머니 코끼리에게 고아원에 남겠다고 말했다. 할머니 코끼리가 기뻐해 줄 것이라고 생각했지만, 기대와 다른 대답이 돌아왔다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"하지만 너에게는 궁금한 것들이 있잖아. 네 눈을 보면 알아. 지금 가지 않으면 영영 못 가. 직접 가서 그 답을 찾아내지 않으면 영영 모를 거야. 네가 떠나는 건 슬픈 일이지만 우리는 괜찮을 거야. 더 넓은 세상으로 가. 우리가 너를 만나서 다행이었던 것처럼, 바깥세상에 있을 또 다른 누군가도 너를 만나서 다행이라고 여기게 될 거야."</p></div></div>
+<div class="q pass"><div class="psg"><p class="">테스트가 하루 앞으로 다가왔지만 노든은 마음을 정하지 못하고 있었다. 코끼리 고아원에 남고 싶은 마음과 바깥세상을 보고 싶은 마음 사이에서 갈팡질팡했다. 그때 코끼리들이 긴 코를 천천히 흔들며 노든에게 다가와 말했다.</p></div></div>
+<div class="q pass"><div class="psg last"><p class="">"여기, 우리 앞에 훌륭한 한 마리의 코끼리가 있네. 하지만 그는 코뿔소이기도 하지. 훌륭한 코끼리가 되었으니, 이제 훌륭한 코뿔소가 되는 일만 남았군그래."</p><div class="src">- 루리, 「긴긴밤」</div></div></div>
+<div class="q">
+  <div class="stem"><b class="no">8.</b> &lt;보기&gt;를 참고할 때, 윗글에서 노든이 겪는 갈등의 성격과 내용을 바르게 짝지은 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi"><p class="pr">소설에서 갈등은 인물이 겪는 대립과 충돌을 말한다. 갈등은 크게 한 인물의 마음속에서 서로 다른 생각이나 욕구가 부딪치는 <b>내적 갈등</b>과, 인물과 인물, 인물과 사회, 인물과 자연 사이에서 일어나는 <b>외적 갈등</b>으로 나뉜다. 갈등은 사건을 전개하는 원동력이 되며, 인물이 갈등을 해결하는 과정에서 인물의 성격과 작품의 주제가 드러난다.</p></div><table class="ot"><th></th><th>갈등의 성격</th><th>내용</th><tr><td>①</td><td>내적 갈등</td><td>고아원에 남을지 바깥세상으로 나갈지에 대한 고민</td></tr><tr><td>②</td><td>외적 갈등</td><td>노든과 코끼리들의 대립</td></tr><tr><td>③</td><td>외적 갈등</td><td>노든과 사람들의 대립</td></tr><tr><td>④</td><td>내적 갈등</td><td>까마귀를 믿을지 말지에 대한 고민</td></tr><tr><td>⑤</td><td>외적 갈등</td><td>노든과 자연환경의 대립</td></tr></table>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">9.</b> 할머니 코끼리와 코끼리들의 말에 담긴 의도로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 노든이 고아원에 남아 새로 들어오는 어린 코끼리들을 돌보며 의미 있는 삶을 살기를 바란다.</div><div>② 노든이 코끼리답게 지혜롭고 현명하게 행동하지 못하고 갈팡질팡하는 것을 꾸짖는다.</div><div>③ 노든이 코뿔소로서의 정체성을 찾을 수 있도록 바깥세상으로 나아가는 선택을 응원한다.</div><div>④ 노든에게 바깥세상은 위험하니 테스트를 포기하고 고아원에 머무르라고 설득한다.</div><div>⑤ 노든이 떠나는 것을 슬퍼하며 코끼리 무리의 일원으로 계속 남아 달라고 붙잡는다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">10.</b> 다음은 시나리오 「그린 북」의 일부와 그 장면이다. 이 장면에 나타난 갈등에 대한 설명으로 가장 적절한 것은? <span class="pt">(4점)</span></div>
+  <div class="pic"><img src="img/kor/greenbook.jpg" style="width:100%"></div><div class="bx "><p>[앞부분 이야기] 1962년 미국 남부 순회공연의 마지막 날, 흑인 피아니스트 돈 셜리는 공연이 열리는 클럽의 식당에서 저녁을 먹으려다 직원에게 막힌다.</p><p><b>돈 셜리</b> 양해 못 하겠습니다. 45분 후에 저 무대에 올라 공연은 할 수 있지만 식사는 안 된다고요?</p><p><b>지배인</b> 죄송합니다. 오랜 전통이라서요. 클럽 규칙이에요.</p></div><div class="opts c1"><div>① 돈 셜리의 마음속에서 두 가지 욕구가 충돌하는 내적 갈등이다.</div><div>② 돈 셜리와 토니 사이의 성격 차이에서 비롯된 갈등이다.</div><div>③ 지배인이 개인적으로 돈 셜리를 싫어해서 생긴 갈등이다.</div><div>④ 태풍이나 홍수 같은 자연환경과 인물 사이의 갈등이다.</div><div>⑤ 인종 분리 정책이라는 당시 사회 제도에서 비롯된 인물과 사회의 갈등이다.</div></div>
+</div>
+<div class="q pass"><div class="ptitle">[11~14] 다음 토의를 읽고 물음에 답하시오.</div><div class="psg first"><p class=""><b>사회자</b> 안녕하세요? 우리 반이 학교 대표로 이번 마을 축제에 참여하게 되어 "마을 축제에서 무엇을 운영할까?"라는 주제로 지난주에 모둠별로 1차 토의를 진행했습니다. 오늘은 각 모둠의 대표인 윤이음, 김나영, 한재현 학생이 토의자가 되어 2차 토의를 진행하고자 합니다. 토의는 세 분의 토의자가 차례로 의견을 발표하고, 토의자끼리 의견을 교환한 뒤, 청중의 질문을 받고 토의자가 답하는 순서로 진행하겠습니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>윤이음</b> 저희 모둠에서는 "20××년, 지금 우리 학교는?"이라는 제목으로 사진전을 열자는 의견이 나왔습니다. 어른들께는 과거 학창 시절의 추억을 떠올리는 기회를 만들어 드리고, 어린아이들에게는 앞으로 다니게 될 학교의 이모저모를 미리 살펴보는 시간을 만들어 줄 수 있을 것입니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>김나영</b> 마을 축제에는 우리 지역의 많은 사람이 참여하므로 모두가 함께 즐길 수 있는 것을 해야 한다고 생각합니다. 그래서 저희 모둠은 아이들과 어른들이 모두 좋아하는 음식인 떡볶이를 만들어 팔 것을 제안합니다. 또한 수익금이 생기면 이웃 돕기 성금으로 기부할 수도 있어 재미와 보람을 모두 얻을 수 있을 것입니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>한재현</b> 저희 모둠에서는 풍선 아트 체험장을 운영할 것을 제안합니다. 우리 반에는 동아리 시간에 풍선 아트를 배운 학생들이 있습니다. 또한 풍선 아트용 풍선은 별로 비싸지 않아 비용도 적게 들 것입니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>김나영</b> 한재현 학생에게 질문드리겠습니다. 풍선 아트를 배운 학생들이 있지만 그 수가 매우 적은 것으로 알고 있습니다. 풍선 아트를 배우지 않은 학생들은 맡을 만한 일이 적어 체험장 운영에 적극적으로 참여하지 않으리라 생각합니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>한재현</b> 배운 학생은 세 명이지만, 배운 학생의 말에 따르면 풍선 아트를 배우는 것이 그리 어렵지 않다고 합니다. 미리 배우면 많은 학생이 참여할 수 있을 것입니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>윤이음</b> 김나영 학생이 제안한 떡볶이 판매는 매우 재미있고, 인기도 많을 듯합니다. 하지만 우리가 음식을 만드는 것이 쉽지는 않을 것 같습니다. 그리고 재료 구입 비용이 적지 않을 것입니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>김나영</b> (고개를 끄덕이며) 윤이음 학생의 말씀처럼 어려운 점이 많다는 것은 인정합니다. 그러나 이런 점들을 함께 해결해 가면 잘 운영하면 멋진 일이 되지 않을까요? 인터넷에서 떡볶이 만드는 방법을 검색하면 관련 동영상이 많이 뜹니다. 동영상을 보고…….</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>한재현</b> ㉠<span class="u">(말을 끊고 못마땅한 표정으로) 작년 축제에서처럼 이번에도 어른들이 운영하는 먹거리 장터에서 떡볶이를 팔 텐데, 우리가 만드는 떡볶이가 그것보다 맛있을 거라고 생각하세요?</span> 그리고 계속 불을 사용해야 하기 때문에 위험합니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>사회자</b> ㉡<span class="u">다른 토의자의 의견을 끝까지 듣고 자신의 의견을 말씀해 주시기 바랍니다.</span> 김나영 학생, 이어서 계속 발언해 주십시오.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>김나영</b> 그런데 한재현 학생의 의견을 들어 보니 저희가 안전 문제를 고려하지 못했네요. 그렇다면 떡볶이 판매보다 안전하면서도 우리 학교를 소개할 수 있는 사진전을 여는 것도 좋을 것 같습니다.</p></div></div>
+<div class="q pass"><div class="psg"><p class=""><b>윤이음</b> 그렇다면 주민들의 관심을 끌 수 있는 풍선 아트 체험장을 운영하면서, 기다리는 분들이 관람할 수 있도록 체험장 한쪽에 사진들을 전시하면 어떨까요?</p></div></div>
+<div class="q pass"><div class="psg last"><p class=""><b>사회자</b> 네, 의견 잘 들었습니다. ㉢<span class="u">마을 축제에서 풍선 아트 체험장과 학교 소개 사진전을 함께 운영하는 것으로 의견이 모아지는 것 같습니다.</span> 그러면 지금까지 토의한 내용과 관련하여 청중의 질문이나 의견을 들어 보겠습니다.</p></div></div>
+<div class="q">
+  <div class="stem"><b class="no">11.</b> 윗글의 토의 진행 순서로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 토의자 의견 발표 → 청중 질문 → 토의자 간 의견 교환 → 결정</div><div>② 사회자의 주제 안내 → 토의자 의견 발표 → 토의자 간 의견 교환 → 청중 질문</div><div>③ 청중 질문 → 사회자의 주제 안내 → 토의자 의견 발표 → 결정</div><div>④ 토의자 간 의견 교환 → 사회자의 주제 안내 → 토의자 의견 발표 → 청중 질문</div><div>⑤ 사회자의 주제 안내 → 청중 질문 → 토의자 의견 발표 → 토의자 간 의견 교환</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">12.</b> ㉠과 ㉡에 대한 설명으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① ㉠은 타당한 근거 없이 주제와 관련 없는 말만 하고 있다.</div><div>② ㉠은 상대의 말을 끊고 못마땅한 태도를 보여 상대의 의견을 존중하지 않았고, ㉡은 이를 바로잡아 토의가 원만하게 진행되도록 하고 있다.</div><div>③ ㉡은 사회자가 자신의 의견을 제시하여 결론을 이끌고 있다.</div><div>④ ㉠과 ㉡은 모두 청중의 질문에 대한 답변이다.</div><div>⑤ ㉡은 토의 내용을 처음부터 다시 요약하고 있다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">13.</b> ㉢에 드러난 사회자의 역할로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 토의 주제를 명확하게 알려 준다.</div><div>② 토의자를 소개한다.</div><div>③ 토의 내용을 중간중간 요약하여 정리한다.</div><div>④ 토의자의 의견에 반대 의견을 제시한다.</div><div>⑤ 청중에게 토의 참여를 금지한다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">14.</b> 윗글의 토의 과정에 대한 이해로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 김나영은 다른 토의자의 의견을 듣고 자신의 의견을 바꾸었다.</p><p>ㄴ. 한재현은 풍선 아트 체험장 운영에 대한 질문에 근거를 들어 답하였다.</p><p>ㄷ. 윤이음은 두 가지 의견을 함께 실천할 수 있는 대안을 제시하였다.</p><p>ㄹ. 토의 결과 떡볶이 판매와 사진전 개최를 함께 운영하기로 하였다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄴ, ㄹ</div><div>③ ㄱ, ㄴ, ㄷ</div><div>④ ㄱ, ㄷ, ㄹ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q pass"><div class="ptitle">[15~18] 다음 글을 읽고 물음에 답하시오.</div><div class="psg first"><p class="">(가) 1997년 찰스 무어는 미국 로스앤젤레스에서 하와이까지 태평양을 가로지르는 요트 경기를 마치고 캘리포니아주로 돌아가는 길이었다. 바다 멀리서 호릿한 섬이 떠올랐다. 지도를 펼쳐 보니, 섬이 있을 만한 위치가 아니었다. 놀랍게도 그가 발견한 것은 거대한 플라스틱 쓰레기 섬이었다. 그는 훗날 자신의 글에서 당시 상황을 이렇게 회상했다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">"가장 원시적인 바다에서 내가 목격한 것은 원시적인 섬이 아니었다. 내 눈을 의심할 수밖에 없었다. 섬은 플라스틱 더미로 이루어져 있었다. 그 일주일 동안 아열대의 바다를 건너면서, 나는 수많은 페트병과 뚜껑, 포장재 등의 플라스틱 쓰레기를 헤쳐 나가야 했다."</p></div></div>
+<div class="q pass"><div class="psg"><p class="">(나) 쓰레기 섬은 북태평양 환류 주변을 떠다닌다. 육지에서 버려진 플라스틱 쓰레기는 빠른 해류를 타고 돌다가 안쪽으로 빠지면서 모이기 시작한다. 과학자들은 그 일부를 조사하여 쓰레기 섬의 크기가 160만 제곱킬로미터에 이른다고 추정하였다. 한반도 면적의 7배에 이르는 어마어마한 크기이다.<div class="pic"><img src="img/kor/map.jpg" style="width:70%"></div></p></div></div>
+<div class="q pass"><div class="psg"><p class="">(다) 플라스틱은 우리 생활의 구석구석까지 들어와 자리 잡았다. 플라스틱 덕분에 인간의 생활은 훨씬 더 편리해지고 풍요로워졌다. 그런데 좋은 점이 있으면 나쁜 점도 있는 법이다. 플라스틱 쓰레기가 ㉠<span class="u">골칫거리</span>로 떠올랐다. 1950년에 150만 톤이었던 플라스틱 생산량은 2020년에는 3억 7,550만 톤으로, 70년 동안 무려 250배로 늘었다. 플라스틱은 자연에 존재하지 않았던 물질인데 세상에 나온 지 100년 만에 ㉡<span class="u">지구를 점령했다</span>. 바다로 흘러든 ㉢<span class="u">육지의 배설물</span>은 계속해서 바다에 쌓여 왔다.</p></div></div>
+<div class="q pass"><div class="psg"><p class="">(라) 2015년 코스타리카의 해안가에서 코에 플라스틱 빨대가 박힌 바다거북이 발견됐다. 그런데 더 충격적인 일은 플라스틱이 생태계 먹이 사슬의 일부가 되었다는 사실이다. 죽은 고래와 바닷새의 위장에 쌓여 있는 플라스틱이 그 증거이다. 바다로 흘러들어 온 플라스틱 쓰레기는 미세 플라스틱이 되기도 한다. 한국인이 많이 먹는 음식인 젓갈이나 미역, 다시마, 김에서도 미세 플라스틱이 검출됐다. 심지어 인간의 혈액과 모유에서도 발견되었다.</p></div></div>
+<div class="q pass"><div class="psg last"><p class="">(마) 어떻게 해야 할까? 플라스틱은 이미 인간의 삶에 깊고 넓게 들어와 있으므로 플라스틱을 아예 쓰지 않을 수는 없다. 실행할 수 있는 현실적인 방안은 플라스틱을 적게 사용하고 재활용하는 것이다. 이렇게 함으로써 플라스틱 쓰레기를 줄이고, 어쩔 수 없이 생긴 플라스틱 쓰레기는 잘 관리하여 바다로 유입되는 것을 힘써 막아야 한다. 바다로 흘러들어 와 쌓이는 육지의 배설물은 언젠가는 인간을 비롯한 생명체의 몸속으로 들어와 해를 입힐 것이기 때문이다.</p><div class="src">- 남종영, 「육지의 배설물은 바다에 쌓인다」</div></div></div>
+<div class="q">
+  <div class="stem"><b class="no">15.</b> (가)에서 글쓴이가 찰스 무어의 글을 인용한 의도로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 요트 경기의 즐거움과 태평양 항해의 낭만을 독자에게 소개하기 위해</div><div>② 섬의 위치를 정확하게 표시하지 못한 지도의 부정확함을 비판하기 위해</div><div>③ 하와이와 캘리포니아 사이 바다의 아름다운 자연환경을 묘사하기 위해</div><div>④ 찰스 무어의 뛰어난 항해 실력과 용기를 칭찬하기 위해</div><div>⑤ 쓰레기 섬을 처음 발견한 사람의 충격을 생생하게 전달하여 문제의 심각성을 실감하게 하기 위해</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">16.</b> ㉠~㉢을 통해 추론할 수 있는 글쓴이의 관점으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 플라스틱 쓰레기를 처리하기 힘든 심각한 문제로 부정적으로 바라본다.</div><div>② 플라스틱이 생활을 편리하게 하므로 긍정적으로 바라본다.</div><div>③ 플라스틱의 장점과 단점이 같다고 중립적으로 바라본다.</div><div>④ 과학 기술로 곧 해결될 문제라고 낙관적으로 바라본다.</div><div>⑤ 개인과 관계없는 국가의 문제로 바라본다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">17.</b> (라)에서 여러 생물의 사례를 제시한 의도로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 바다 생물의 다양한 생김새를 소개하기 위해</div><div>② 플라스틱 빨대의 편리함을 강조하기 위해</div><div>③ 미세 플라스틱이 인간에게는 해롭지 않다는 것을 증명하기 위해</div><div>④ 플라스틱 쓰레기의 피해가 먹이 사슬을 거쳐 인간에게까지 돌아온다는 것을 보여 주기 위해</div><div>⑤ 코스타리카의 관광 산업을 비판하기 위해</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">18.</b> 윗글에 대한 이해로 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="opts c1"><div>① (나)의 그림은 쓰레기 섬이 생기는 원리와 위치를 독자가 이해하도록 돕는다.</div><div>② (다)의 수치는 플라스틱 생산량이 급격히 늘었음을 객관적으로 보여 준다.</div><div>③ 글쓴이는 플라스틱을 적게 사용하고 재활용하는 것을 현실적인 방안으로 제시한다.</div><div>④ 글쓴이는 플라스틱 사용을 법으로 완전히 금지해야 한다고 주장한다.</div><div>⑤ 글쓴이는 쓰레기가 바다로 흘러드는 것을 막아야 한다고 본다.</div></div>
+</div>
+<div class="q pass"><div class="ptitle">[19~20] 다음은 만화 「동메달이 행복한 까닭은?」의 일부이다. 물음에 답하시오.</div><div class="psg first"><p class=""><div class="pic"><img src="img/kor/comic1.svg" style="width:100%"></div></p></div></div>
+<div class="q pass"><div class="psg"><p class=""><div class="pic"><img src="img/kor/comic2.svg" style="width:100%"></div></p></div></div>
+<div class="q pass"><div class="psg"><p class=""><div class="pic"><img src="img/kor/comic3.svg" style="width:100%"></div></p></div></div>
+<div class="q pass"><div class="psg"><p class=""><div class="pic"><img src="img/kor/comic4.svg" style="width:100%"></div></p></div></div>
+<div class="q pass"><div class="psg"><p class=""><div class="pic"><img src="img/kor/comic5.svg" style="width:100%"></div></p></div></div>
+<div class="q pass"><div class="psg last"><p class=""><div class="pic"><img src="img/kor/comic6.svg" style="width:100%"></div></p></div></div>
+<div class="q">
+  <div class="stem"><b class="no">19.</b> 첫 번째 장면에서 성재가 "지금 몇 시야?"라고 말한 의도로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 약속 시간에 늦은 은주를 탓하려고</div><div>② 은주에게 시계를 빌리고 싶어서</div><div>③ 정확한 시각을 알고 싶어서</div><div>④ 도서관이 문을 여는 시각을 확인하려고</div><div>⑤ 은주와 함께 공부하자고 제안하려고</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">20.</b> 윗글을 바탕으로 ‘추론하며 듣기’에 대해 이해한 내용으로 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="opts c1"><div>① 강연자는 결과보다 결과를 대하는 태도가 행복에 더 크게 작용한다는 것을 전하려 한다.</div><div>② 성재는 강연 제목과 강연의 흐름을 근거로 강연자의 의도를 추론하였다.</div><div>③ 은주는 처음에 강연이 단순히 사실을 전달하는 것이라고 생각하였다.</div><div>④ 화자의 의도를 추론하려면 대화의 상황과 맥락을 함께 고려해야 한다.</div><div>⑤ 추론하며 들으려면 화자의 말을 표면적인 의미로만 받아들여야 한다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">21.</b> 다음은 버스 정류장에 붙은 공익 광고이다. 이 광고의 의도를 추론한 내용으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="pic"><img src="img/kor/ad.jpg" style="width:62%"></div><div class="opts c1"><div>① 생수를 많이 마셔 건강을 지키자고 권한다.</div><div>② 비싼 생수 대신 수돗물을 마시자고 권한다.</div><div>③ 새로 나온 생수 제품의 맛을 홍보한다.</div><div>④ 생수병을 모아 오면 상품을 준다는 행사를 알린다.</div><div>⑤ 플라스틱 병에서 나온 미세 플라스틱을 함께 마시고 있을 수 있음을 경고한다.</div></div>
+</div>
+<div class="q pass"><div class="ptitle">[22~26] 다음 (가)와 (나)를 읽고 물음에 답하시오.</div><div class="psg first last"><p class=""><b>(가)</b><br><span class="poem">누구냐구요?<br>이젠 얼굴도 잊으셨네요.<br>강물 냇물 놔두고<br>논과 연못에 살았던 송사리예요.<br>송사리 끓듯 한다는 속담도 있잖아요<br>예전엔 그렇게 흔했었죠.<br>송사리 낚시나 그물은 없었어요<br>우릴 해칠 마음이 없었거든요.<br>아이들이 간혹<br>물 담은 고무신이나 어항에 넣긴 했지만<br>이내 놓아줬어요.<br>원래가 친했으니까요.<br>그런데 논에는 농약 연못엔 폐수<br>이젠 살 데가 없네요.<br>그래서 꿈에 나타나 부탁하는 거예요.<br>어디 살 만한 데가 있으면<br>꼭 좀 알려 주세요.</span><span class="srcin">- 이문구, 「송사리」</span><b>(나)</b><br><span class="poem">세상에 ⓐ<span class="u">그대</span>를 만난 건<br>내게 ⓑ<span class="u">얼마나</span> 행운이었나!<br>그대 생각 내게 머뭄으로<br>나의 세상은 빛나는 세상이 됩니다<br>ⓒ<span class="u">많고</span> 많은 세상 사람 중에 그대 한 사람<br>이제는 내 가슴에 별이 된 사람<br>그대 생각 내게 머뭄으로<br>나의 세상은 따뜻한 세상이 됩니다<br><br>어제ⓓ<span class="u">도</span> 들길을 걸으며<br>당신을 생각했습니다.<br>오늘도 들길을 걸으며<br>당신을 생각합니다.<br>어제 내 발에 밟힌 풀잎이<br>오늘 ⓔ<span class="u">새롭게</span> 일어나<br>바람에 떨고 있는 걸<br>나는 봅니다.<br>나도 당신 발에 밟히면서<br>새로워지는 풀잎이면 합니다<br>당신 앞에 여리게 떠는<br>풀잎이면 합니다.</span></p><div class="src">- 나태주, 「들길을 걸으며」</div></div></div>
+<div class="q">
+  <div class="stem"><b class="no">22.</b> (가)의 말하는 이와 그 상황에 대한 설명으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 아이들이 송사리를 놓아준 일을 후회하고 있다.</div><div>② 송사리가 농약과 폐수로 살 곳을 잃은 처지를 호소한다.</div><div>③ 송사리가 낚시와 그물 때문에 줄어든 동료를 원망한다.</div><div>④ 송사리가 강물로 이사하게 되어 기뻐하고 있다.</div><div>⑤ 시인이 송사리를 잡던 어린 시절을 그리워한다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">23.</b> (가)에 담긴 시인의 의도로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 송사리의 처지를 안타깝게 여긴다.</p><p>ㄴ. 송사리의 입을 빌려 환경 오염을 비판한다.</p><p>ㄷ. ‘원래가 친했’다는 말로 사람의 가해를 고발한다.</p><p>ㄹ. ‘꼭 좀 알려 주’라는 부탁에 간절한 바람을 담았다.</p><p>ㅁ. ‘송사리 끓듯 한’다는 속담으로 미래의 번성을 예고한다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄴ, ㄷ</div><div>③ ㄱ, ㄴ, ㄹ</div><div>④ ㄱ, ㄷ, ㅁ</div><div>⑤ ㄴ, ㄹ, ㅁ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">24.</b> (나)에 대한 이해와 감상으로 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="opts c1"><div>① 말하는 이는 ‘그대’와의 만남을 행운으로 여긴다.</div><div>② ‘빛나는 세상’은 달라진 말하는 이의 세상이다.</div><div>③ 감탄의 표현으로 그대를 만난 기쁨을 드러낸다.</div><div>④ ‘밟힌 풀잎’은 그대를 떠나려는 마음을 상징한다.</div><div>⑤ 자연물을 활용하여 말하는 이의 마음을 드러낸다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">25.</b> (나)의 ⓐ~ⓔ의 품사에 대해 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. ⓐ는 대명사로, 체언에 속한다.</p><p>ㄴ. ⓑ는 ‘행운이었나’를 꾸며 주는 부사이다.</p><p>ㄷ. ⓒ와 ⓔ는 형태가 변하지 않는 단어이다.</p><p>ㄹ. ⓔ는 어간 ‘새롭’에 어미가 결합한 형용사이다.</p><p>ㅁ. ⓓ는 ‘역시’의 뜻을 더하는 관계언이다.</p></div><div class="opts c2"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄴ, ㄹ, ㅁ</div><div>③ ㄴ, ㄷ, ㅁ</div><div>④ ㄱ, ㄷ, ㄹ</div><div>⑤ ㄷ, ㄹ, ㅁ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">26.</b> &lt;보기&gt;를 바탕으로 (가)와 (나)를 감상한 내용으로 적절하지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p class="pr">(가)와 (나)는 자연물을 매개로 말하는 이의 처지와 바람을 드러낸다. (가)는 송사리를 말하는 이로 내세워 독자에게 직접 말을 건네며, 지난날과 오늘날의 처지를 대비하여 환경 오염이라는 현실 문제를 비판한다. 반면 (나)는 말하는 이가 자신이 바라본 자연물에 스스로를 빗대어 사랑하는 이를 향한 소망을 드러내는데, 시련을 뜻하는 밟힘이 오히려 새로워짐의 계기가 된다는 점에서 역설적이다.</p></div><div class="opts c1"><div>① (가)에서 송사리가 ‘누구냐구’ 묻고 ‘꼭 좀 알려 주’라고 부탁하는 데서, 독자에게 직접 말을 건네는 방식을 확인할 수 있군.</div><div>② (가)에서 ‘예전엔 그렇게 흔했’던 송사리가 ‘이젠 살 데가 없’다고 하는 데서, 처지의 대비를 통한 현실 비판을 확인할 수 있군.</div><div>③ (나)에서 ‘어제 내 발에 밟힌 풀잎’을 바라보는 데서, ‘당신’에게 상처를 준 지난날을 반성하는 태도를 확인할 수 있군.</div><div>④ (나)에서 ‘당신 발에 밟히면서’도 ‘새로워지는 풀잎’이기를 바라는 데서, 시련을 새로워짐의 계기로 여기는 역설을 확인할 수 있군.</div><div>⑤ (나)에서 ‘바람에 떨고 있는’ 풀잎을 ‘나는 봅’니다라고 한 뒤 자신을 빗대는 데서, (가)와 다른 자연물 활용 방식을 확인할 수 있군.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">27.</b> 품사의 분류 기준과 그에 따른 분류를 바르게 짝지은 것은? <span class="pt">(3점)</span></div>
+  <table class="ot"><th></th><th>기준</th><th>분류</th><tr><td>①</td><td>형태</td><td>체언, 수식언, 독립언, 관계언, 용언</td></tr><tr><td>②</td><td>기능</td><td>형태가 변하는 단어, 변하지 않는 단어</td></tr><tr><td>③</td><td>의미</td><td>명사, 대명사, 수사, 동사, 형용사 등</td></tr><tr><td>④</td><td>형태</td><td>명사, 동사, 조사</td></tr><tr><td>⑤</td><td>의미</td><td>체언, 용언</td></tr></table>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">28.</b> 밑줄 친 단어의 품사가 나머지 넷과 <span class="u"><b>다른</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c2"><div>① <span class="u">새</span> 운동화를 신었다.</div><div>② <span class="u">헌</span> 책을 정리했다.</div><div>③ <span class="u">모든</span> 학생이 모였다.</div><div>④ <span class="u">예쁜</span> 꽃이 피었다.</div><div>⑤ <span class="u">온갖</span> 꽃이 피었다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">29.</b> 다음 그림 속 문장의 밑줄 친 ‘보다’의 품사를 바르게 짝지은 것은? <span class="pt">(4점)</span></div>
+  <div class="pic"><img src="img/kor/boda.jpg" style="width:60%"></div><div class="bx "><p>(가) 경미가 유미보다 크다. (나) 하늘을 보다. (다) 보다 높게, 보다 빠르게!</p></div><table class="ot"><th></th><th>(가)</th><th>(나)</th><th>(다)</th><tr><td>①</td><td>조사</td><td>동사</td><td>부사</td></tr><tr><td>②</td><td>부사</td><td>동사</td><td>조사</td></tr><tr><td>③</td><td>조사</td><td>부사</td><td>동사</td></tr><tr><td>④</td><td>동사</td><td>조사</td><td>부사</td></tr><tr><td>⑤</td><td>조사</td><td>형용사</td><td>부사</td></tr></table>
+</div>
+
+<div class="end" id="endblock">
+  <div class="msg">《 검은색 컴퓨터용 사인펜 이외의 펜으로<br>흔적을 남겨도 마킹한 것으로 판독될 수 있으므로,<br>정답 이외의 번호에 조금이라도 흔적이 남았다면<br>반드시 수정테이프로 정정하기 바랍니다. 》</div>
+  <div class="bye">수고하셨습니다.<br>끝.</div>
+</div>
+
+</div><!-- /pool -->
+
+<div id="pages"></div>
+
+<script>
+const SCHOOL = '목일중학교';
+const FILL = 1.0;   // 단 하나를 이 비율 이상 채우지 않음
+const MAXQ = 4;      // 한 단에 최대 문항 수
+function makePage(n, first) {
+  const p = document.createElement('div');
+  p.className = 'page' + (first ? ' first' : '');
+  let head = '';
+  if (first) {
+    head = `
+    <div class="head">
+      <div class="grade">1학년</div>
+      <div class="title">국어과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>
+      <div class="date">2&thinsp;0&thinsp;2&thinsp;6&thinsp;년<br>10월&nbsp;&nbsp;5일(월)&nbsp;&nbsp;&nbsp;1교시</div>
+      <div class="code">과목코드(01)</div>
+    </div>`;
+  }
+  p.innerHTML = `<div class="frame">${head}<div class="body"><div class="col l"></div><div class="col r"></div></div>
+    <div class="cont"></div></div>
+    <div class="foot">
+      <span class="l1">(1)학년 (국어)과목</span><span class="l1r">( ${n} 쪽/총 <span class="tot"></span> 쪽중)</span>
+      <div class="l2">본 시험문제의 저작권은 ${SCHOOL}에 있습니다.</div></div>`;
+  document.getElementById('pages').appendChild(p);
+  return p;
+}
+function layout() {
+  const blocks = Array.from(document.querySelectorAll('#pool > .q, #pool > .end'));
+  let n = 1, page = makePage(n, true), cols = page.querySelectorAll('.col'), ci = 0;
+  const intro = document.createElement('div');
+  intro.innerHTML = `<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr><tr><td rowspan="2">선택형</td><td>16문항x3점</td><td>48점</td></tr><tr><td>13문항x4점</td><td>52점</td></tr><tr><td>계</td><td>29문항</td><td>100점</td></tr></table>
+    <div class="notice">※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.</div>`;
+  cols[0].appendChild(intro);
+  const used = (col) => col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+  const fitsBase = (col) => used(col) <= col.clientHeight * FILL && col.querySelectorAll('.q:not(.pass)').length <= MAXQ;
+  const fits = (col) => fitsBase(col);
+
+  const splitPass = (b, col) => {
+    const p = b.querySelector('.psg > p'); if (!p || b.querySelector('img')) return null;
+    const html = p.innerHTML;
+    const toks = html.split(/(<[^>]+>|\s+)/).filter(t => t !== '');
+    const build = (k) => {
+      const open = [];
+      for (let i = 0; i < k; i++) { const t = toks[i];
+        if (/^<span/.test(t)) open.push(t); else if (/^<\/span/.test(t)) open.pop(); }
+      return [toks.slice(0, k).join('') + '</span>'.repeat(open.length), open.join('') + toks.slice(k).join('')];
+    };
+    let lo = 0, hi = toks.length - 1, best = 0;
+    while (lo <= hi) { const mid = (lo + hi) >> 1; p.innerHTML = build(mid)[0]; if (fits(col)) { best = mid; lo = mid + 1; } else hi = mid - 1; }
+    while (best > 0 && /^\s+$|^<br>$/.test(toks[best - 1]) === false && !/^\s+$/.test(toks[best] || ' ')) best--;
+    const isPoem = html.includes('class="poem"'); if (isPoem) best = 0;
+    const hasBr = html.includes('<br>'); if (hasBr && !isPoem) { while (best > 0 && toks[best - 1] !== '<br>') best--; }
+    if (best >= 4) { p.innerHTML = build(best)[0]; const lh = parseFloat(getComputedStyle(p).lineHeight) || 20; if (p.getBoundingClientRect().height < lh * 2.8) best = 0; }
+    if (best < 4) { p.innerHTML = html; return null; }
+    const [a, bpart] = build(best);
+    p.innerHTML = a; p.style.textAlignLast = (isPoem || hasBr) ? '' : 'justify';
+    const b2 = b.cloneNode(true);
+    const t2 = b2.querySelector('.ptitle'); if (t2) t2.remove();
+    const ps2 = b2.querySelector('.psg'); ps2.classList.remove('first');
+    const p2 = ps2.querySelector('p'); p2.innerHTML = bpart.replace(/^(\s|<br>)+/, ''); p2.className = 'pcont'; p2.style.textAlignLast = '';
+    const ps1 = b.querySelector('.psg'); ps1.classList.remove('last'); const sx = ps1.querySelector('.src'); if (sx) sx.remove();
+    return b2;
+  };
+  for (let bi = 0; bi < blocks.length; bi++) { const b = blocks[bi];
+    if (b.classList.contains('end') && ci === 0) ci = 1;
+    while (true) {
+      const col = cols[ci];
+      col.appendChild(b);
+      const empty = col.querySelectorAll('.q, .end').length === 1 && !(n === 1 && ci === 0);
+      if (fits(col) || empty) break;
+      if (b.classList.contains('pass')) { const b2 = splitPass(b, col); if (b2) { blocks.splice(bi + 1, 0, b2); break; } }
+      col.removeChild(b);
+      if (ci === 0) ci = 1; else { n += 1; page = makePage(n, false); cols = page.querySelectorAll('.col'); ci = 0; }
+    }
+  }
+  const pages = document.querySelectorAll('.page');
+  pages.forEach((p, i) => {
+    p.querySelector('.tot').textContent = pages.length;
+    if (i < pages.length - 1) p.querySelector('.cont').textContent = (i % 2 === 0) ? '뒷면 계속' : '다음 장 계속';
+  });
+  document.querySelectorAll('.col').forEach(col => {
+    const qs = Array.from(col.querySelectorAll(':scope > .q, :scope > .end'));
+    if (!qs.length || !col.lastElementChild) return;
+    const used = col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+    const free = col.clientHeight - used;
+    const lp = col.lastElementChild; const rest = (lp.classList.contains('pass') && !lp.querySelector('.last')) ? [] : qs.filter(q => (q.classList.contains('end') || (q.classList.contains('q') && !q.classList.contains('pass')) || (q.classList.contains('pass') && q.querySelector('.ptitle'))) && q.previousElementSibling);
+    if (!rest.length) return;
+    const g = Math.max(0, free * 0.97 / rest.length);
+    rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
+  });
+  document.getElementById('pool').remove();
+  document.body.setAttribute('data-pages', pages.length);
+}
+document.fonts.load('10pt "Nanum Myeongjo"').then(() => document.fonts.ready).then(() => Promise.all(Array.from(document.images).map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))).then(() => { layout(); document.body.setAttribute('data-ready', '1'); });
+</script>
+</body>
+</html>

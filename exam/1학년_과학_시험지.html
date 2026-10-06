@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>1학년 과학 지필평가</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body { font-family: 'Gulim', '굴림', sans-serif; font-size: 9.8pt; line-height: 1.6; }
+
+  .page { width: 210mm; height: 297mm; padding: 24.8mm 20mm 5mm; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .frame { flex: 1; display: flex; flex-direction: column; border: 1.6px solid #000; border-right-width: 2.2px; min-height: 0; }
+  .page.first .frame { border-top: none; }
+  .page:not(.first) .frame { margin-top: -10mm; }
+  .body { flex: 1; display: flex; position: relative; min-height: 0; padding-top: 4mm; }
+  .page.first .body { padding-top: 0; }
+  .body::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 2mm; border-left: 1px solid #000; }
+  .col { width: 50%; height: 100%; overflow: hidden; }
+  .col.l { padding: 0 3.2mm 0 1.6mm; }
+  .col.r { padding: 0 3.2mm 0 3.2mm; }
+  .cont { text-align: right; font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.5pt; letter-spacing: 0.5px; padding: 0 2.4mm 1mm 0; height: 7mm; }
+  .foot { height: 12mm; position: relative; font-size: 10.5pt; font-family: 'NanumMyeongjo', serif; }
+  .foot .l1 { position: absolute; left: 0; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l1r { position: absolute; right: 2mm; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l2 { position: absolute; left: 0; right: 0; top: 5.6mm; text-align: center; font-size: 10.5pt; }
+
+  /* 머리글 */
+  .head { display: flex; border-top: 2.2px solid #000; border-bottom: 1.6px solid #000; height: 16mm; font-family: 'NanumMyeongjo', serif; }
+  .head .grade { width: 24.5mm; border-right: 1.4px solid #000; display: flex; align-items: center; justify-content: center; font-size: 22pt; padding-top: 0.6mm; }
+  .head .title { width: 70.5mm; border-right: 1.4px solid #000; text-align: center; font-size: 17.5pt; line-height: 1.12; padding-top: 0.6mm; }
+  .head .title .t2 { font-size: 19pt; }
+  .head .date { width: 44mm; border-right: 1.4px solid #000; text-align: center; font-weight: 700; font-size: 12pt; line-height: 1.5; padding-top: 1.6mm; }
+  .head .code { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 11.5pt; letter-spacing: 0.3px; }
+  table.score { border-collapse: collapse; width: 98%; margin: 1.2mm 0 0 0; font-size: 9.8pt; text-align: center; line-height: 1.2; font-family: 'Gulim', '굴림', sans-serif; }
+  table.score td { border: 1px solid #000; padding: 0 1mm; font-weight: 400; }
+  table.score tr:first-child td { background: #e8e8e8; letter-spacing: 2.5px; }
+  .notice { font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.6pt; margin: 6.5mm 0 8mm; padding-left: 5.2mm; text-indent: -5.2mm; line-height: 1.75; text-align: justify; letter-spacing: 0.6px; }
+
+  /* 문항 */
+  .col > .q { margin-bottom: 8mm; }
+  .stem { padding-left: 4.6mm; text-indent: -4.6mm; margin-bottom: 1.8mm; text-align: justify; }
+  .bx p, .bogi p, .opts.c1 > div, .tl > div { text-align: justify; }
+  .stem b.no { font-weight: 700; }
+  .pt { white-space: nowrap; }
+  .u { text-decoration: underline; text-underline-offset: 2px; }
+  .bx { border: 1px solid #000; padding: 1.4mm 2mm; margin: 1.6mm 0 2mm; }
+  .bx p { margin: 0; }
+  .bx p + p { margin-top: 0.6mm; }
+  .hang { padding-left: 6mm; text-indent: -6mm; }
+  .hang2 { padding-left: 4mm; text-indent: -4mm; }
+  .bogi { border: 1px solid #000; padding: 3.2mm 2.2mm 1.4mm; margin: 3.4mm 0 2mm; position: relative; }
+  .bogi::before { content: "<  보  기  >"; white-space: pre; position: absolute; top: -2.6mm; left: 50%; transform: translateX(-50%); background: #fff; padding: 0 1mm; font-size: 9.4pt; line-height: 1.1; }
+  .bogi p { margin: 0; padding-left: 4.3mm; text-indent: -4.3mm; }
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 0.4mm; padding-left: 1mm; }
+  .opts:not(.c1) > div { white-space: nowrap; }
+  .opts.c2 { grid-template-columns: repeat(2, 1fr); }
+  .opts.c1 { grid-template-columns: 1fr; }
+  .opts.c1 > div { padding-left: 4.8mm; text-indent: -4.8mm; }
+  .opts.c5 { grid-template-columns: repeat(5, 1fr); }
+  table.ot { border-collapse: collapse; width: 100%; }
+  table.ot td, table.ot th { padding: 0.1mm 0.6mm; text-align: center; font-weight: 400; }
+  table.ot th { text-decoration: underline; text-underline-offset: 2px; }
+  table.ot td:first-child { text-align: left; width: 6mm; }
+  table.dt { border-collapse: collapse; width: 100%; font-size: 9.2pt; margin: 1.4mm 0 2mm; }
+  table.dt th, table.dt td { border: 1px solid #000; padding: 0.6mm 1mm; text-align: center; line-height: 1.35; font-weight: 400; }
+  table.dt td.l { text-align: left; }
+  .say { display: flex; gap: 1.4mm; margin: 0.4mm 0; }
+  .say .who { flex: none; min-width: 6mm; white-space: nowrap; }
+  .say .what { flex: 1; }
+  .src { text-align: right; font-size: 8.6pt; margin-top: 0.4mm; }
+  .cap { text-align: center; font-size: 9.2pt; font-weight: 700; margin-bottom: 0.6mm; }
+  .tl { display: flex; gap: 1.4mm; margin: 1.4mm 0 2mm; }
+  .tl > div { flex: 1; border: 1px solid #000; padding: 1.2mm 1.5mm; font-size: 9.4pt; line-height: 1.45; }
+  .tl b { display: block; text-align: center; margin-bottom: 0.6mm; }
+  .end { text-align: center; font-weight: 700; margin-top: 12mm; line-height: 1.7; }
+  .end .msg { font-size: 9.6pt; }
+  .end .bye { margin-top: 10mm; font-size: 11.5pt; }
+  .pic { text-align: center; margin: 1.4mm 0 2mm; }
+  .pic img { width: 100%; max-height: 50mm; object-fit: contain; display: inline-block; }
+  svg text { font-family: 'Gulim', '굴림', sans-serif; }
+  #pool { position: absolute; left: -9999px; top: 0; width: 80mm; }
+
+  i.mv { font-family: 'Liberation Serif', 'Times New Roman', serif; font-size: 1.12em; }
+  .ov { text-decoration: overline; text-decoration-thickness: 1px; }
+  .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: 0.85em; line-height: 1.1; margin: 0 1px; }
+  .fr, .fr > span { text-indent: 0; padding-left: 0; }
+  .fr > span:first-child { border-bottom: 1px solid #000; padding: 0 2px; }
+  .q.sd .sdh { font-weight: 800; margin-bottom: 1mm; }
+  .page.first .col.r { padding-top: 4mm; }
+  .end { margin-top: 30mm !important; }
+  .abox { border: 1px solid #000; height: 34mm; margin-top: 2mm; }
+  table.dt { margin: 1.4mm 0 2mm; }
+  table.dt th, table.dt td { padding: 0.5mm 2mm; }
+</style>
+</head>
+<body>
+
+<div id="pool">
+<div class="q">
+  <div class="stem"><b class="no">1.</b> 확산의 예로 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 방 안에 뿌린 향수 냄새가 방 전체로 퍼진다.</div><div>② 물에 떨어뜨린 잉크가 물 전체로 퍼져 나간다.</div><div>③ 빵집 앞을 지나가면 빵 굽는 냄새가 난다.</div><div>④ 햇볕이 좋은 날 젖은 빨래가 마른다.</div><div>⑤ 전자 모기향을 켜 두면 모기향 성분이 방 안에 퍼진다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">2.</b> 물질의 세 가지 상태에 대한 설명으로 옳은 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 고체는 담는 그릇에 따라 모양이 변한다.</div><div>② 액체는 담는 그릇에 따라 부피가 변한다.</div><div>③ 기체는 입자 사이의 인력이 가장 강하다.</div><div>④ 액체는 기체보다 입자 사이의 거리가 멀다.</div><div>⑤ 기체는 담는 용기에 따라 모양과 부피가 모두 변한다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">3.</b> 고체가 액체로 변하는 상태 변화는? <span class="pt">(3점)</span></div>
+  <div class="opts"><div>① 융해</div><div>② 응고</div><div>③ 기화</div><div>④ 액화</div><div>⑤ 승화</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">4.</b> 힘을 화살표로 나타낼 때, 화살표의 길이가 나타내는 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c2"><div>① 힘의 방향</div><div>② 힘의 크기</div><div>③ 힘의 작용점</div><div>④ 물체의 질량</div><div>⑤ 물체의 속력</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">5.</b> &lt;보기&gt;에서 과학에서 말하는 힘이 작용한 경우의 개수는? <span class="pt">(3점)</span></div>
+  <div class="bogi"><p>ㄱ. 축구공을 발로 차서 멀리 보냈다.</p><p>ㄴ. 밤늦게까지 숙제를 하느라 힘이 들었다.</p><p>ㄷ. 찰흙을 손으로 눌러 모양을 바꾸었다.</p><p>ㄹ. 친구에게 힘내라고 응원하였다.</p><p>ㅁ. 굴러오는 공을 손으로 잡아 멈추게 하였다.</p></div><div class="opts"><div>① 1개</div><div>② 2개</div><div>③ 3개</div><div>④ 4개</div><div>⑤ 5개</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">6.</b> 지구에서 질량이 60 kg인 사람이 달에 갔을 때, 달에서 이 사람의 질량과 무게는? (단, 지구에서 질량이 1 kg인 물체의 무게는 9.8 N이고, 달의 중력은 지구의 <span class="fr"><span>1</span><span>6</span></span>이다.) <span class="pt">(3점)</span></div>
+  <table class="ot"><th></th><th>질량</th><th>무게</th><tr><td>①</td><td>10 kg</td><td>98 N</td></tr><tr><td>②</td><td>60 kg</td><td>98 N</td></tr><tr><td>③</td><td>60 kg</td><td>588 N</td></tr><tr><td>④</td><td>10 kg</td><td>588 N</td></tr><tr><td>⑤</td><td>60 kg</td><td>60 N</td></tr></table>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">7.</b> 증발에 대한 설명으로 옳은 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 액체 표면에서 입자가 기체로 변하는 현상이다.</div><div>② 액체 내부에서만 일어난다.</div><div>③ 온도가 낮을수록 잘 일어난다.</div><div>④ 바람이 불지 않을 때 더 잘 일어난다.</div><div>⑤ 입자가 운동하지 않을 때 일어난다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">8.</b> 그림은 물질의 세 가지 상태를 입자 모형으로 나타낸 것이다. (가) → (나)로 변하는 상태 변화의 예는? <span class="pt">(3점)</span></div>
+  <div class="pic"><svg viewBox="0 0 242 96" style="width:59.3mm" font-family="Gulim, sans-serif"><rect x="8.0" y="10.0" width="62.0" height="62.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="17.0" cy="19.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="17.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="17.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="17.0" cy="52.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="17.0" cy="63.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="28.0" cy="19.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="28.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="28.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="28.0" cy="52.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="28.0" cy="63.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="39.0" cy="19.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="39.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="39.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="39.0" cy="52.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="39.0" cy="63.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="50.0" cy="19.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="50.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="50.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="50.0" cy="52.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="50.0" cy="63.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="61.0" cy="19.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="61.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="61.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="61.0" cy="52.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="61.0" cy="63.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><rect x="90.0" y="10.0" width="62.0" height="62.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="99.0" cy="60.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="110.0" cy="66.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="121.0" cy="62.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="132.0" cy="67.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="143.0" cy="60.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="103.0" cy="50.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="115.0" cy="53.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="127.0" cy="50.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="139.0" cy="54.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="108.0" cy="40.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="122.0" cy="41.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="135.0" cy="40.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="144.0" cy="48.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="100.0" cy="70.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="130.0" cy="72.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><rect x="172.0" y="10.0" width="62.0" height="62.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="184.0" cy="24.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="217.0" cy="30.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="200.0" cy="48.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="224.0" cy="60.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="186.0" cy="64.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><circle cx="207.0" cy="22.0" r="4" fill="#555" stroke="#000" stroke-width="0.6"/><text x="39.0" y="88.0" font-size="12.8" text-anchor="middle">(가)</text><text x="121.0" y="88.0" font-size="12.8" text-anchor="middle">(나)</text><text x="203.0" y="88.0" font-size="12.8" text-anchor="middle">(다)</text></svg></div><div class="opts c1"><div>① 얼음이 녹아 물이 된다.</div><div>② 주전자의 물이 끓는다.</div><div>③ 드라이아이스의 크기가 작아진다.</div><div>④ 새벽에 풀잎에 이슬이 맺힌다.</div><div>⑤ 촛농이 흘러내리다가 굳는다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">9.</b> 물질의 상태가 변할 때 변하지 <span class="u"><b>않는</b></span> 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi"><p>ㄱ. 입자의 종류</p><p>ㄴ. 입자의 개수</p><p>ㄷ. 입자의 배열</p><p>ㄹ. 물질의 질량</p><p>ㅁ. 물질의 부피</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㅁ</div><div>③ ㄱ, ㄴ, ㄹ</div><div>④ ㄱ, ㄷ, ㄹ</div><div>⑤ ㄴ, ㄹ, ㅁ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">10.</b> 마찰력을 크게 하여 이용하는 예만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi"><p>ㄱ. 눈길에서 자동차 바퀴에 체인을 감는다.</p><p>ㄴ. 삐걱거리는 문의 경첩에 윤활유를 바른다.</p><p>ㄷ. 운동화 바닥에 울퉁불퉁한 홈을 만든다.</p><p>ㄹ. 볼링장 레인에 기름을 칠한다.</p><p>ㅁ. 얼어붙은 길에 모래를 뿌린다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ, ㅁ</div><div>③ ㄴ, ㄹ</div><div>④ ㄴ, ㄷ, ㄹ</div><div>⑤ ㄷ, ㄹ, ㅁ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">11.</b> 탄성력에 대한 설명으로 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 변형된 물체가 원래 모양으로 되돌아가려는 힘이다.</div><div>② 물체를 변형시킨 힘과 반대 방향으로 작용한다.</div><div>③ 물체가 많이 변형될수록 탄성력이 크다.</div><div>④ 활, 트램펄린, 장대높이뛰기 등에 이용된다.</div><div>⑤ 탄성력은 물체를 변형시킨 힘보다 항상 크다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">12.</b> 중력에 대한 설명으로 옳은 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1"><div>① 지구 중심 방향으로 작용한다.</div><div>② 물체의 질량이 클수록 작아진다.</div><div>③ 달에서는 작용하지 않는다.</div><div>④ 중력의 크기를 나타내는 단위는 kg이다.</div><div>⑤ 물체가 공중에 떠 있을 때만 작용한다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">13.</b> 열에너지를 <b>흡수</b>하는 상태 변화가 일어나는 현상만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 손에 든 아이스크림이 녹아 흘러내린다.</p><p>ㄴ. 추운 날 따뜻한 실내로 들어오면 안경이 뿌옇게 흐려진다.</p><p>ㄷ. 소나기가 내리기 전에는 날씨가 후텁지근하다.</p><p>ㄹ. 더운 날 개가 혀를 내밀고 헐떡거린다.</p><p>ㅁ. 휴대용 버너를 사용하고 난 뒤 부탄가스 통을 만져 보면 차갑다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄹ</div><div>③ ㄴ, ㅁ</div><div>④ ㄱ, ㄹ, ㅁ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">14.</b> 그림은 물질의 상태 변화를 나타낸 것이다. A~F에 해당하는 예로 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(4점)</span></div>
+  <div class="pic"><svg viewBox="0 0 260 148" style="width:63.7mm" font-family="Gulim, sans-serif"><line x1="74.0" y1="126.0" x2="186.0" y2="126.0" stroke="#000" stroke-width="1.4"/><polygon points="186.0,126.0 179.6,128.7 179.6,123.3"/><text x="130.0" y="140.6" font-size="12.2" text-anchor="middle">A</text><line x1="186.0" y1="114.0" x2="74.0" y2="114.0" stroke="#000" stroke-width="1.4"/><polygon points="74.0,114.0 80.4,111.3 80.4,116.7"/><text x="130.0" y="109.4" font-size="12.2" text-anchor="middle">B</text><line x1="199.1" y1="97.8" x2="150.0" y2="39.5" stroke="#000" stroke-width="1.4"/><polygon points="150.0,39.5 156.3,42.7 152.1,46.2"/><text x="181.9" y="67.5" font-size="12.2" text-anchor="middle">C</text><line x1="140.9" y1="47.2" x2="190.0" y2="105.5" stroke="#000" stroke-width="1.4"/><polygon points="190.0,105.5 183.7,102.3 187.9,98.8"/><text x="158.1" y="87.5" font-size="12.2" text-anchor="middle">D</text><line x1="110.0" y1="39.5" x2="60.9" y2="97.8" stroke="#000" stroke-width="1.4"/><polygon points="60.9,97.8 62.9,91.1 67.1,94.6"/><text x="78.1" y="67.5" font-size="12.2" text-anchor="middle">E</text><line x1="70.0" y1="105.5" x2="119.1" y2="47.2" stroke="#000" stroke-width="1.4"/><polygon points="119.1,47.2 117.1,53.9 112.9,50.4"/><text x="101.9" y="87.5" font-size="12.2" text-anchor="middle">F</text><circle cx="50" cy="120" r="19" fill="#eee" stroke="#000" stroke-width="1"/><text x="50.0" y="125.0" font-size="12.2" text-anchor="middle">고체</text><circle cx="210" cy="120" r="19" fill="#eee" stroke="#000" stroke-width="1"/><text x="210.0" y="125.0" font-size="12.2" text-anchor="middle">액체</text><circle cx="130" cy="25" r="19" fill="#eee" stroke="#000" stroke-width="1"/><text x="130.0" y="30.0" font-size="12.2" text-anchor="middle">기체</text></svg></div><div class="opts c1"><div>① A : 손에 든 아이스크림이 녹는다.</div><div>② B : 흘러내린 촛농이 굳는다.</div><div>③ C : 젖은 머리카락이 마른다.</div><div>④ D : 차가운 컵 표면에 물방울이 맺힌다.</div><div>⑤ E : 드라이아이스의 크기가 점점 작아진다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">15.</b> 표는 1기압에서 물질 A~C의 녹는점과 끓는점을 나타낸 것이다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(4점)</span></div>
+  <table class="dt"><tr><th>물질</th><th>녹는점(℃)</th><th>끓는점(℃)</th></tr><tr><td>A</td><td>−39</td><td>357</td></tr><tr><td>B</td><td>80</td><td>218</td></tr><tr><td>C</td><td>−117</td><td>78</td></tr></table><div class="bogi"><p>ㄱ. 25 ℃에서 B는 고체 상태이다.</p><p>ㄴ. 25 ℃에서 액체 상태인 물질은 1가지이다.</p><p>ㄷ. 100 ℃에서 C는 기체 상태이다.</p><p>ㄹ. 어는점이 가장 낮은 물질은 A이다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄴ, ㄹ</div><div>③ ㄱ, ㄷ</div><div>④ ㄷ, ㄹ</div><div>⑤ ㄱ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">16.</b> 그림과 같이 수평면 위의 물체에 세 힘이 동시에 작용할 때, 물체에 작용하는 합력의 크기와 방향은? <span class="pt">(4점)</span></div>
+  <div class="pic"><svg viewBox="0 0 260 82" style="width:63.7mm" font-family="Gulim, sans-serif"><line x1="10.0" y1="70.0" x2="250.0" y2="70.0" stroke="#000" stroke-width="1.4"/><rect x="100.0" y="35.0" width="60.0" height="35.0" fill="#ddd" stroke="#000" stroke-width="1.2"/><line x1="160.0" y1="46.0" x2="220.0" y2="46.0" stroke="#000" stroke-width="1.6"/><polygon points="220.0,46.0 213.6,48.7 213.6,43.3"/><text x="232.0" y="50.0" font-size="12.2" text-anchor="start">8 N</text><line x1="160.0" y1="60.0" x2="197.0" y2="60.0" stroke="#000" stroke-width="1.6"/><polygon points="197.0,60.0 190.6,62.7 190.6,57.3"/><text x="208.0" y="64.0" font-size="12.2" text-anchor="start">5 N</text><line x1="100.0" y1="52.0" x2="75.0" y2="52.0" stroke="#000" stroke-width="1.6"/><polygon points="75.0,52.0 81.4,49.3 81.4,54.7"/><text x="66.0" y="56.0" font-size="12.2" text-anchor="end">3 N</text></svg></div><div class="opts c2"><div>① 0 N</div><div>② 10 N, 오른쪽</div><div>③ 10 N, 왼쪽</div><div>④ 6 N, 오른쪽</div><div>⑤ 16 N, 오른쪽</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">17.</b> 그래프는 어떤 용수철에 매단 추의 무게에 따라 용수철이 늘어난 길이를 나타낸 것이다. 이 용수철의 원래 길이가 15 cm일 때, 무게가 25 N인 추를 매달았을 때 용수철의 전체 길이는? <span class="pt">(4점)</span></div>
+  <div class="pic"><svg viewBox="0 0 260 168" style="width:63.7mm" font-family="Gulim, sans-serif"><line x1="40.0" y1="130.0" x2="240.0" y2="130.0" stroke="#000" stroke-width="1.1"/><polygon points="240.0,130.0 233.6,132.7 233.6,127.3"/><line x1="40.0" y1="130.0" x2="40.0" y2="5.0" stroke="#000" stroke-width="1.1"/><polygon points="40.0,5.0 42.7,11.4 37.3,11.4"/><text x="240.0" y="160.0" font-size="11.0" text-anchor="end">추의 무게(N)</text><text x="47.0" y="15.0" font-size="11.0" text-anchor="start">늘어난 길이(cm)</text><text x="34.0" y="142.0" font-size="11.0" text-anchor="middle">0</text><polyline points="40.0,130.0 220.0,22.0" fill="none" stroke="#000" stroke-width="1.5"/><line x1="100.0" y1="94.0" x2="100.0" y2="130.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="100.0" y1="94.0" x2="40.0" y2="94.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><text x="100.0" y="143.0" font-size="11.0" text-anchor="middle">10</text><text x="35.0" y="98.0" font-size="11.0" text-anchor="end">4</text><line x1="160.0" y1="58.0" x2="160.0" y2="130.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="160.0" y1="58.0" x2="40.0" y2="58.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><text x="160.0" y="143.0" font-size="11.0" text-anchor="middle">20</text><text x="35.0" y="62.0" font-size="11.0" text-anchor="end">8</text></svg></div><div class="opts"><div>① 10 cm</div><div>② 15 cm</div><div>③ 20 cm</div><div>④ 25 cm</div><div>⑤ 30 cm</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">18.</b> 그림과 같이 용수철저울에 물체를 매달아 공기 중과 물속에서 각각 무게를 측정하였다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? (단, 물체는 물에 완전히 잠겨 있다.) <span class="pt">(4점)</span></div>
+  <div class="pic"><svg viewBox="0 0 270 158" style="width:66.2mm" font-family="Gulim, sans-serif"><line x1="30.0" y1="12.0" x2="110.0" y2="12.0" stroke="#000" stroke-width="3"/><polyline points="70.0,12.0 76.0,18.1 64.0,22.2 76.0,26.3 64.0,30.4 76.0,34.5 64.0,38.6 76.0,42.7 64.0,46.8 76.0,50.9 64.0,55.1 76.0,59.2 64.0,63.3 76.0,67.4 64.0,71.5 76.0,75.6 64.0,79.7 76.0,83.8 64.0,87.9 70.0,94.0" fill="none" stroke="#000" stroke-width="1.1"/><rect x="56.0" y="94.0" width="28.0" height="26.0" fill="#888" stroke="#000" stroke-width="1.2"/><line x1="160.0" y1="12.0" x2="240.0" y2="12.0" stroke="#000" stroke-width="3"/><polyline points="200.0,12.0 206.0,18.1 194.0,22.2 206.0,26.3 194.0,30.4 206.0,34.5 194.0,38.6 206.0,42.7 194.0,46.8 206.0,50.9 194.0,55.1 206.0,59.2 194.0,63.3 206.0,67.4 194.0,71.5 206.0,75.6 194.0,79.7 206.0,83.8 194.0,87.9 200.0,94.0" fill="none" stroke="#000" stroke-width="1.1"/><rect x="186.0" y="94.0" width="28.0" height="26.0" fill="#888" stroke="#000" stroke-width="1.2"/><polyline points="166.0,66.0 166.0,134.0 234.0,134.0 234.0,66.0" fill="none" stroke="#000" stroke-width="1.2"/><rect x="167" y="78" width="66" height="55" fill="#cfe3f5" opacity="0.7"/><text x="70.0" y="150.0" font-size="12.2" text-anchor="middle">공기 중: 50 N</text><text x="200.0" y="150.0" font-size="12.2" text-anchor="middle">물속: 32 N</text></svg></div><div class="bogi"><p>ㄱ. 물체에 작용하는 부력의 크기는 18 N이다.</p><p>ㄴ. 부력은 중력과 반대 방향인 위쪽으로 작용한다.</p><p>ㄷ. 물속에서 물체에 작용하는 중력의 크기는 32 N이다.</p><p>ㄹ. 물체를 완전히 잠긴 상태로 더 깊이 넣어도 부력의 크기는 같다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄷ, ㄹ</div><div>④ ㄱ, ㄴ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">19.</b> 수평면 위에 놓인 상자를 오른쪽으로 20 N의 힘으로 밀었지만 상자는 움직이지 않았다. 이때 상자에 작용하는 알짜힘의 크기와 마찰력의 크기는? <span class="pt">(4점)</span></div>
+  <table class="ot"><th></th><th>알짜힘</th><th>마찰력</th><tr><td>①</td><td>0 N</td><td>0 N</td></tr><tr><td>②</td><td>20 N</td><td>0 N</td></tr><tr><td>③</td><td>20 N</td><td>20 N</td></tr><tr><td>④</td><td>0 N</td><td>10 N</td></tr><tr><td>⑤</td><td>0 N</td><td>20 N</td></tr></table>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">20.</b> &lt;보기&gt;의 운동 중 속력과 운동 방향이 <b>모두</b> 변하는 운동만을 있는 대로 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 일정한 빠르기로 도는 회전목마</p><p>ㄴ. 나무에서 똑바로 떨어지는 사과</p><p>ㄷ. 비스듬히 던져 올린 공</p><p>ㄹ. 좌우로 흔들리는 그네</p><p>ㅁ. 곧은 비탈길을 미끄러져 내려가는 썰매</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㅁ</div><div>④ ㄷ, ㄹ</div><div>⑤ ㄷ, ㄹ, ㅁ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">21.</b> 그래프는 액체 상태의 어떤 물질을 냉각할 때 시간에 따른 온도 변화를 나타낸 것이다. 이에 대한 설명으로 옳은 것은? <span class="pt">(4점)</span></div>
+  <div class="pic"><svg viewBox="0 0 260 172" style="width:63.7mm" font-family="Gulim, sans-serif"><line x1="40.0" y1="135.0" x2="250.0" y2="135.0" stroke="#000" stroke-width="1.1"/><polygon points="250.0,135.0 243.6,137.7 243.6,132.3"/><line x1="40.0" y1="135.0" x2="40.0" y2="10.0" stroke="#000" stroke-width="1.1"/><polygon points="40.0,10.0 42.7,16.4 37.3,16.4"/><text x="250.0" y="165.0" font-size="11.0" text-anchor="end">시간(분)</text><text x="47.0" y="20.0" font-size="11.0" text-anchor="start">온도(℃)</text><text x="34.0" y="147.0" font-size="11.0" text-anchor="middle">0</text><polyline points="40.0,47.5 92.0,97.5 170.0,97.5 235.0,128.8" fill="none" stroke="#000" stroke-width="1.5"/><line x1="92.0" y1="97.5" x2="92.0" y2="135.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="170.0" y1="97.5" x2="170.0" y2="135.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="40.0" y1="97.5" x2="92.0" y2="97.5" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><text x="35.0" y="101.5" font-size="11.0" text-anchor="end">30</text><text x="66.0" y="149.0" font-size="11.0" text-anchor="middle">(가)</text><text x="131.0" y="149.0" font-size="11.0" text-anchor="middle">(나)</text><text x="202.5" y="149.0" font-size="11.0" text-anchor="middle">(다)</text></svg></div><div class="opts c1"><div>① (나) 구간에서는 열에너지를 흡수한다.</div><div>② (나) 구간에서는 물질의 온도가 계속 낮아진다.</div><div>③ (나) 구간에서는 응고가 일어나며 액체와 고체가 함께 존재한다.</div><div>④ (다) 구간에서 입자의 운동이 가장 활발하다.</div><div>⑤ (가) 구간에서는 입자 사이의 거리가 점점 멀어진다.</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">22.</b> 같은 양의 찬물과 뜨거운 물에 잉크를 한 방울씩 떨어뜨렸더니, 뜨거운 물에서 잉크가 더 빨리 퍼져 나갔다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 이 현상은 확산의 예이다.</p><p>ㄴ. 온도가 높을수록 입자의 운동이 활발하다.</p><p>ㄷ. 찬물에서는 물 입자가 운동하지 않는다.</p><p>ㄹ. 확산은 기체 상태보다 액체 상태에서 더 빠르게 일어난다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄷ</div><div>④ ㄱ, ㄴ, ㄷ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">23.</b> 부력을 이용한 예에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bogi"><p>ㄱ. 구명조끼를 입으면 몸의 질량이 줄어들어 물에 쉽게 뜬다.</p><p>ㄴ. 열기구는 내부 공기를 가열하여 부력이 중력보다 커지면 위로 떠오른다.</p><p>ㄷ. 잠수함이 떠오르려면 공기 탱크의 물을 밖으로 빼내어 중력을 부력보다 작게 해야 한다.</p><p>ㄹ. 쇠로 만든 배는 내부를 빈 공간으로 만들어 물에 잠기는 부피를 크게 하므로 물에 뜬다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㄹ</div><div>③ ㄱ, ㄴ, ㄷ</div><div>④ ㄴ, ㄷ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">24.</b> 천장에 고정된 용수철에 무게가 20 N인 추를 매달아 정지시킨 상태가 (가)이다. (나)는 손으로 추를 아래로 더 당겨 정지시킨 상태이고, (다)는 손으로 추를 위로 밀어 용수철이 원래 길이보다 짧게 압축된 상태로 정지시킨 것이다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(5점)</span></div>
+  <div class="pic"><svg viewBox="0 0 285 182" style="width:69.8mm" font-family="Gulim, sans-serif"><line x1="15.0" y1="12.0" x2="75.0" y2="12.0" stroke="#000" stroke-width="3"/><polyline points="45.0,12.0 51.0,17.8 39.0,21.4 51.0,25.0 39.0,28.6 51.0,32.2 39.0,35.8 51.0,39.4 39.0,43.0 51.0,46.6 39.0,50.2 51.0,53.8 39.0,57.4 51.0,61.0 39.0,64.6 51.0,68.2 39.0,71.8 51.0,75.4 39.0,79.0 51.0,82.6 39.0,86.2 45.0,92.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="45.0" cy="105.0" r="13" fill="#777" stroke="#000" stroke-width="0.6"/><text x="45.0" y="175.0" font-size="12.2" text-anchor="middle">(가)</text><line x1="110.0" y1="12.0" x2="170.0" y2="12.0" stroke="#000" stroke-width="3"/><polyline points="140.0,12.0 146.0,18.6 134.0,23.6 146.0,28.8 134.0,33.8 146.0,39.0 134.0,44.0 146.0,49.1 134.0,54.2 146.0,59.3 134.0,64.4 146.0,69.5 134.0,74.7 146.0,79.8 134.0,84.8 146.0,89.9 134.0,95.0 146.0,100.1 134.0,105.2 146.0,110.3 134.0,115.4 140.0,122.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="140.0" cy="135.0" r="13" fill="#777" stroke="#000" stroke-width="0.6"/><text x="140.0" y="175.0" font-size="12.2" text-anchor="middle">(나)</text><line x1="162.0" y1="129.0" x2="162.0" y2="157.0" stroke="#000" stroke-width="1.3"/><polygon points="162.0,157.0 159.3,150.6 164.7,150.6"/><text x="170.0" y="151.0" font-size="11.6" text-anchor="start">손</text><line x1="205.0" y1="12.0" x2="265.0" y2="12.0" stroke="#000" stroke-width="3"/><polyline points="235.0,12.0 241.0,16.7 229.0,18.2 241.0,19.6 229.0,21.1 241.0,22.5 229.0,24.0 241.0,25.4 229.0,26.9 241.0,28.3 229.0,29.8 241.0,31.2 229.0,32.7 241.0,34.1 229.0,35.6 241.0,37.0 229.0,38.5 241.0,39.9 229.0,41.4 241.0,42.8 229.0,44.3 235.0,49.0" fill="none" stroke="#000" stroke-width="1.1"/><circle cx="235.0" cy="62.0" r="13" fill="#777" stroke="#000" stroke-width="0.6"/><text x="235.0" y="175.0" font-size="12.2" text-anchor="middle">(다)</text><line x1="257.0" y1="84.0" x2="257.0" y2="56.0" stroke="#000" stroke-width="1.3"/><polygon points="257.0,56.0 259.7,62.4 254.3,62.4"/><text x="265.0" y="80.0" font-size="11.6" text-anchor="start">손</text></svg></div><div class="bogi"><p>ㄱ. (가)에서 추에 작용하는 탄성력은 위쪽 방향으로 20 N이다.</p><p>ㄴ. (나)에서 추에 작용하는 탄성력의 크기는 (가)일 때보다 크다.</p><p>ㄷ. (다)에서 추에 작용하는 탄성력의 방향은 아래쪽이다.</p><p>ㄹ. (나)에서 손이 추에 작용하는 힘의 방향은 위쪽이다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㄹ</div><div>③ ㄱ, ㄴ, ㄷ</div><div>④ ㄱ, ㄷ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">25.</b> 그림과 같이 수평면 위에 놓인 무게 50 N인 상자에 오른쪽으로 30 N, 왼쪽으로 10 N의 힘을 동시에 작용하였더니 상자가 움직이지 않았다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(5점)</span></div>
+  <div class="pic"><svg viewBox="0 0 260 90" style="width:63.7mm" font-family="Gulim, sans-serif"><line x1="10.0" y1="80.0" x2="250.0" y2="80.0" stroke="#000" stroke-width="1.4"/><rect x="100.0" y="40.0" width="60.0" height="40.0" fill="#ddd" stroke="#000" stroke-width="1.2"/><text x="130.0" y="65.0" font-size="12.2" text-anchor="middle">50 N</text><line x1="160.0" y1="60.0" x2="220.0" y2="60.0" stroke="#000" stroke-width="1.6"/><polygon points="220.0,60.0 213.6,62.7 213.6,57.3"/><text x="230.0" y="64.0" font-size="12.2" text-anchor="start">30 N</text><line x1="100.0" y1="60.0" x2="80.0" y2="60.0" stroke="#000" stroke-width="1.6"/><polygon points="80.0,60.0 86.4,57.3 86.4,62.7"/><text x="72.0" y="64.0" font-size="12.2" text-anchor="end">10 N</text></svg></div><div class="bogi"><p>ㄱ. 상자에 작용하는 마찰력은 왼쪽 방향으로 20 N이다.</p><p>ㄴ. 상자에 작용하는 알짜힘은 0 N이다.</p><p>ㄷ. 수평면이 상자를 떠받치는 힘은 위쪽 방향으로 50 N이다.</p><p>ㄹ. 상자에 작용하는 중력의 크기는 30 N이다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄴ, ㄷ</div><div>③ ㄱ, ㄷ, ㄹ</div><div>④ ㄴ, ㄷ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄷ, ㄹ</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">26.</b> 지구에서 어떤 용수철에 질량이 3 kg인 추를 매달았더니 용수철이 6 cm 늘어났다. 달에서 같은 용수철을 6 cm 늘어나게 하려면 질량이 몇 kg인 추를 매달아야 하는가? (단, 달의 중력은 지구의 <span class="fr"><span>1</span><span>6</span></span>이고, 용수철이 늘어난 길이는 매단 추의 무게에 비례한다.) <span class="pt">(5점)</span></div>
+  <div class="opts"><div>① 0.5 kg</div><div>② 3 kg</div><div>③ 6 kg</div><div>④ 12 kg</div><div>⑤ 18 kg</div></div>
+</div>
+<div class="q">
+  <div class="stem"><b class="no">27.</b> 그래프는 1기압에서 −20 ℃의 얼음을 가열할 때 시간에 따른 온도 변화를 나타낸 것이다. 이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은? <span class="pt">(5점)</span></div>
+  <div class="pic"><svg viewBox="0 0 275 178" style="width:67.4mm" font-family="Gulim, sans-serif"><line x1="40.0" y1="140.0" x2="265.0" y2="140.0" stroke="#000" stroke-width="1.1"/><polygon points="265.0,140.0 258.6,142.7 258.6,137.3"/><line x1="40.0" y1="140.0" x2="40.0" y2="7.0" stroke="#000" stroke-width="1.1"/><polygon points="40.0,7.0 42.7,13.4 37.3,13.4"/><text x="265.0" y="170.0" font-size="11.0" text-anchor="end">가열 시간(분)</text><text x="47.0" y="17.0" font-size="11.0" text-anchor="start">온도(℃)</text><text x="34.0" y="152.0" font-size="11.0" text-anchor="middle">0</text><polyline points="40.0,136.0 58.0,120.0 103.0,120.0 148.0,40.0 229.0,40.0 256.0,24.0" fill="none" stroke="#000" stroke-width="1.5"/><line x1="58.0" y1="120.0" x2="58.0" y2="140.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="103.0" y1="120.0" x2="103.0" y2="140.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="148.0" y1="40.0" x2="148.0" y2="140.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="229.0" y1="40.0" x2="229.0" y2="140.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><line x1="40.0" y1="120.0" x2="58.0" y2="120.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><text x="35.0" y="124.0" font-size="11.0" text-anchor="end">0</text><line x1="40.0" y1="40.0" x2="148.0" y2="40.0" stroke="#000" stroke-width="1.2" stroke-dasharray="3,2"/><text x="35.0" y="44.0" font-size="11.0" text-anchor="end">100</text><text x="49.0" y="154.0" font-size="11.0" text-anchor="middle">(가)</text><text x="80.5" y="154.0" font-size="11.0" text-anchor="middle">(나)</text><text x="125.5" y="154.0" font-size="11.0" text-anchor="middle">(다)</text><text x="188.5" y="154.0" font-size="11.0" text-anchor="middle">(라)</text><text x="242.5" y="154.0" font-size="11.0" text-anchor="middle">(마)</text></svg></div><div class="bogi"><p>ㄱ. (나) 구간에서는 고체와 액체가 함께 존재한다.</p><p>ㄴ. (라) 구간에서 흡수한 열에너지는 입자 사이의 거리를 멀게 하는 데 사용된다.</p><p>ㄷ. 입자의 운동이 가장 활발한 구간은 (마)이다.</p><p>ㄹ. (다) 구간에서는 열에너지를 흡수해도 입자의 운동이 변하지 않는다.</p><p>ㅁ. 입자의 배열이 가장 규칙적인 구간은 (가)이다.</p></div><div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㄹ</div><div>③ ㄱ, ㄴ, ㄷ</div><div>④ ㄱ, ㄷ, ㅁ</div><div>⑤ ㄱ, ㄴ, ㄷ, ㅁ</div></div>
+</div>
+
+<div class="end" id="endblock">
+  <div class="msg">《 검은색 컴퓨터용 사인펜 이외의 펜으로<br>흔적을 남겨도 마킹한 것으로 판독될 수 있으므로,<br>정답 이외의 번호에 조금이라도 흔적이 남았다면<br>반드시 수정테이프로 정정하기 바랍니다. 》</div>
+  <div class="bye">수고하셨습니다.<br>끝.</div>
+</div>
+
+</div><!-- /pool -->
+
+<div id="pages"></div>
+
+<script>
+const SCHOOL = '목일중학교';
+const FILL = 1.0;   // 단 하나를 이 비율 이상 채우지 않음
+const MAXQ = 3;      // 한 단에 최대 문항 수
+function makePage(n, first) {
+  const p = document.createElement('div');
+  p.className = 'page' + (first ? ' first' : '');
+  let head = '';
+  if (first) {
+    head = `
+    <div class="head">
+      <div class="grade">1학년</div>
+      <div class="title">과학과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>
+      <div class="date">2&thinsp;0&thinsp;2&thinsp;6&thinsp;년<br>10월&nbsp;&nbsp;3일(토)&nbsp;&nbsp;&nbsp;3교시</div>
+      <div class="code">과목코드(05)</div>
+    </div>`;
+  }
+  p.innerHTML = `<div class="frame">${head}<div class="body"><div class="col l"></div><div class="col r"></div></div>
+    <div class="cont"></div></div>
+    <div class="foot">
+      <span class="l1">(1)학년 (과학)과목</span><span class="l1r">( ${n} 쪽/총 <span class="tot"></span> 쪽중)</span>
+      <div class="l2">본 시험문제의 저작권은 ${SCHOOL}에 있습니다.</div></div>`;
+  document.getElementById('pages').appendChild(p);
+  return p;
+}
+function layout() {
+  const blocks = Array.from(document.querySelectorAll('#pool > .q, #pool > .end'));
+  let n = 1, page = makePage(n, true), cols = page.querySelectorAll('.col'), ci = 0;
+  const intro = document.createElement('div');
+  intro.innerHTML = `<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr><tr><td rowspan="3">선택형</td><td>12문항x3점</td><td>36점</td></tr><tr><td>11문항x4점</td><td>44점</td></tr><tr><td>4문항x5점</td><td>20점</td></tr><tr><td>계</td><td>27문항</td><td>100점</td></tr></table>
+    <div class="notice">※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.</div>`;
+  cols[0].appendChild(intro);
+  const used = (col) => col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+  const fits = (col) => used(col) <= col.clientHeight * FILL && col.querySelectorAll('.q').length <= MAXQ;
+  for (const b of blocks) {
+    if (b.classList.contains('end') && ci === 0) ci = 1;
+    while (true) {
+      const col = cols[ci];
+      col.appendChild(b);
+      const empty = col.querySelectorAll('.q, .end').length === 1 && !(n === 1 && ci === 0);
+      if (fits(col) || (empty && used(col) <= col.clientHeight)) break;
+      col.removeChild(b);
+      if (ci === 0) ci = 1; else { n += 1; page = makePage(n, false); cols = page.querySelectorAll('.col'); ci = 0; }
+    }
+  }
+  const pages = document.querySelectorAll('.page');
+  pages.forEach((p, i) => {
+    p.querySelector('.tot').textContent = pages.length;
+    if (i < pages.length - 1) p.querySelector('.cont').textContent = (i % 2 === 0) ? '뒷면 계속' : '다음 장 계속';
+  });
+  document.querySelectorAll('.col').forEach(col => {
+    const qs = Array.from(col.querySelectorAll(':scope > .q, :scope > .end'));
+    if (!qs.length || !col.lastElementChild) return;
+    const used = col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+    const free = col.clientHeight - used;
+    const rest = qs.filter(q => q.classList.contains('q')).slice(1);
+    if (!rest.length) return;
+    const g = Math.max(0, Math.min(free * 0.5 / rest.length, 175));
+    rest.forEach(q => { q.style.marginTop = (parseFloat(getComputedStyle(q).marginTop) + g) + 'px'; });
+  });
+  document.getElementById('pool').remove();
+  document.body.setAttribute('data-pages', pages.length);
+}
+document.fonts.load('10pt "Nanum Myeongjo"').then(() => document.fonts.ready).then(() => Promise.all(Array.from(document.images).map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))).then(() => { layout(); document.body.setAttribute('data-ready', '1'); });
+</script>
+</body>
+</html>

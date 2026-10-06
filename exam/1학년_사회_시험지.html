@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>1학년 사회 지필평가</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body { font-family: 'Gulim', '굴림', sans-serif; font-size: 10pt; line-height: 1.62; }
+
+  .page { width: 210mm; height: 297mm; padding: 24.8mm 20mm 5mm; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .frame { flex: 1; display: flex; flex-direction: column; border: 1.6px solid #000; border-right-width: 2.2px; min-height: 0; }
+  .page.first .frame { border-top: none; }
+  .page:not(.first) .frame { margin-top: -10mm; }
+  .body { flex: 1; display: flex; position: relative; min-height: 0; padding-top: 4mm; }
+  .page.first .body { padding-top: 0; }
+  .body::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 2mm; border-left: 1px solid #000; }
+  .col { width: 50%; height: 100%; overflow: hidden; }
+  .col.l { padding: 0 3.2mm 0 1.6mm; }
+  .col.r { padding: 0 3.2mm 0 3.2mm; }
+  .cont { text-align: right; font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.5pt; letter-spacing: 0.5px; padding: 0 2.4mm 1mm 0; height: 7mm; }
+  .foot { height: 12mm; position: relative; font-size: 10.5pt; font-family: 'NanumMyeongjo', serif; }
+  .foot .l1 { position: absolute; left: 0; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l1r { position: absolute; right: 2mm; top: 0.8mm; letter-spacing: 0.3px; }
+  .foot .l2 { position: absolute; left: 0; right: 0; top: 5.6mm; text-align: center; font-size: 10.5pt; }
+
+  /* 머리글 */
+  .head { display: flex; border-top: 2.2px solid #000; border-bottom: 1.6px solid #000; height: 16mm; font-family: 'NanumMyeongjo', serif; }
+  .head .grade { width: 24.5mm; border-right: 1.4px solid #000; display: flex; align-items: center; justify-content: center; font-size: 22pt; padding-top: 0.6mm; }
+  .head .title { width: 70.5mm; border-right: 1.4px solid #000; text-align: center; font-size: 17.5pt; line-height: 1.12; padding-top: 0.6mm; }
+  .head .title .t2 { font-size: 19pt; }
+  .head .date { width: 44mm; border-right: 1.4px solid #000; text-align: center; font-weight: 700; font-size: 12pt; line-height: 1.5; padding-top: 1.6mm; }
+  .head .code { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 11.5pt; letter-spacing: 0.3px; }
+  table.score { border-collapse: collapse; width: 98%; margin: 1.2mm 0 0 0; font-size: 9.8pt; text-align: center; line-height: 1.2; font-family: 'Gulim', '굴림', sans-serif; }
+  table.score td { border: 1px solid #000; padding: 0 1mm; font-weight: 400; }
+  table.score tr:first-child td { background: #e8e8e8; letter-spacing: 2.5px; }
+  .notice { font-family: 'NanumMyeongjo', serif; font-weight: 800; font-size: 10.6pt; margin: 6.5mm 0 8mm; padding-left: 5.2mm; text-indent: -5.2mm; line-height: 1.75; text-align: justify; letter-spacing: 0.6px; }
+
+  /* 문항 */
+  .col > .q { margin-bottom: 7mm; }
+  .stem { padding-left: 4.6mm; text-indent: -4.6mm; margin-bottom: 1.8mm; text-align: justify; }
+  .bx p, .bogi p, .opts.c1 > div, .tl > div { text-align: justify; }
+  .stem b.no { font-weight: 700; }
+  .pt { white-space: nowrap; }
+  .u { text-decoration: underline; text-underline-offset: 2px; }
+  .bx { border: 1px solid #000; padding: 1.4mm 2mm; margin: 1.6mm 0 2mm; }
+  .bx p { margin: 0; }
+  .bx p + p { margin-top: 0.6mm; }
+  .hang { padding-left: 6mm; text-indent: -6mm; }
+  .hang2 { padding-left: 4mm; text-indent: -4mm; }
+  .bogi { border: 1px solid #000; padding: 3.2mm 2.2mm 1.4mm; margin: 3.4mm 0 2mm; position: relative; }
+  .bogi::before { content: "<  보  기  >"; white-space: pre; position: absolute; top: -2.6mm; left: 50%; transform: translateX(-50%); background: #fff; padding: 0 1mm; font-size: 9.4pt; line-height: 1.1; }
+  .bogi p { margin: 0; padding-left: 4.3mm; text-indent: -4.3mm; }
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 0.4mm; padding-left: 1mm; }
+  .opts:not(.c1) > div { white-space: nowrap; }
+  .opts.c2 { grid-template-columns: repeat(2, 1fr); }
+  .opts.c1 { grid-template-columns: 1fr; }
+  .opts.c1 > div { padding-left: 4.8mm; text-indent: -4.8mm; }
+  .opts.c5 { grid-template-columns: repeat(5, 1fr); }
+  table.ot { border-collapse: collapse; width: 100%; }
+  table.ot td, table.ot th { padding: 0.1mm 0.6mm; text-align: center; font-weight: 400; }
+  table.ot th { text-decoration: underline; text-underline-offset: 2px; }
+  table.ot td:first-child { text-align: left; width: 6mm; }
+  table.dt { border-collapse: collapse; width: 100%; font-size: 9.2pt; margin: 1.4mm 0 2mm; }
+  table.dt th, table.dt td { border: 1px solid #000; padding: 0.6mm 1mm; text-align: center; line-height: 1.35; font-weight: 400; }
+  table.dt td.l { text-align: left; }
+  .say { display: flex; gap: 1.4mm; margin: 0.4mm 0; }
+  .say .who { flex: none; min-width: 6mm; white-space: nowrap; }
+  .say .what { flex: 1; }
+  .src { text-align: right; font-size: 8.6pt; margin-top: 0.4mm; }
+  .cap { text-align: center; font-size: 9.2pt; font-weight: 700; margin-bottom: 0.6mm; }
+  .tl { display: flex; gap: 1.4mm; margin: 1.4mm 0 2mm; }
+  .tl > div { flex: 1; border: 1px solid #000; padding: 1.2mm 1.5mm; font-size: 9.4pt; line-height: 1.45; }
+  .tl b { display: block; text-align: center; margin-bottom: 0.6mm; }
+  .end { text-align: center; font-weight: 700; margin-top: 12mm; line-height: 1.7; }
+  .end .msg { font-size: 9.6pt; }
+  .end .bye { margin-top: 10mm; font-size: 11.5pt; }
+  .pic { text-align: center; margin: 1.4mm 0 2mm; }
+  .pic img { width: 100%; display: inline-block; }
+  svg text { font-family: 'Gulim', '굴림', sans-serif; }
+  #pool { position: absolute; left: -9999px; top: 0; width: 80mm; }
+</style>
+</head>
+<body>
+
+<div id="pool">
+
+<!-- ====================== Ⅶ. 인간과 사회생활 ====================== -->
+
+<div class="q">
+  <div class="stem"><b class="no">1.</b> 사회화에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi">
+    <p>ㄱ. 일생에 걸쳐 이루어진다.</p>
+    <p>ㄴ. 배고픔과 같은 본능적 욕구는 사회화를 거쳐야 생겨난다.</p>
+    <p>ㄷ. 개인은 이 과정에서 독특한 개성과 자아를 형성한다.</p>
+    <p>ㄹ. 사회의 규범과 가치를 다음 세대에 전달한다.</p>
+    <p>ㅁ. 어느 사회에서 성장하든 사람의 특성은 같게 나타난다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ, ㄷ</div><div>② ㄱ, ㄷ, ㄹ</div><div>③ ㄴ, ㄷ, ㅁ</div><div>④ ㄴ, ㄹ, ㅁ</div><div>⑤ ㄷ, ㄹ, ㅁ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">2.</b> 밑줄 친 ㉠~㉤ 중 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="bx"><p>&nbsp;사회화는 ㉠ <span class="u">가정, 또래 집단, 학교, 미디어 등 다양한 사회화 기관의 영향</span>을 받는다. ㉡ <span class="u">유아기에는 가정에서 언어와 기초적인 생활 습관</span>을, ㉢ <span class="u">아동기에는 또래 집단과 어울리며 함께 생활하는 규칙</span>을 익힌다. ㉣ <span class="u">청소년기에는 주로 직장에서 지식, 기술, 규범 등을 체계적으로</span> 배우며, ㉤ <span class="u">성인이 된 이후에도 미디어에서 정보를 얻으며</span> 사회화 과정을 거친다.</p></div>
+  <div class="opts c5"><div>① ㉠</div><div>② ㉡</div><div>③ ㉢</div><div>④ ㉣</div><div>⑤ ㉤</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">3.</b> (가), (나)에 대한 설명으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 서윤이는 영상 속 해외 의료 봉사 의사를 보고, 남을 돕는 일을 하겠다는 진로 목표를 세웠다.</p>
+    <p class="hang">(나) 하준이는 SNS 속 매우 마른 인물을 이상적 기준으로 삼아 끼니를 거르고 있다.</p>
+  </div>
+  <div class="opts c1">
+    <div>① (가)는 미디어가 자아 정체성 형성에 긍정적 영향을 준 사례이다.</div>
+    <div>② (나)를 통해 미디어의 영향력이 줄어들고 있음을 알 수 있다.</div>
+    <div>③ (가), (나)에서 미디어는 사회화 기관이라고 볼 수 없다.</div>
+    <div>④ (나)를 막으려면 청소년은 미디어 이용을 완전히 끊어야 한다.</div>
+    <div>⑤ 서윤이는 진로를 정했으므로 더 이상 자신을 탐색할 필요가 없다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">4.</b> 밑줄 친 ㉠~㉣에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bx"><p>&nbsp;도윤이는 집에서 ㉠ <span class="u">아들</span>이자 ㉡ <span class="u">라윤이의 오빠</span>이고, 학교에서는 ㉢ <span class="u">○○중학교 학생</span>이자 ㉣ <span class="u">축구 동아리 부장</span>이다.</p></div>
+  <div class="bogi">
+    <p>ㄱ. ㉠, ㉡은 태어나면서부터 갖게 되는 지위이다.</p>
+    <p>ㄴ. ㉢, ㉣은 개인의 선택이나 노력으로 갖게 되는 지위이다.</p>
+    <p>ㄷ. ㉣의 역할을 제대로 하지 못하면 비난을 받을 수 있다.</p>
+    <p>ㄹ. 전통 사회에서는 ㉣과 같은 지위의 영향력이 더 컸다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄹ</div><div>③ ㄴ, ㄷ</div><div>④ ㄱ, ㄴ, ㄷ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">5.</b> (가), (나)에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 연극 동아리 부장인 민지는 최종 연습 날과 할머니 생신 행사가 겹쳐 고민하고 있다.</p>
+    <p class="hang">(나) ○○ 회사의 많은 직원들이 업무와 육아를 함께 하는 데 공통적으로 어려움을 겪고 있다.</p>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. (가)는 두 지위에 따른 역할이 충돌하는 상황이다.</p>
+    <p>ㄴ. (가)는 우선순위를 고려하여 중요한 것부터 수행하는 것이 바람직하다.</p>
+    <p>ㄷ. (나)는 제도 마련보다 직원 각자의 노력이 우선이다.</p>
+    <p>ㄹ. (나)의 해결을 위해 직장 내 보육 시설을 늘릴 수 있다.</p>
+    <p>ㅁ. (가), (나)와 같은 갈등은 사회가 단순할수록 많아진다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㅁ</div><div>③ ㄱ, ㄴ, ㄹ</div><div>④ ㄱ, ㄷ, ㄹ</div><div>⑤ ㄴ, ㄹ, ㅁ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">6.</b> 다음 글의 A, B에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx"><p>&nbsp;지후는 소속감을 느끼는 ○○중 야구부(A)의 부원이다. 지후는 연습 경기에서 처음 만난 △△중 야구부(B) 선수들에게 경계심을 느꼈다.</p></div>
+  <div class="bogi">
+    <p>ㄱ. 지후에게 A는 내집단, B는 외집단이다.</p>
+    <p>ㄴ. 지후는 B보다 A의 구성원에 대해 더 상세히 알 것이다.</p>
+    <p>ㄷ. B는 지후가 속하지 않았으므로 사회 집단이 아니다.</p>
+    <p>ㄹ. 부족한 정보로 B를 빠르게 판단하면 편견이 생길 수 있다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄹ</div><div>④ ㄴ, ㄷ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">7.</b> 차별에 해당하는 사례만을 &lt;보기&gt;에서 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi">
+    <p>ㄱ. 같은 일을 하는 외국인 직원에게 임금을 적게 주었다.</p>
+    <p>ㄴ. 시험에 불합격한 사람에게 면허증을 발급하지 않았다.</p>
+    <p>ㄷ. 여성 지원자에게만 결혼과 출산 계획을 질문하였다.</p>
+    <p>ㄹ. 영화관 상영관에 휠체어석을 마련하였다.</p>
+    <p>ㅁ. 특정 지역 출신이라는 이유로 승진에서 제외하였다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄷ, ㄹ</div><div>③ ㄱ, ㄷ, ㅁ</div><div>④ ㄴ, ㄹ, ㅁ</div><div>⑤ ㄱ, ㄷ, ㄹ, ㅁ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">8.</b> 다음 글의 A에 해당하는 사례로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="bx"><p>&nbsp;버스에 경사판을 설치하는 것처럼 성별, 연령, 국적, 장애의 유무와 상관없이 누구나 쓸 수 있는 ( A )이/가 적용된 공공시설이 늘고 있다.</p></div>
+  <div class="opts c1">
+    <div>① 시각 장애인만 드나드는 전용 출입문</div>
+    <div>② 외국인 관광객만 쓰는 전용 안내소</div>
+    <div>③ 어린이와 휠체어 사용자도 쓰는 낮은 공용 세면대</div>
+    <div>④ 성인 남성의 키에 맞춘 높은 지하철 손잡이</div>
+    <div>⑤ 한국어로만 표기한 안내판</div>
+  </div>
+</div>
+
+<!-- ====================== Ⅷ. 다양한 문화의 이해 ====================== -->
+
+<div class="q">
+  <div class="stem"><b class="no">9.</b> 밑줄 친 '문화'의 의미가 나머지 넷과 <span class="u"><b>다른</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1">
+    <div>① 주말에 미술관에서 <span class="u">문화</span>생활을 즐겼다.</div>
+    <div>② 신문 <span class="u">문화</span>면에 공연 소식이 실렸다.</div>
+    <div>③ 공연장에서는 <span class="u">문화</span> 시민답게 조용히 관람하자.</div>
+    <div>④ 설날 세배는 우리나라의 오랜 <span class="u">문화</span>이다.</div>
+    <div>⑤ 도서관에서 '<span class="u">문화</span>가 있는 날' 음악회가 열렸다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">10.</b> 문화에 해당하는 것만을 &lt;보기&gt;에서 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi">
+    <p>ㄱ. 발표 전에 긴장하여 손이 떨렸다.</p>
+    <p>ㄴ. 복날에 삼계탕을 먹는다.</p>
+    <p>ㄷ. 민수는 고민할 때 손톱을 물어뜯는다.</p>
+    <p>ㄹ. 추석에 송편을 빚어 나누어 먹는다.</p>
+    <p>ㅁ. 점심을 먹은 후 졸려서 하품을 했다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄷ</div><div>② ㄴ, ㄹ</div><div>③ ㄷ, ㅁ</div><div>④ ㄱ, ㄴ, ㄹ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">11.</b> 다음 그림을 통해 알 수 있는 문화의 특징으로 가장 적절한 것은? <span class="pt">(3점)</span></div>
+  <div class="pic"><img src="img/dance.jpg" alt="강강술래, 티니클링, 플라멩코"></div>
+  <div class="opts c1">
+    <div>① 대부분의 사회에 민속춤이 있지만, 그 표현은 제각각 다르다.</div>
+    <div>② 민속춤은 본능에 따른 행동이므로 문화라고 볼 수 없다.</div>
+    <div>③ 민속춤은 한번 만들어지면 절대 변하지 않는다.</div>
+    <div>④ 각 사회의 민속춤은 표현 방식이 모두 똑같다.</div>
+    <div>⑤ 민속춤은 일부 사회에만 나타나는 특별한 문화이다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">12.</b> ㉠~㉤ 중 문화의 <b>변동성</b>과 <b>전체성(총체성)</b>을 보여 주는 사례를 바르게 짝지은 것은? <span class="pt">(4점)</span></div>
+  <div class="bx">
+    <p class="hang">㉠ 외국에서 자란 사촌은 김치를 무척 낯설어했다.</p>
+    <p class="hang">㉡ 이웃이 김장하는 모습을 보면 우리 집도 곧 김장할 것을 짐작할 수 있다.</p>
+    <p class="hang">㉢ 문헌에 기록된 제조법을 토대로 새로운 김치가 등장한다.</p>
+    <p class="hang">㉣ 아파트에서는 김치를 땅에 묻을 수 없어 김치냉장고를 쓴다.</p>
+    <p class="hang">㉤ 요즘은 김장 대신 공장 김치를 사 먹는 가정이 늘고 있다.</p>
+  </div>
+  <table class="ot">
+    <tr><th></th><th>변동성</th><th>전체성</th><th></th><th>변동성</th><th>전체성</th></tr>
+    <tr><td>①</td><td>㉠</td><td>㉣</td><td>②</td><td>㉢</td><td>㉤</td></tr>
+    <tr><td>③</td><td>㉣</td><td>㉡</td><td>④</td><td>㉣</td><td>㉤</td></tr>
+    <tr><td>⑤</td><td>㉤</td><td>㉣</td><td></td><td></td><td></td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">13.</b> 다음 미디어 활용 일지에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <table class="dt">
+    <tr><th style="width:42%">활용한 미디어</th><th>활용 내용</th></tr>
+    <tr><td>라디오</td><td class="l">음악 방송 청취</td></tr>
+    <tr><td>SNS</td><td class="l">친구 사진에 댓글 작성</td></tr>
+    <tr><td>동영상 공유 플랫폼</td><td class="l">직접 찍은 영상 일기 게시</td></tr>
+    <tr><td>텔레비전, 신문</td><td class="l">뉴스 시청, 기사 읽기</td></tr>
+  </table>
+  <div class="bogi">
+    <p>ㄱ. 인쇄 매체에 해당하는 것은 한 가지이다.</p>
+    <p>ㄴ. 텔레비전은 쌍방향 소통을 가능하게 한 새로운 미디어이다.</p>
+    <p>ㄷ. 영상 일기 게시는 정보 생산자와 소비자의 경계가 무너지고 있음을 보여 준다.</p>
+    <p>ㄹ. SNS 댓글은 직접 만나지 않았으므로 미디어 활용이 아니다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄷ</div><div>④ ㄴ, ㄹ</div><div>⑤ ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">14.</b> '유료 광고 포함' 영상을 본 학생들의 대화 중 옳게 말한 학생만을 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <div class="say"><span class="who">갑:</span><span class="what">미디어 속 콘텐츠는 상품의 성격을 지니기도 해.</span></div>
+    <div class="say"><span class="who">을:</span><span class="what">광고는 정보와 설득이라는 두 요소로 이루어져.</span></div>
+    <div class="say"><span class="who">병:</span><span class="what">맞춤형 서비스는 편향된 관점을 막아 줘.</span></div>
+    <div class="say"><span class="who">정:</span><span class="what">누구나 콘텐츠를 만들며 문화의 다양성이 커지고 있어.</span></div>
+    <div class="say"><span class="who">무:</span><span class="what">정보는 많을수록 필요한 정보를 찾기 쉬워.</span></div>
+  </div>
+  <div class="opts"><div>① 갑, 을</div><div>② 갑, 을, 정</div><div>③ 을, 병</div><div>④ 병, 무</div><div>⑤ 을, 정, 무</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">15.</b> (가), (나)에 대한 설명으로 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) A 씨는 사실이라고 믿은 건강 정보를 가족 대화방에 공유했는데, 틀린 내용이었다.</p>
+    <p class="hang">(나) B 업체는 수익을 올리려고 건강식품 효능을 부풀린 거짓 영상을 퍼뜨렸다.</p>
+  </div>
+  <div class="opts c1">
+    <div>① (가)는 대중을 속이려고 만든 허위 정보이다.</div>
+    <div>② (나)는 경제적 이익을 위해 만든 허위 정보이다.</div>
+    <div>③ SNS는 기존 미디어보다 이런 정보가 퍼질 위험이 크다.</div>
+    <div>④ 사실 확인이 어려우면 공공 기관의 도움을 받을 수 있다.</div>
+    <div>⑤ 제목과 사진만 보지 말고 내용 전체를 읽어야 한다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">16.</b> 다음 그래프에 대한 분석으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx" style="padding:1.2mm 1.2mm 0.6mm">
+    <div class="cap">&lt; 우리나라에 거주하는 외국인 인구 변화 &gt;</div>
+    <svg viewBox="0 0 330 168" width="92%" style="display:block;margin:0 auto">
+      <!-- legend -->
+      <rect x="8" y="4" width="11" height="8" fill="#bdbdbd" stroke="#000" stroke-width="0.7"/>
+      <text x="23" y="12" font-size="9">외국인 인구수(만 명)</text>
+      <line x1="8" y1="24" x2="26" y2="24" stroke="#000" stroke-width="1.2"/>
+      <circle cx="17" cy="24" r="2.6" fill="#fff" stroke="#000" stroke-width="1"/>
+      <text x="30" y="28" font-size="9">외국인 인구 비율(%)</text>
+      <!-- axis -->
+      <line x1="40" y1="146" x2="310" y2="146" stroke="#000" stroke-width="1"/>
+      <!-- bars: scale 0.45 px per 만명 baseline 146 -->
+      <rect x="62"  y="94.7" width="34" height="51.3" fill="#bdbdbd" stroke="#000" stroke-width="0.7"/>
+      <rect x="126" y="69.1" width="34" height="76.9" fill="#bdbdbd" stroke="#000" stroke-width="0.7"/>
+      <rect x="190" y="48.8" width="34" height="97.2" fill="#bdbdbd" stroke="#000" stroke-width="0.7"/>
+      <rect x="254" y="44.3" width="34" height="101.7" fill="#bdbdbd" stroke="#000" stroke-width="0.7"/>
+      <text x="79"  y="122" font-size="9.5" text-anchor="middle">114</text>
+      <text x="143" y="110" font-size="9.5" text-anchor="middle">171</text>
+      <text x="207" y="100" font-size="9.5" text-anchor="middle">216</text>
+      <text x="271" y="98"  font-size="9.5" text-anchor="middle">226</text>
+      <!-- line -->
+      <polyline points="79,76 143,51 207,33 271,28" fill="none" stroke="#000" stroke-width="1.3"/>
+      <circle cx="79" cy="76" r="3" fill="#fff" stroke="#000" stroke-width="1.1"/>
+      <circle cx="143" cy="51" r="3" fill="#fff" stroke="#000" stroke-width="1.1"/>
+      <circle cx="207" cy="33" r="3" fill="#fff" stroke="#000" stroke-width="1.1"/>
+      <circle cx="271" cy="28" r="3" fill="#fff" stroke="#000" stroke-width="1.1"/>
+      <text x="79"  y="68" font-size="9.5" text-anchor="middle">2.3</text>
+      <text x="143" y="43" font-size="9.5" text-anchor="middle">3.4</text>
+      <text x="207" y="25" font-size="9.5" text-anchor="middle">4.2</text>
+      <text x="271" y="20" font-size="9.5" text-anchor="middle">4.4</text>
+      <text x="79"  y="158" font-size="9.5" text-anchor="middle">2010</text>
+      <text x="143" y="158" font-size="9.5" text-anchor="middle">2015</text>
+      <text x="207" y="158" font-size="9.5" text-anchor="middle">2020</text>
+      <text x="271" y="158" font-size="9.5" text-anchor="middle">2022</text>
+      <text x="306" y="158" font-size="9" text-anchor="start">(년)</text>
+    </svg>
+    <div class="src">(행정 안전부, 2023)</div>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. 외국인 인구수는 조사 시기마다 계속 증가하였다.</p>
+    <p>ㄴ. 2022년 외국인 인구수는 2010년의 2배 이상이다.</p>
+    <p>ㄷ. 외국인 인구 비율은 2015~2020년에 가장 크게 늘었다.</p>
+    <p>ㄹ. 다양한 문화적 배경을 지닌 구성원이 늘고 있다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄱ, ㄹ</div><div>④ ㄴ, ㄷ</div><div>⑤ ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">17.</b> 다음 자료에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 인도에서 소는 농사와 생계에 필수적이어서, 힌두교는 소고기를 먹는 것을 금기로 정하였다.</p>
+    <p class="hang">(나) 이슬람교가 발생한 건조한 지역에서는 물이 많이 드는 돼지를 키우기 어려워, 돼지고기를 금지하였다.</p>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. (가)에는 소가 생계에 필수인 환경이 반영되어 있다.</p>
+    <p>ㄴ. (나)는 물이 너무 많은 습한 기후 때문이다.</p>
+    <p>ㄷ. 인간은 환경에 적응하며 독특한 생활 방식을 형성한다.</p>
+    <p>ㄹ. (가), (나)의 금기는 모든 문화권이 따라야 한다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄴ, ㄷ</div><div>③ ㄴ, ㄹ</div><div>④ ㄷ, ㄹ</div><div>⑤ ㄱ, ㄷ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">18.</b> 외국인 관광객들의 대화에 대한 태도로 가장 바람직한 것은? <span class="pt">(3점)</span></div>
+  <div class="bx" style="padding:1mm 1.6mm">
+    <div class="pic" style="margin:0 0 0.8mm"><img src="img/food.jpg" alt="외국인들이 먹지 못하는 음식을 말하는 장면"></div>
+    <div class="say" style="font-size:9pt"><span class="who">가나빠띠:</span><span class="what">이슬람교를 믿어서 돼지고기를 먹지 않아요.</span></div>
+    <div class="say" style="font-size:9pt"><span class="who">로히트:</span><span class="what">힌두교도라 소고기는 먹을 수 없어요.</span></div>
+    <div class="say" style="font-size:9pt"><span class="who">이사벨라:</span><span class="what">고기는 먹지 않지만 달걀이나 우유는 괜찮아요.</span></div>
+  </div>
+  <div class="opts c1">
+    <div>① 각자의 음식 문화를 이해하고 먹을 수 있는 음식을 추천한다.</div>
+    <div>② 한국에 왔으므로 모두에게 불고기를 권한다.</div>
+    <div>③ 우리와 다른 식습관은 잘못이므로 고치게 한다.</div>
+    <div>④ 외국 음식 문화가 더 우수하므로 우리 음식은 내놓지 않는다.</div>
+    <div>⑤ 이사벨라에게는 달걀말이도 권해서는 안 된다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">19.</b> (가), (나)에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 가상의 A국 정부는 자국 종교만 옳다며 다른 종교의 석불 유적을 파괴하였다.</p>
+    <p class="hang">(나) 일부 지역에 남은 조혼 풍습으로 소녀들이 건강을 잃고 학교를 그만두고 있다.</p>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. (가)의 태도는 고유문화를 사라지게 만들 수 있다.</p>
+    <p>ㄴ. (가)의 태도는 다른 문화권과 갈등을 빚을 수 있다.</p>
+    <p>ㄷ. (나)는 문화 상대주의 관점에서 존중해야 한다.</p>
+    <p>ㄹ. (나)는 보편적 가치를 해치므로 인정하기 어렵다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄷ</div><div>④ ㄴ, ㄹ</div><div>⑤ ㄷ, ㄹ</div></div>
+</div>
+
+<!-- ====================== Ⅸ. 민주주의와 시민 ====================== -->
+
+<div class="q">
+  <div class="stem"><b class="no">20.</b> 좁은 의미의 정치에는 해당하지 <span class="u"><b>않지만</b></span>, 넓은 의미의 정치에는 해당하는 것만을 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bogi">
+    <p>ㄱ. 국회가 법률 개정안을 통과시켰다.</p>
+    <p>ㄴ. 가족회의로 여름휴가 장소를 정하였다.</p>
+    <p>ㄷ. 정부가 저출생 정책을 집행하였다.</p>
+    <p>ㄹ. 학급 회의로 반 티셔츠 색을 정하였다.</p>
+    <p>ㅁ. 혼자 도서관에서 수학 과제를 하였다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄷ</div><div>② ㄴ, ㅁ</div><div>③ ㄱ, ㄷ, ㅁ</div><div>④ ㄴ, ㄹ, ㅁ</div><div>⑤ ㄴ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">21.</b> 학급 회의에서 ㉠~㉤ 중 바람직하지 <span class="u"><b>않은</b></span> 태도를 모두 고른 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <div class="say"><span class="who">수아:</span><span class="what">㉠ 내가 고른 검은색 말고는 생각할 필요도 없어.</span></div>
+    <div class="say"><span class="who">준호:</span><span class="what">㉡ 검은색은 햇볕에 쉽게 뜨거워지는 단점이 있어.</span></div>
+    <div class="say"><span class="who">예린:</span><span class="what">㉢ 서로 양보해서 후보 두 개로 투표하자.</span></div>
+    <div class="say"><span class="who">태민:</span><span class="what">㉣ 반 이름 글씨는 검은색으로 해서 소수 의견도 반영하자.</span></div>
+    <div class="say"><span class="who">하은:</span><span class="what">㉤ 다수결로 정했으니 소수 의견은 신경 쓰지 않아도 돼.</span></div>
+  </div>
+  <div class="opts"><div>① ㉠, ㉡</div><div>② ㉠, ㉤</div><div>③ ㉡, ㉢</div><div>④ ㉢, ㉣</div><div>⑤ ㉣, ㉤</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">22.</b> 민주주의에 대한 설명으로 옳지 <span class="u"><b>않은</b></span> 것은? <span class="pt">(3점)</span></div>
+  <div class="opts c1">
+    <div>① 모든 국민이 국가의 주인으로서 나라를 다스리는 정치 형태이다.</div>
+    <div>② 문제를 민주적으로 해결하는 생활 방식을 의미하기도 한다.</div>
+    <div>③ 국민이 의사 결정에 참여하면 국민의 뜻에 따른 정치가 가능하다.</div>
+    <div>④ 일상의 문제를 직접 해결하며 주인으로서의 삶을 누릴 수 있다.</div>
+    <div>⑤ 권력이 소수에게 집중될수록 다수의 권리가 더 잘 보호된다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">23.</b> 밑줄 친 ①~⑤ 중 옳은 것은? <span class="pt">(4점)</span></div>
+  <div class="bx"><p>&nbsp;아테네에서는 ① <span class="u">시민들이 선거로 뽑은 대표가 중요한 일을 결정</span>하였다. ② <span class="u">영국의 명예혁명은 시민들이 소수 특권 계층에 대항한 혁명</span>이다. 근대 시민 혁명은 ③ <span class="u">상공업으로 부를 쌓은 시민 계급이 주도</span>하였다. ④ <span class="u">차티스트 운동은 여성을 포함한 모든 성인의 선거권을 요구</span>하였고, ⑤ <span class="u">보통 선거 제도는 19세기 초에 확립</span>되었다.</p></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">24.</b> (가)~(다)에 대한 설명으로 옳은 것은? <span class="pt">(3점)</span></div>
+  <div class="tl">
+    <div><b>(가)</b>이승만 정부의 3·15 부정 선거에 항의</div>
+    <div><b>(나)</b>군사 독재에 맞선 광주 시민과 학생들</div>
+    <div><b>(다)</b>전두환 정부에 맞서 대통령 직선제 요구</div>
+  </div>
+  <div class="opts c1">
+    <div>① (가)는 1980년에 일어났다.</div>
+    <div>② (나)는 아시아 여러 나라의 민주화 운동에 영향을 주었다.</div>
+    <div>③ (다)의 결과 국회 의원들이 대통령을 뽑게 되었다.</div>
+    <div>④ 일어난 순서는 (나) → (가) → (다)이다.</div>
+    <div>⑤ (가)는 전두환 정부에 반대하여 일어났다.</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">25.</b> (가), (나) 제도에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 일정 규모 이상의 사용자는 정해진 비율에 따라 장애인을 고용해야 한다.</p>
+    <p class="hang">(나) 경찰은 체포할 때 진술 거부권과 변호인 선임권을 알려 주어야 한다.</p>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. (가), (나)는 인간의 존엄성 실현과 관련이 있다.</p>
+    <p>ㄴ. (가)는 기회 균등만으로 평등이 실현된다고 본다.</p>
+    <p>ㄷ. (가)는 실질적인 평등을 누리게 하려는 제도이다.</p>
+    <p>ㄹ. (나)는 자유와는 관련이 없다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄴ, ㄷ</div><div>③ ㄱ, ㄷ</div><div>④ ㄴ, ㄹ</div><div>⑤ ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">26.</b> (가)~(다)와 관련 깊은 민주주의의 기본 원리를 바르게 연결한 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 주민들이 주민 소환 투표로 시장을 임기 전에 물러나게 하였다.</p>
+    <p class="hang">(나) 헌법에 따라 국가 기관을 구성하고, 기본권 침해 시 헌법 소원을 한다.</p>
+    <p class="hang">(다) 국회, 정부, 법원이 서로 견제한다.</p>
+  </div>
+  <table class="ot">
+    <tr><th></th><th>(가)</th><th>(나)</th><th>(다)</th></tr>
+    <tr><td>①</td><td>국민 주권</td><td>권력 분립</td><td>입헌주의</td></tr>
+    <tr><td>②</td><td>국민 자치</td><td>권력 분립</td><td>입헌주의</td></tr>
+    <tr><td>③</td><td>입헌주의</td><td>국민 주권</td><td>권력 분립</td></tr>
+    <tr><td>④</td><td>국민 자치</td><td>입헌주의</td><td>권력 분립</td></tr>
+    <tr><td>⑤</td><td>국민 주권</td><td>입헌주의</td><td>국민 자치</td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">27.</b> (가)~(라)에 해당하는 제도를 바르게 연결한 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <p class="hang">(가) 일정 수의 유권자가 중요한 법안을 제안한다.</p>
+    <p class="hang">(나) 선출된 공직자를 임기 전에 투표로 그만두게 한다.</p>
+    <p class="hang">(다) 국가의 중대한 사항을 국민이 직접 투표로 결정한다.</p>
+    <p class="hang">(라) 법률 개정 등을 국가 기관에 문서로 요구한다.</p>
+  </div>
+  <table class="ot">
+    <tr><th></th><th>(가)</th><th>(나)</th><th>(다)</th><th>(라)</th></tr>
+    <tr><td>①</td><td>국민 발안</td><td>국민 소환</td><td>국민 투표</td><td>청원</td></tr>
+    <tr><td>②</td><td>국민 발안</td><td>국민 투표</td><td>국민 소환</td><td>청원</td></tr>
+    <tr><td>③</td><td>청원</td><td>국민 소환</td><td>국민 투표</td><td>국민 발안</td></tr>
+    <tr><td>④</td><td>국민 투표</td><td>청원</td><td>국민 발안</td><td>국민 소환</td></tr>
+    <tr><td>⑤</td><td>청원</td><td>국민 투표</td><td>국민 소환</td><td>국민 발안</td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">28.</b> 다음 그래프에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx" style="padding:1.2mm 1.2mm 0.6mm">
+    <div class="cap">&lt; 가상의 ○○ 지역 선거의 연령대별 투표율 &gt;</div>
+    <svg viewBox="0 0 330 150" width="92%" style="display:block;margin:0 auto">
+      <line x1="34" y1="124" x2="318" y2="124" stroke="#000" stroke-width="1"/>
+      <line x1="34" y1="14" x2="34" y2="124" stroke="#000" stroke-width="1"/>
+      <g font-size="8.5" text-anchor="end">
+        <text x="30" y="127">0</text><text x="30" y="100">20</text><text x="30" y="73">40</text><text x="30" y="46">60</text><text x="30" y="19">80</text>
+      </g>
+      <g stroke="#999" stroke-width="0.5" stroke-dasharray="2,2">
+        <line x1="34" y1="97" x2="318" y2="97"/><line x1="34" y1="70" x2="318" y2="70"/><line x1="34" y1="43" x2="318" y2="43"/><line x1="34" y1="16" x2="318" y2="16"/>
+      </g>
+      <line x1="34" y1="55.1" x2="318" y2="55.1" stroke="#000" stroke-width="0.9" stroke-dasharray="5,3"/>
+      <text x="38" y="51.5" font-size="8.5" text-anchor="start">전체 투표율 51.0</text>
+      <!-- scale 1.35 px per % -->
+      <g fill="#c8c8c8" stroke="#000" stroke-width="0.7">
+        <rect x="46"  y="78.1" width="30" height="45.9"/>
+        <rect x="92"  y="72.7" width="30" height="51.3"/>
+        <rect x="138" y="57.9" width="30" height="66.1"/>
+        <rect x="184" y="41.7" width="30" height="82.3"/>
+        <rect x="230" y="26.8" width="30" height="97.2"/>
+        <rect x="276" y="21.4" width="30" height="102.6"/>
+      </g>
+      <g font-size="9" text-anchor="middle">
+        <text x="61" y="75">34.0</text><text x="107" y="69.5">38.0</text><text x="153" y="54.5">49.0</text><text x="199" y="38.5">61.0</text><text x="245" y="23.5">72.0</text><text x="291" y="18.3">76.0</text>
+        <text x="61" y="136">20대 이하</text><text x="107" y="136">30대</text><text x="153" y="136">40대</text><text x="199" y="136">50대</text><text x="245" y="136">60대</text><text x="291" y="136">70대 이상</text>
+      </g>
+      <text x="4" y="10" font-size="8.5">(%)</text>
+    </svg>
+  </div>
+  <div class="bogi">
+    <p>ㄱ. 연령대가 높을수록 투표율이 높다.</p>
+    <p>ㄴ. 낮은 투표율은 정치적 무관심의 모습으로 볼 수 있다.</p>
+    <p>ㄷ. 복지 요구가 늘면서 사법부의 역할이 커지고 있다.</p>
+    <p>ㄹ. 공정한 선거 제도와 시민의 지속적 참여가 필요하다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄹ</div><div>④ ㄱ, ㄴ, ㄹ</div><div>⑤ ㄴ, ㄷ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">29.</b> 다음 사례에 대한 설명으로 옳은 것을 &lt;보기&gt;에서 <span class="u"><b>모두</b></span> 고른 것은? <span class="pt">(4점)</span></div>
+  <div class="bx"><p>&nbsp;지우는 어린이 보호 구역 법률 개정을 요구하는 청원을 국회 '국민 동의 청원' 누리집에 올리고 SNS로 알렸다. 이 청원은 일정 수 이상의 동의를 받아 국회 담당 위원회에서 처리되었다.</p></div>
+  <div class="bogi">
+    <p>ㄱ. 직접 만나지 않고도 입법 과정에 영향을 줄 수 있다.</p>
+    <p>ㄴ. 전자 민주주의의 모습을 보여 준다.</p>
+    <p>ㄷ. 동의를 얻은 청원은 국민 투표로 곧바로 법률이 된다.</p>
+    <p>ㄹ. SNS로 알린 것은 여론의 형성 및 전달에 해당한다.</p>
+  </div>
+  <div class="opts"><div>① ㄱ, ㄴ</div><div>② ㄱ, ㄷ</div><div>③ ㄴ, ㄹ</div><div>④ ㄷ, ㄹ</div><div>⑤ ㄱ, ㄴ, ㄹ</div></div>
+</div>
+
+<div class="q">
+  <div class="stem"><b class="no">30.</b> 다음은 스위스 일부 주에서 열리는 주민 총회의 모습이다. 이와 같은 민주주의 방식에 대한 설명으로 옳은 것은? <span class="pt">(3점)</span></div>
+  <div class="bx">
+    <div class="pic" style="margin:0 0 1mm"><img src="img/swiss.jpg" alt="투표용지를 들어 올리는 스위스 주민들" style="width:46%"></div>
+    <p>&nbsp;16세 이상의 주민들이 모여 지역의 중요한 일을 토론하고, 찬성하는 사람이 투표용지를 들어 올려 결정한다.</p>
+  </div>
+  <div class="opts c1">
+    <div>① 시민이 공동체의 의사 결정에 직접 참여하는 방식이다.</div>
+    <div>② 시민이 선출한 대표가 대신 결정하는 방식이다.</div>
+    <div>③ 오늘날 대부분의 국가가 실시하는 방식이다.</div>
+    <div>④ 고대 아테네처럼 성인 남성만 참여할 수 있다.</div>
+    <div>⑤ 정보 통신 기술을 활용한 전자 민주주의의 사례이다.</div>
+  </div>
+</div>
+
+
+<div class="end" id="endblock">
+  <div class="msg">《 검은색 컴퓨터용 사인펜 이외의 펜으로<br>흔적을 남겨도 마킹한 것으로 판독될 수 있으므로,<br>정답 이외의 번호에 조금이라도 흔적이 남았다면<br>반드시 수정테이프로 정정하기 바랍니다. 》</div>
+  <div class="bye">수고하셨습니다.<br>끝.</div>
+</div>
+
+</div><!-- /pool -->
+
+<div id="pages"></div>
+
+<script>
+const SCHOOL = '목일중학교';
+const FILL = 1.0;   // 단 하나를 이 비율 이상 채우지 않음
+const MAXQ = 3;      // 한 단에 최대 문항 수
+function makePage(n, first) {
+  const p = document.createElement('div');
+  p.className = 'page' + (first ? ' first' : '');
+  let head = '';
+  if (first) {
+    head = `
+    <div class="head">
+      <div class="grade">1학년</div>
+      <div class="title">사회과<br><span class="t2">2학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중간고사</span></div>
+      <div class="date">2&thinsp;0&thinsp;2&thinsp;6&thinsp;년<br>10월&nbsp;&nbsp;3일(토)&nbsp;&nbsp;&nbsp;1교시</div>
+      <div class="code">과목코드(03)</div>
+    </div>`;
+  }
+  p.innerHTML = `<div class="frame">${head}<div class="body"><div class="col l"></div><div class="col r"></div></div>
+    <div class="cont"></div></div>
+    <div class="foot">
+      <span class="l1">(1)학년 (사회)과목</span><span class="l1r">( ${n} 쪽/총 <span class="tot"></span> 쪽중)</span>
+      <div class="l2">본 시험문제의 저작권은 ${SCHOOL}에 있습니다.</div></div>`;
+  document.getElementById('pages').appendChild(p);
+  return p;
+}
+function layout() {
+  const blocks = Array.from(document.querySelectorAll('#pool > .q, #pool > .end'));
+  let n = 1, page = makePage(n, true), cols = page.querySelectorAll('.col'), ci = 0;
+  const intro = document.createElement('div');
+  intro.innerHTML = `<table class="score"><tr><td>문항 유형</td><td>문항 수x배점</td><td>점수(점)</td></tr>
+    <tr><td rowspan="2">선택형</td><td>20문항x3점</td><td>60점</td></tr>
+    <tr><td>10문항x4점</td><td>40점</td></tr>
+    <tr><td>계</td><td>30문항</td><td>100점</td></tr></table>
+    <div class="notice">※&nbsp; 다음 문제를 읽고 정답을 OMR카드에 정확히 표기하시오.</div>`;
+  cols[0].appendChild(intro);
+  const used = (col) => col.lastElementChild.getBoundingClientRect().bottom - col.getBoundingClientRect().top;
+  const fits = (col) => used(col) <= col.clientHeight * FILL && col.querySelectorAll('.q').length <= MAXQ;
+  for (const b of blocks) {
+    while (true) {
+      const col = cols[ci];
+      col.appendChild(b);
+      const empty = col.querySelectorAll('.q, .end').length === 1 && !(n === 1 && ci === 0);
+      if (fits(col) || (empty && used(col) <= col.clientHeight)) break;
+      col.removeChild(b);
+      if (ci === 0) ci = 1; else { n += 1; page = makePage(n, false); cols = page.querySelectorAll('.col'); ci = 0; }
+    }
+  }
+  const pages = document.querySelectorAll('.page');
+  pages.forEach((p, i) => {
+    p.querySelector('.tot').textContent = pages.length;
+    if (i < pages.length - 1) p.querySelector('.cont').textContent = (i % 2 === 0) ? '뒷면 계속' : '다음 장 계속';
+  });
+  document.getElementById('pool').remove();
+  document.body.setAttribute('data-pages', pages.length);
+}
+document.fonts.load('10pt "Nanum Myeongjo"').then(() => document.fonts.ready).then(() => Promise.all(Array.from(document.images).map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))).then(() => { layout(); document.body.setAttribute('data-ready', '1'); });
+</script>
+</body>
+</html>
