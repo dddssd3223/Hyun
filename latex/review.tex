@@ -1,0 +1,265 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\setmainhangulfont{NanumMyeongjo}[BoldFont=NanumMyeongjoBold]
+\setsanshangulfont{NanumGothic}[BoldFont=NanumGothicBold]
+\usepackage[margin=18mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{booktabs,tabularx,array}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+\definecolor{main}{HTML}{2F5D9E}
+\definecolor{good}{HTML}{1A7F37}
+\definecolor{bad}{HTML}{C62828}
+\definecolor{soft}{HTML}{F3F6FB}
+
+\titleformat{\section}{\sffamily\Large\bfseries\color{main}}{}{0pt}{}[{\color{main}\titlerule[1pt]}]
+\titleformat{\subsection}{\sffamily\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\linespread{1.25}
+\setlist{itemsep=2pt,topsep=3pt,leftmargin=16pt}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\sffamily\small\color{gray}미적분 I 부교재 풀이 점검}
+\fancyhead[R]{\sffamily\small\color{gray}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newtcolorbox{prob}[1]{enhanced,breakable,colback=soft,colframe=main,
+  boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  fonttitle=\sffamily\bfseries,coltitle=white,colbacktitle=main,title={#1}}
+\newtcolorbox{wrong}[1]{enhanced,breakable,colback=white,colframe=bad,
+  boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  fonttitle=\sffamily\bfseries,coltitle=white,colbacktitle=bad,title={#1}}
+\newcommand{\ok}[1]{\textcolor{good}{\textbf{#1}}}
+\newcommand{\no}[1]{\textcolor{bad}{#1}}
+\newcommand{\tip}{\textsf{\textbf{\color{main}스킬}}\;}
+
+\begin{document}
+
+{\sffamily\bfseries\huge 미적분 I 부교재 풀이 점검}\\[4pt]
+{\color{gray} 총 104문항 직접 풀이 및 비교 \quad(PDF 23--28쪽은 17--22쪽 중복 스캔이라 같은 문제로 처리)}
+
+\begin{tcolorbox}[colback=soft,colframe=main,boxrule=0.6pt,arc=2pt]
+\textbf{결과}\quad 98문항 일치,\; \no{\textbf{6문항 답 불일치}} (모두 계산$\cdot$마킹 실수).
+불일치 6문항은 별도로 계산 검증함.
+\end{tcolorbox}
+
+%==================================================
+\section{A. 답이 다른 문항 (6개)}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{c c c X}
+\toprule
+\textsf{번호} & \textsf{네 답} & \textsf{내 답} & \textsf{어디서 틀렸나}\\
+\midrule
+28 & \no{① 1} & \ok{③ 3} & 통분할 때 분자 부호가 뒤집힘\\
+29 & \no{② $-13$} & \ok{⑤ $-19$} & $2x+a$에 $x=-2$ 대입 → $a-4$를 $a-6$으로 계산\\
+30 & \no{④ 4} & \ok{③ 3} & $2a+4=10$까지 맞게 세우고 ④에 마킹\\
+50 & \no{① $-2$} & \ok{③ $-6$} & (나)에서 $f'(-1)=0$임을 놓침 → $b$ 계산 오류\\
+59 & \no{⑤ 18} & \ok{③ 14} & $h(-1)$에서 $2x$ 항 부호 실수\\
+77 & \no{④ 9} & \ok{① 6} & 연속 조건 계산 오류\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{wrong}{28번 \quad 정답 ③ 3}
+$\displaystyle\lim_{x\to0}\left(\frac{1}{x^3+x}-\frac{1}{x^2+x}+\frac{2}{x^3+x^2+x+1}\right)$
+
+\textbf{실수:} 분자를 $(x^2+1)-(x+1)$로 써서 부호가 뒤집힘. 맞는 식은 $(x+1)-(x^2+1)$.
+
+\tip $x^3+x^2+x+1=(x+1)(x^2+1)$ 이므로 세 항을 $x(x+1)(x^2+1)$로 \emph{한 번에} 통분:
+\[
+\frac{(x+1)-(x^2+1)+2x}{x(x+1)(x^2+1)}=\frac{x(3-x)}{x(x+1)(x^2+1)}\;\longrightarrow\;3
+\]
+\end{wrong}
+
+\begin{wrong}{29번 \quad 정답 $a=-5,\ b=-14 \Rightarrow a+b=-19$ (⑤)}
+$\displaystyle\lim_{x\to-2}\frac{x^2+ax+b}{x^2+x-2}=3$
+
+\textbf{실수:} $2x+a$에 $x=-2$를 넣으면 $a-4$인데 $a-6$으로 계산. 검산 $\frac{-7}{-3}\neq3$을 보고도 진행.
+
+\tip 로피탈 대신 분자를 $(x+2)(x+c)$로 놓기:
+\[
+\frac{c-2}{-3}=3\;\Rightarrow\;c=-7\;\Rightarrow\;(x+2)(x-7)=x^2-5x-14
+\]
+{\small\color{gray}(지문의 `$a+b$'가 지워져 있어 묻는 값이 다르면 $a,b$로 재계산)}
+\end{wrong}
+
+\begin{wrong}{30번 \quad 정답 ③ 3}
+$x\to3^+$: $\dfrac{|x-3|}{x-3}=1,\ \dfrac{|x-2|}{x-2}=1 \Rightarrow 3+a$,\qquad
+$x\to1^-$: 두 부호 모두 $-1$ $\Rightarrow 1+a$
+
+$(3+a)+(1+a)=2a+4=10 \Rightarrow a=3$. \quad 식은 맞았는데 마킹을 ④로 함.
+\end{wrong}
+
+\begin{wrong}{50번 \quad 정답 ③ $-6$}
+(가) 이차함수의 평균변화율 $=$ 중점 미분계수 $\Rightarrow f'(1)=2+a=4,\ a=2$ \;(여기까지 맞음)
+
+(나) $\displaystyle\lim_{x\to-1}\frac{f(x)-f(-1)}{x^2-1}=\frac{f'(-1)}{-2}$ 인데 $f'(-1)=-2+a=0$ 이므로 좌변 $=0$
+\[
+\Rightarrow f(1)=1+2+b=0 \Rightarrow b=-3,\qquad ab=-6
+\]
+\end{wrong}
+
+\begin{wrong}{59번 \quad 정답 ③ 14}
+$h(x)=x^3-2x^2+2x+k$, \; $h'(x)=3x^2-4x+2>0$ (증가함수)
+\[
+h(-2)=-8-8-4+k=k-20<0,\qquad h(-1)=-1-2\no{-2}+k=k-5>0
+\]
+$\Rightarrow 5<k<20$, \; $k=6,\dots,19$ \; → \textbf{14개}. \quad (실수: $2x$ 항을 $+2$로 계산해 $k-1$)
+\end{wrong}
+
+\begin{wrong}{77번 \quad 정답 ① 6}
+$f(x)=x^2+ax+b$,\; $x\ge1$에서 $g(x)=f(x+1)-f(x)=2x+1+a$
+\[
+\text{미분: } f'(1)=g'(1) \Rightarrow 2+a=2 \Rightarrow a=0,\qquad
+\text{연속: } f(1)=g(1) \Rightarrow 1+b=3 \Rightarrow b=2
+\]
+$f(x)=x^2+2 \Rightarrow f(2)=6$
+\end{wrong}
+
+%==================================================
+\section{B. 답은 맞지만 더 빠른 풀이가 있는 문항}
+
+\begin{prob}{33번 \quad $4f(x)=\{f'(x)\}^2+x^2+4$,\; $f=ax^2+b$}
+$x=2$ 대입은 미지수를 줄이지 못함. 처음부터 \textbf{계수비교}:
+\[
+4ax^2+4b=(4a^2+1)x^2+4 \;\Rightarrow\; (2a-1)^2=0,\ b=1 \;\Rightarrow\; f(2)=3
+\]
+\end{prob}
+
+\begin{prob}{86번 \quad 대칭으로 $f'(3)=-f'(1)$ 즉시}
+$f(1)=f(3)=1$ → 축 $x=2$ → $f'(3)=-f'(1)$.
+\[
+f'(1)=2a+1,\quad f'(3)-f'(1)=-2f'(1)=3a \;\Rightarrow\; a=-\tfrac27,\ f'(1)=\tfrac37
+\]
+$f=k(x-1)(x-3)+1,\ f'(1)=-2k \Rightarrow k=-\tfrac{3}{14} \Rightarrow f(15)=-\tfrac{3}{14}\cdot14\cdot12+1=-35$
+\end{prob}
+
+\begin{prob}{91번 \quad 미분 연립 대신 인수분해}
+$f(1)=2-g(1)-2=-g(1)$ 이므로 $f(1)+g(1)=0$은 \emph{항상} 성립 → 극한 존재하려면 $g(1)=0$.
+\[
+f+g=2x(x^2-1)-(x^2-1)g=(x^2-1)(2x-g)
+\]
+$g=m(x-1)$: \;$\dfrac{g}{f+g}=\dfrac{m}{(x+1)(2x-g)}\to\dfrac{m}{4}=-\dfrac12 \Rightarrow m=-2,\ g(-3)=8$
+\end{prob}
+
+\begin{prob}{88번 \quad 0/0 판단을 한 줄로}
+$f(0)=g(0)=c\neq0$이면 극한 $=\dfrac{c}{c}=1\neq4$ → $c=0$.
+\[
+\frac{2g'(0)-1}{f'(0)-2}=4,\quad g'(0)=f'(0)-2 \;\Rightarrow\; f'(0)=\tfrac32,\ g'(0)=-\tfrac12
+\]
+\end{prob}
+
+\begin{prob}{24번 \quad 유리화 불필요}
+$x-a=(x+2)-(a+2)=\big(\sqrt{x+2}-\sqrt{a+2}\big)\big(\sqrt{x+2}+\sqrt{a+2}\big)$
+\[
+\Rightarrow\ \frac{x-a}{\sqrt{x+2}-\sqrt{a+2}}=\sqrt{x+2}+\sqrt{a+2}\to2\sqrt{a+2}=6\Rightarrow a=7
+\]
+\end{prob}
+
+\begin{prob}{84번 \quad 소거 관찰 + $t$로 묶기}
+$x^2-2x=-2(x-t)+t^2-2t$ → $-2x$ 소거 → $x^2=t^2$ → $Q$의 $x$좌표 $=-t$, \;$Q(-t,\,t^2+2t)$
+\[
+\overline{OQ}=t\sqrt{1+(t+2)^2}\;\Rightarrow\;\lim_{t\to0^+}\frac{L(t)}{t}=\sqrt5
+\]
+\end{prob}
+
+%==================================================
+\section{C. 전체 문항 실전 스킬 (유형별)}
+
+\subsection{1. 미분계수 정의 변형 \quad{\small\color{gray}(4, 7, 17, 18, 19, 51, 60, 61, 66, 67)}}
+\[
+\lim_{h\to0}\frac{f(a+ph)-f(a+qh)}{rh}=\frac{p-q}{r}f'(a),\qquad
+\lim_{x\to\infty}x\Big\{f\big(a+\tfrac px\big)-f(a)\Big\}=p\,f'(a)
+\]
+\begin{itemize}
+\item 51번: $\frac{4+2}{2}=3 \Rightarrow g(x)=3f'(x)$ \quad 60번: $3f'(2)$ \quad 61번: $2f'(1)$
+\item 제곱 꼴은 $(f^2)'=2ff'$ — 17번: $f(3)f'(3)$, \;19번: $\dfrac{1}{2f(2)f'(2)}$
+\item 67번: 우함수의 도함수는 기함수 → $f'(-2)=-f'(2)$
+\end{itemize}
+
+\subsection{2. 0/0 극한 → 인수$\cdot$함수 꼴 먼저 \quad{\small\color{gray}(12, 29, 31, 35, 36, 38--40, 57, 63, 87, 89, 92, 94--96, 99)}}
+\begin{itemize}
+\item 분모 $\to0$이면 분자 $\to0$
+\item 꼴 세우기: 36번 $f=x(x-1)(px+q)$ \;$\cdot$\; 40번 $f=kx^2+5x$ \;$\cdot$\; 87번 $x=-1$ 중심 전개
+\item 99번 $f-g=(x-1)^2(x-c)$ (\,``접한다'' $=$ 중근\,) \;$\cdot$\; 92번 $f-3=(x+a)(x-a)(x-2a)$
+\item 39번 쪼개기: $\dfrac{f(f(x))}{f(x)}\cdot\dfrac{f(x)}{x-1}$ \qquad 64$\cdot$65번: $g^2$으로 나눠 $t=\dfrac fg$ 하나만 남기기
+\end{itemize}
+
+\subsection{3. $\infty$ 극한 \quad{\small\color{gray}(10, 25, 40, 74, 97)}}
+\begin{itemize}
+\item 최고차항만 — 74번: $\dfrac{a^2}{3a+a}=\dfrac a4$
+\item $\sqrt{x^2+ax}-x\to\dfrac a2$ — 10번: $\sqrt{x^2+4x}-x\to2$ 이므로 답 $\tfrac12$
+\end{itemize}
+
+\subsection{4. 구간별 함수의 연속$\cdot$미분가능 \quad{\small\color{gray}(21, 22, 37, 41, 42, 45, 69, 73)}}
+\begin{itemize}
+\item ``함숫값 같다 $+$ 미분계수 같다'' 두 식
+\item 공통인수로 묶으면 전개 없이 끝 — 37번 $(a-3)(a+1)=4(a+1)$, 73번 $(2a-7)g(a)=0$
+\end{itemize}
+
+\subsection{5. 절댓값$\cdot$끊긴 함수와의 곱 \quad{\small\color{gray}(52, 70, 75, 78, 83, 85, 98)}}
+\begin{itemize}
+\item $|x-a|\,g(x)$가 $x=a$에서 미분가능 $\iff g(a)=0$
+\item 끊긴 함수 $\times\,g$ 연속 $\iff$ 그 점에서 $g=0$ \;(85번 $f(0)=f(2)=0$, 75번 $g(2)=0$)
+\item 83ㄷ: $f(1)=0,\ f'(1)\neq0$ → $|f|$ 미분불가능
+\end{itemize}
+
+\subsection{6. $\{f\}^2$, $(f+a)^2$의 연속 \quad{\small\color{gray}(43, 46, 71)}}
+$A^2=B^2$에서 $A=B$는 원래 불연속이라는 뜻 → $A=-B$만 보면 일차식 하나로 끝.
+
+\subsection{7. 이차함수 평균변화율 $=$ 중점의 미분계수 \quad{\small\color{gray}(2, 50)}}
+\[
+\frac{f(b)-f(a)}{b-a}=f'\!\left(\frac{a+b}{2}\right)\qquad\text{2번: } c=\tfrac{1+4}{2}=\tfrac52
+\]
+
+\subsection{8. 대칭 \quad{\small\color{gray}(48, 56, 86, 90)}}
+48번: 축 $x=3$ → $f'(n)=2(n-3)$, \;$\displaystyle\sum_{n=1}^{10}f'(n)=2(55-30)=50$. \;56번 기함수, 90번 짝함수.
+
+\subsection{9. 중간값 정리 \quad{\small\color{gray}(14, 59, 76)}}
+증가함수 확인 후 양 끝값 부호만. 음수 대입 시 \textbf{항마다 부호 확인} (59번 실수 포인트).
+
+\subsection{10. 조임정리 \quad{\small\color{gray}(64, 65, 72)}}
+양쪽 식이 접하면 판별식 $0$ — 72번: $2x-3=(x-1)^2 \Rightarrow (x-2)^2=0,\ a=2$
+
+\subsection{11. 함수방정식 \quad{\small\color{gray}(62, 104)}}
+\begin{itemize}
+\item 한 변수로 미분 — 62번: $f'(x+y)=f'(x)-y$ → $f'(0)-f'(-2)=-2$
+\item 104번: $f'(x+k)=f'(x)$ → $f'(k)=f'(0)$ → $3k^2-12k=0$, $k=4$
+\end{itemize}
+
+\subsection{12. 거리 함수 미분 \quad{\small\color{gray}(34, 58, 101)}}
+\begin{itemize}
+\item $(\sqrt u)'=\dfrac{u'}{2\sqrt u}$ \quad 58번: $g$는 상수 → $f'(1)=\dfrac{10-4}{2\sqrt2}=\dfrac{3\sqrt2}{2}$
+\item 101번: $g^2=1+\left(\dfrac{f}{t}\right)^2$ → $f'(0)^2=24$, $f>0$이라 $2\sqrt6$
+\end{itemize}
+
+\subsection{13. 그래프 읽기 \quad{\small\color{gray}(8, 26, 27, 53, 54, 56, 103)}}
+$f(-x)$, $f(x+1)$은 안쪽 변수의 방향부터 변환 — $x\to1^+$ 이면 $-x\to-1^-$.
+
+\subsection{14. 그 밖의 문항 \quad{\small\color{gray}(1, 3, 5, 6, 9, 11, 13, 15, 16, 20, 23, 44, 47, 68, 79--82, 93, 100, 102)}}
+대부분 대입$\cdot$약분 한 번. 짚어 둘 것:
+\begin{itemize}
+\item 11번 판별식 $<0$ \;$\cdot$\; 47번 $f'(x)-2=3(x+3)(x-4)$ \;$\cdot$\; 68번 $f'=k(x-1)^2$
+\item 81번 $g$의 영점에서 약분 \;$\cdot$\; 100번 $b=0$ / $b\neq0$ 경우 분리 \;$\cdot$\; 102번 주기 3 → 경계 두 곳 연속
+\end{itemize}
+
+%==================================================
+\section{실수 습관}
+\begin{itemize}
+\item 29번처럼 \textbf{검산에서 모순}이 나오면 그 자리에서 앞으로 돌아가기
+\item 30번처럼 식은 맞는데 마킹이 다른 경우 → \textbf{마킹 직전 숫자 재확인}
+\end{itemize}
+
+{\small\color{gray} 확인 못 한 부분: 4번은 조건을 $f'(1)=2$로 보고 풂(프라임 기호 불명확). 29번은 묻는 값이 지워져 $a+b$로 계산.}
+
+\end{document}
